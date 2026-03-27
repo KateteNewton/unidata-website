@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>UniData | Features</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed": "#341100",
+              "background": "#f9f9ff",
+              "tertiary-container": "#004941",
+              "secondary-fixed-dim": "#ffb690",
+              "on-error-container": "#93000a",
+              "secondary": "#9d4300",
+              "inverse-on-surface": "#ebf1ff",
+              "surface-tint": "#4059aa",
+              "surface-container-low": "#f0f3ff",
+              "primary-fixed": "#dce1ff",
+              "on-primary-fixed": "#00164e",
+              "on-background": "#151c27",
+              "on-tertiary-fixed-variant": "#005048",
+              "on-secondary-container": "#5c2400",
+              "tertiary-fixed-dim": "#4fdbc8",
+              "error": "#ba1a1a",
+              "on-secondary": "#ffffff",
+              "inverse-primary": "#b6c4ff",
+              "secondary-fixed": "#ffdbca",
+              "on-surface": "#151c27",
+              "surface-dim": "#d3daea",
+              "surface": "#f9f9ff",
+              "surface-container": "#e7eefe",
+              "on-primary-container": "#90a8ff",
+              "on-tertiary": "#ffffff",
+              "outline-variant": "#c5c5d3",
+              "on-surface-variant": "#444651",
+              "on-error": "#ffffff",
+              "surface-variant": "#dce2f3",
+              "tertiary-fixed": "#71f8e4",
+              "primary-container": "#1e3a8a",
+              "outline": "#757682",
+              "surface-bright": "#f9f9ff",
+              "primary-fixed-dim": "#b6c4ff",
+              "error-container": "#ffdad6",
+              "secondary-container": "#fd761a",
+              "inverse-surface": "#2a313d",
+              "on-primary-fixed-variant": "#264191",
+              "surface-container-lowest": "#ffffff",
+              "primary": "#00236f",
+              "surface-container-highest": "#dce2f3",
+              "surface-container-high": "#e2e8f8",
+              "on-tertiary-container": "#27c0ae",
+              "on-primary": "#ffffff",
+              "on-tertiary-fixed": "#00201c",
+              "tertiary": "#00312b",
+              "on-secondary-fixed-variant": "#783200"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-header {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .signature-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #00236f 100%);
+        }
+        .asymmetric-grid {
+            grid-template-columns: repeat(12, 1fr);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .logo-placeholder {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+    
+        .logo-slot {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-slot img {
+            max-height: 36px;
+            width: auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background font-body selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+
+    <nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm shadow-blue-900/5 font-['Plus_Jakarta_Sans'] tracking-tight antialiased">
+        <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+           <div class="logo-placeholder">
+                <div id="customLogoSlot" class="logo-slot text-sm md:text-base px-2 md:px-3 py-0.5 md:py-1">
+                    <span class="opacity-80 text-sm font-small"><a href="index.html"><img src="images/unidata-logo.png"></a></span>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 px-3 py-1 rounded-lg" href="index.html">Home</a>
+                <a class="text-blue-700 dark:text-blue-400 font-bold border-b-2 border-orange-500 pb-1" href="features.html">Features</a>
+                <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 px-3 py-1 rounded-lg" href="about.html">About Us</a>
+                <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 px-3 py-1 rounded-lg" href="events.html">Upcoming Events</a>
+                <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 px-3 py-1 rounded-lg" href="contact.html">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="hidden lg:block text-primary font-semibold hover:bg-surface-container transition-colors px-4 py-2 rounded-lg">Web Version</button>
+                <button class="signature-gradient text-on-primary px-6 py-2.5 rounded-xl font-bold active:scale-95 duration-150 transition-transform">Google Play</button>
+            </div>
+        </div>
+    </nav>
+
+
+    <main class="pt-32 pb-24">
+    <!-- Hero Section -->
+        <header class="max-w-7xl mx-auto px-8 mb-20 text-center lg:text-left">
+            <div class="inline-flex items-center space-x-2 bg-secondary-fixed text-on-secondary-fixed px-4 py-1.5 rounded-full mb-6">
+                <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                <span class="text-xs font-bold tracking-widest uppercase">Student Centric Ecosystem</span>
+            </div>
+            <h1 class="text-5xl lg:text-7xl font-headline font-extrabold text-primary tracking-tighter mb-6 max-w-4xl leading-[1.1]">
+                            Empowering <span class="text-secondary-container">Academic</span> Excellence
+                        </h1>
+            <p class="text-xl text-on-surface-variant max-w-2xl leading-relaxed">
+                            Discover the tools designed to revolutionize your university experience. From comprehensive resources to collaborative hubs, UniData is your architect for a brighter future.
+                        </p>
+        </header>
+
+    <!-- Features Bento Grid -->
+        <section class="max-w-7xl mx-auto px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Comprehensive Library -->
+                <div class="group relative bg-surface-container-lowest p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden col-span-1 lg:col-span-2 flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 w-1/2 h-full opacity-10 group-hover:opacity-20 transition-opacity">
+                        <img alt="Library" class="object-cover h-full w-full" data-alt="Interior of a modern high-end library with rows of mahogany bookshelves and soft warm ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyaL97qAwThINg6tJ9mEwNiRaCjMqXePLjYH1YXxhGmK1Wc62_qLvBMFEr0_XV5FBFS-6VLOMbKe5tJplu68VzcQzBkvXnWDKRIq_BWsDatoq0hg5xMET3B-Tya0tgMj7uadw7DKFNuOYpGR2G9zxkmYKoOLIU_-gzp2gjwI_mpJkiVbxU_WadolYWY0GqgU-D3xBA1z9gyNppBi7ytRKm04sefgY_ddZRILiMo3YEuZpPyQvia3X399XVkvlRDEIIpTJf8chdAsnx"/>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+                            <span class="material-symbols-outlined text-3xl" data-icon="library_books">library_books</span>
+                        </div>
+                        <h3 class="text-2xl font-headline font-bold text-primary mb-4">Comprehensive Library</h3>
+                        <p class="text-on-surface-variant max-w-md leading-relaxed">
+                                                    Access a vast digital repository of past papers, textbooks, and research journals curated specifically for Zambian university curricula.
+                                                </p>
+                    </div>
+                    <div class="mt-8 flex items-center text-primary font-bold group-hover:translate-x-2 transition-transform">
+                                            Coming Soon <span class="material-symbols-outlined ml-2">arrow_forward</span>
+                    </div>
+                </div>
+
+            <!-- Smart Quizzes -->
+                <div class="bg-surface-container-low p-8 rounded-xl flex flex-col border-l-4 border-secondary-container hover:bg-surface-container transition-colors duration-300">
+                    <div class="w-14 h-14 bg-secondary-container/10 rounded-xl flex items-center justify-center mb-6 text-secondary-container">
+                        <span class="material-symbols-outlined text-3xl" data-icon="quiz">quiz</span>
+                    </div>
+                    <h3 class="text-2xl font-headline font-bold text-primary mb-4">Smart Quizzes</h3>
+                    <p class="text-on-surface-variant leading-relaxed mb-6">
+                                            Test your knowledge with AI-driven assessments that adapt to your learning pace and identify knowledge gaps.
+                                        </p>
+                    <div class="mt-auto pt-4 flex -space-x-2">
+                        <div class="w-8 h-8 rounded-full border-2 border-surface bg-slate-200 flex items-center justify-center text-[10px] font-bold">SS</div>
+                        <div class="w-8 h-8 rounded-full border-2 border-surface bg-slate-300 flex items-center justify-center text-[10px] font-bold">AK</div>
+                        <div class="w-8 h-8 rounded-full border-2 border-surface bg-primary text-on-primary flex items-center justify-center text-[10px] font-bold">+12</div>
+                    </div>
+                </div>
+
+            <!-- Offline Mode -->
+                <div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/20 group hover:bg-primary transition-all duration-300">
+                    <div class="w-14 h-14 bg-tertiary-fixed text-on-tertiary-fixed rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-3xl" data-icon="offline_pin">offline_pin</span>
+                    </div>
+                    <h3 class="text-2xl font-headline font-bold text-primary mb-4 group-hover:text-on-primary transition-colors">Offline Mode</h3>
+                    <p class="text-on-surface-variant leading-relaxed group-hover:text-on-primary/80 transition-colors">
+                                            Download your essential study materials and study anywhere, anytime, without worrying about connectivity issues.
+                                        </p>
+                </div>
+
+            <!-- Dark/Light Mode -->
+                <div class="relative bg-surface-container-high p-8 rounded-xl overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-slate-900 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10 flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-14 h-14 bg-white/50 backdrop-blur-sm rounded-xl flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-white transition-colors">
+                                <span class="material-symbols-outlined text-3xl" data-icon="brightness_6">brightness_6</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-headline font-bold text-primary group-hover:text-white mb-4">Adaptive Interface</h3>
+                        <p class="text-on-surface-variant group-hover:text-slate-300 leading-relaxed">
+                                                    Seamlessly switch between Light and Dark modes to reduce eye strain during those inevitable late-night study sessions.
+                                                </p>
+                    </div>
+                </div>
+
+
+            <!-- Early Access Materials -->
+                <div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm flex flex-col justify-between border-t-4 border-tertiary-fixed">
+                    <div>
+                        <div class="w-14 h-14 bg-tertiary-fixed/20 text-on-tertiary-container rounded-xl flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-3xl" data-icon="rocket_launch">rocket_launch</span>
+                        </div>
+                    <h3 class="text-2xl font-headline font-bold text-primary mb-4">Early Access Materials</h3>
+                    <p class="text-on-surface-variant leading-relaxed">
+                                                Be the first to access new course updates, upcoming exam tips, and exclusive student seminars through our priority queue.
+                                            </p>
+                    </div>
+                    <div class="mt-8 flex items-center justify-between">
+                        <span class="text-xs font-bold text-tertiary px-2 py-1 bg-tertiary-fixed/30 rounded">PREMIUM ONLY</span>
+                        <span class="material-symbols-outlined text-tertiary-container">verified</span>
+                    </div>
+                </div>
+            <!-- Peer-to-Peer Learning 
+                <div class="col-span-1 md:col-span-2 lg:col-span-1 bg-secondary-container p-8 rounded-xl flex flex-col justify-center text-on-secondary-container relative overflow-hidden">
+                <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+                <div class="relative z-10">
+                <div class="w-14 h-14 bg-on-secondary-container text-secondary-container rounded-xl flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-3xl" data-icon="groups">groups</span>
+                </div>
+                <h3 class="text-2xl font-headline font-bold mb-4">Peer-to-Peer Hub</h3>
+                <p class="text-on-secondary-container/90 leading-relaxed mb-6">
+                                            Connect with top-performing students across the country. Share notes, join discussion forums, and grow together in a vibrant community.
+                                        </p>
+                <button class="bg-on-secondary-container text-secondary-container px-6 py-3 rounded-lg font-bold hover:bg-on-secondary-container/80 transition-colors">
+                                            Join Community
+                                        </button>
+                </div>
+                </div> -->
+            </div>
+        </section>
+
+        <!-- Feature Comparison Section -->
+<section class="py-20 bg-surface-container-low">
+  <div class="max-w-7xl mx-auto px-6 md:px-8">
+    <div class="text-center mb-16">
+      <h2 class="font-headline text-4xl md:text-5xl font-bold text-primary mb-4">
+        Free vs Premium
+      </h2>
+      <p class="text-xl text-on-surface-variant max-w-2xl mx-auto">
+        Choose the plan that works best for you
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <!-- Free Version Card -->
+      <div class="bg-surface-container-lowest p-8 rounded-2xl editorial-shadow hover:shadow-xl transition-shadow duration-300">
+        <h3 class="text-2xl font-headline font-bold text-primary mb-6">Free Version</h3>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <div class="mt-1 w-5 h-5 rounded-full bg-surface-variant flex items-center justify-center flex-shrink-0">
+              <div class="w-2 h-2 rounded-full bg-outline"></div>
+            </div>
+            <span class="text-on-surface">Access to upto 5 documents a day</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="mt-1 w-5 h-5 rounded-full bg-surface-variant flex items-center justify-center flex-shrink-0">
+              <div class="w-2 h-2 rounded-full bg-outline"></div>
+            </div>
+            <span class="text-on-surface">Customizable Study Timetable</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="mt-1 w-5 h-5 rounded-full bg-surface-variant flex items-center justify-center flex-shrink-0">
+              <div class="w-2 h-2 rounded-full bg-outline"></div>
+            </div>
+            <span class="text-on-surface">Access of upto 3 Quizzes for each Course</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="mt-1 w-5 h-5 rounded-full bg-surface-variant flex items-center justify-center flex-shrink-0">
+              <div class="w-2 h-2 rounded-full bg-outline"></div>
+            </div>
+            <span class="text-on-surface">Standard support</span>
+          </li>
+         <!-- <li class="flex items-start gap-3">
+            <div class="mt-1 w-5 h-5 rounded-full bg-surface-variant flex items-center justify-center flex-shrink-0">
+              <div class="w-2 h-2 rounded-full bg-outline"></div>
+            </div>
+            <span class="text-on-surface">Ads supported</span>
+          </li> 
+        </ul>
+        <button class="w-full mt-8 py-3 border-2 border-primary text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all duration-300">
+          Get Started Free
+        </button> -->
+      </div>
+
+      <!-- Premium Card (Popular) -->
+      <div class="signature-gradient p-8 rounded-2xl shadow-2xl text-white transform hover:scale-[1.02] transition-all duration-300 overflow-hidden">
+        <!-- Popular Badge -->
+        <div class="absolute top-0 right-6 bg-secondary-container text-on-secondary-container px-4 py-1 text-sm font-bold rounded-b-lg shadow-lg">
+          POPULAR
+        </div>
+        <h3 class="text-2xl font-headline font-bold mb-2">Premium</h3>
+        <p class="text-3xl font-black mb-6">K20<span class="text-lg font-medium opacity-80">/month</span></p>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <div class="mt-1 w-5 h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+              <div class="w-2 h-2 rounded-full bg-white"></div>
+            </div>
+            <span>Unlimited access to all materials</span>
+          </li>
+          <!-- <li class="flex items-start gap-3">
+            <div class="mt-1 w-5 h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+              <div class="w-2 h-2 rounded-full bg-white"></div>
+            </div>
+            <span>Class Timetable</span>
+          </li> -->
+          <li class="flex items-start gap-3">
+            <div class="mt-1 w-5 h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+              <div class="w-2 h-2 rounded-full bg-white"></div>
+            </div>
+            <span>Unlimited quiz attempts</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="mt-1 w-5 h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+              <div class="w-2 h-2 rounded-full bg-white"></div>
+            </div>
+            <span>Priority support</span>
+          </li>
+           <li class="flex items-start gap-3">
+            <div class="mt-1 w-5 h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+              <div class="w-2 h-2 rounded-full bg-white"></div>
+            </div>
+            <span>Unlimited Access To Videos</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="mt-1 w-5 h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+              <div class="w-2 h-2 rounded-full bg-white"></div>
+            </div> 
+            <span>Offline Access</span>
+          </li>  
+          <li class="flex items-start gap-3">
+            <div class="mt-1 w-5 h-5 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+              <div class="w-2 h-2 rounded-full bg-white"></div>
+            </div>
+            <span>Customizable Study Timetable</span>
+          </li>
+        </ul>
+       <!-- <button class="w-full mt-8 py-3 bg-white text-primary font-bold rounded-xl hover:bg-white/90 transition-all hover:scale-105 shadow-lg">
+          Upgrade to Premium
+        </button> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- CTA Section -->
+        <section class="max-w-7xl mx-auto px-8 mt-32">
+            <div class="signature-gradient rounded-[2rem] p-12 lg:p-20 text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBpq3QlBwPskPyVWBr5rVmdZ-SjEt5tOjS4SPiU-Q9laMD9dqmmXQ_SgFAUWOLyf_d6H56WLrVysyzVIUaBFtUtxupCWDOXDCyG6rbfq7LUmpWua30sh4OV-L2h6VqAmfXvKo3aEy8p9TPeBEsFbqPlfODlkh8yuKH5g_CaohNp4cVngu7V-_IDok5Q3-5bajrY0diQoBmjaa0z_Ok6puPBcuiegc2JfcPyWe8M58DQvnnofdYD85ECaIemuAZvwsCLf-DVLxgYddC1');"></div>
+                <h2 class="text-4xl lg:text-5xl font-headline font-extrabold text-white mb-8 tracking-tighter">Experience All Features Today</h2>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button class="bg-secondary-container text-on-secondary-container px-10 py-4 rounded-xl font-black text-lg hover:scale-105 transition-transform"><a href="https://play.google.com/store/search?q=unidata&c=apps" target="_blank" rel="noopener noreferrer">Get on Google Play Store</a></button>
+                    <button class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-4 rounded-xl font-black text-lg hover:bg-white/20 transition-all"><a href="https://unidata-929a9.web.app/" target="_blank" rel="noopener noreferrer">Access Web Version</a></button>
+                </div>
+            </div>
+        </section>
+    </main>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 font-['Inter'] text-sm leading-relaxed">
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 px-8 py-12 max-w-7xl mx-auto">
+        <div class="col-span-2">
+            <div class="text-xl font-bold text-blue-900 dark:text-white mb-4">UniData</div>
+            <p class="text-slate-500 dark:text-slate-400 mb-6 max-w-xs">The premier academic platform for students in Zambia, bridging the gap between resources and success.</p>
+            <!--<div class="flex space-x-4">
+                <a class="text-slate-400 hover:text-teal-500 transition-transform hover:translate-x-1" href="#"><span class="material-symbols-outlined" data-icon="facebook">social_leaderboard</span></a>
+                <a class="text-slate-400 hover:text-teal-500 transition-transform hover:translate-x-1" href="#"><span class="material-symbols-outlined" data-icon="instagram">retweet</span></a>
+                <a class="text-slate-400 hover:text-teal-500 transition-transform hover:translate-x-1" href="#"><span class="material-symbols-outlined" data-icon="twitter">retweet</span></a>
+            </div> -->
+        </div>
+        <div>
+            <h4 class="font-bold text-blue-900 dark:text-blue-400 mb-4">Quick Links</h4>
+            <ul class="space-y-2">
+                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 transition-transform hover:translate-x-1 block" href="#">Home</a></li>
+                <li><a class="text-orange-600 font-semibold block" href="#">Features</a></li>
+                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 transition-transform hover:translate-x-1 block" href="#">About</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-bold text-blue-900 dark:text-blue-400 mb-4">Resources</h4>
+            <ul class="space-y-2">
+                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 transition-transform hover:translate-x-1 block" href="#">Help Center</a></li>
+                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 transition-transform hover:translate-x-1 block" href="#">Privacy Policy</a></li>
+                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 transition-transform hover:translate-x-1 block" href="#">Terms of Service</a></li>
+            </ul>
+        </div>
+        <div class="col-span-2">
+            <h4 class="font-bold text-blue-900 dark:text-blue-400 mb-4">Newsletter Signup</h4>
+            <div class="flex bg-white dark:bg-slate-800 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700">
+                <input class="bg-transparent border-none focus:ring-0 px-4 py-2 w-full text-xs" placeholder="Email address" type="email"/>
+                <button class="bg-primary text-white px-4 py-2 text-xs font-bold">Join</button>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-8 py-6 border-t border-slate-200 dark:border-slate-800 text-center text-slate-400">
+                © 2026 UniData | Powered by RyzeInc
+            </div>
+</footer>
+</body></html>
