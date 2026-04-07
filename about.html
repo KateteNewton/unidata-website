@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>About Us | UniData</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+            extend: {
+                colors: {
+                "on-secondary-fixed": "#341100",
+                "background": "#f9f9ff",
+                "tertiary-container": "#004941",
+                "secondary-fixed-dim": "#ffb690",
+                "on-error-container": "#93000a",
+                "secondary": "#9d4300",
+                "inverse-on-surface": "#ebf1ff",
+                "surface-tint": "#4059aa",
+                "surface-container-low": "#f0f3ff",
+                "primary-fixed": "#dce1ff",
+                "on-primary-fixed": "#00164e",
+                "on-background": "#151c27",
+                "on-tertiary-fixed-variant": "#005048",
+                "on-secondary-container": "#5c2400",
+                "tertiary-fixed-dim": "#4fdbc8",
+                "error": "#ba1a1a",
+                "on-secondary": "#ffffff",
+                "inverse-primary": "#b6c4ff",
+                "secondary-fixed": "#ffdbca",
+                "on-surface": "#151c27",
+                "surface-dim": "#d3daea",
+                "surface": "#f9f9ff",
+                "surface-container": "#e7eefe",
+                "on-primary-container": "#90a8ff",
+                "on-tertiary": "#ffffff",
+                "outline-variant": "#c5c5d3",
+                "on-surface-variant": "#444651",
+                "on-error": "#ffffff",
+                "surface-variant": "#dce2f3",
+                "tertiary-fixed": "#71f8e4",
+                "primary-container": "#1e3a8a",
+                "outline": "#757682",
+                "surface-bright": "#f9f9ff",
+                "primary-fixed-dim": "#b6c4ff",
+                "error-container": "#ffdad6",
+                "secondary-container": "#fd761a",
+                "inverse-surface": "#2a313d",
+                "on-primary-fixed-variant": "#264191",
+                "surface-container-lowest": "#ffffff",
+                "primary": "#00236f",
+                "surface-container-highest": "#dce2f3",
+                "surface-container-high": "#e2e8f8",
+                "on-tertiary-container": "#27c0ae",
+                "on-primary": "#ffffff",
+                "on-tertiary-fixed": "#00201c",
+                "tertiary": "#00312b",
+                "on-secondary-fixed-variant": "#783200"
+                },
+                fontFamily: {
+                "headline": ["Plus Jakarta Sans"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+                },
+                borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-shift { background-color: rgba(240, 243, 255, 0.5); }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .signature-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #00236f 100%);
+        }
+        .logo-placeholder {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+    
+        .logo-slot {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-slot img {
+            max-height: 36px;
+            width: auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background font-body antialiased">
+<!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm shadow-blue-900/5 font-['Plus_Jakarta_Sans'] tracking-tight antialiased">
+        <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+            <div class="logo-placeholder">
+                <div id="customLogoSlot" class="logo-slot text-sm md:text-base px-2 md:px-3 py-0.5 md:py-1">
+                    <span class="opacity-80 text-sm font-small"><a href="index.html"><img src="images/unidata-logo.png"></a></span>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 transition-all duration-300" href="index.html">Home</a>
+                <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 transition-all duration-300" href="features.html">Features</a>
+                <a class="text-blue-700 dark:text-blue-400 font-bold border-b-2 border-orange-500 pb-1" href="about.html">About Us</a>
+                <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 transition-all duration-300" href="events.html">Upcoming Events</a>
+                <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 transition-all duration-300" href="contact.html">Contact</a>
+            </div>
+            <div class="flex gap-4">
+                <button class="hidden lg:block px-5 py-2 rounded-lg font-semibold text-primary border border-primary/20 hover:bg-surface-container transition-all">Web Version</button>
+                <button class="px-5 py-2 rounded-lg font-semibold text-white signature-gradient hover:scale-95 duration-150 ease-in-out">Google Play</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-20">
+    <!-- Hero Section: Our Story -->
+        <section class="max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6">
+                <span class="inline-block py-1 px-4 rounded-full bg-primary-fixed text-on-primary-fixed font-label text-xs font-bold tracking-widest uppercase">Our Story</span>
+                <h1 class="text-5xl lg:text-7xl font-headline font-black text-primary leading-tight tracking-tighter">
+                                    Built by students, <br/>
+                    <span class="text-secondary-container">for the future.</span>
+                </h1>
+                <p class="text-xl text-on-surface-variant leading-relaxed max-w-2xl font-body">
+                                    UniData began in a crowded library corner with a simple realization: student life is complex, but the tools to manage it shouldn't be. We started as a group of peers looking for a better way to track academic progress and share knowledge. Today, we're building the definitive learning ecosystem for students across the region.
+                                </p>
+                <div class="flex gap-4 pt-4">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">verified</span>
+                        <span class="text-sm font-semibold text-on-surface">Verified Academic Data</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">group</span>
+                        <span class="text-sm font-semibold text-on-surface">1.5k+ Active Students</span>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:col-span-5 relative">
+                <div class="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl relative z-10">
+                    <img class="w-full h-full object-cover" data-alt="Group of diverse, smiling university students studying together in a modern, sunlit library with open laptops and notebooks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkp6lvIkfU096TNmnoTmf1xC2sLSpGGsmP3AI9_-3d8ZkBirvLID-k4YJ5Ve9Z72wUCb9VQ-9sr_Rc3JkhevdO0OeYpUjtW1uQdsKPWX__pKHAPPfhb9kgV5Db49TqZmwPcRLF5O4JlC8En1xcd0vyeu9kDTBLUE3s7z_7GIHIfHHpCAOebkMFpORXQ_Y59lpXcf07VhPOvjp1Lvm0irobFnPmXhE9ndKNytlayKUd523L2T3TclURHYUd5sH6xOMB-rPSW3W7Qq_f"/>
+                </div>
+                <div class="absolute -bottom-6 -left-6 w-48 h-48 bg-secondary-container rounded-lg -z-0 flex items-end p-4">
+                    <span class="text-on-secondary-container font-headline font-bold text-4xl">2024</span>
+                </div>
+                <div class="absolute -top-6 -right-6 w-32 h-32 bg-tertiary-fixed rounded-full blur-3xl opacity-30 -z-0"></div>
+            </div>
+        </section>
+    <!-- Mission & Vision: Bento Grid -->
+        <section class="bg-surface-container-low py-24">
+            <div class="max-w-7xl mx-auto px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Mission Card -->
+                    <div class="bg-surface-container-lowest p-10 rounded-xl shadow-sm relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full transition-transform group-hover:scale-110"></div>
+                        <span class="material-symbols-outlined text-4xl text-primary mb-6 block">rocket_launch</span>
+                        <h2 class="text-3xl font-headline font-extrabold text-primary mb-4">Our Mission</h2>
+                        <p class="text-on-surface-variant text-lg leading-relaxed">
+                                                To empower students by providing a seamless, data-driven platform that simplifies academic life, fosters collaboration, and bridges the gap between potential and performance.
+                                            </p>
+                    </div>
+                <!-- Vision Card -->
+                    <div class="bg-primary text-white p-10 rounded-xl shadow-xl relative overflow-hidden">
+                        <div class="absolute bottom-0 left-0 w-full h-1 bg-tertiary-fixed"></div>
+                        <span class="material-symbols-outlined text-4xl text-tertiary-fixed mb-6 block">visibility</span>
+                        <h2 class="text-3xl font-headline font-extrabold mb-4">Our Vision</h2>
+                        <p class="text-on-primary-container text-lg leading-relaxed">
+                                                To become the leading learning ecosystem globally, where every student has the tools to navigate their educational journey with clarity, confidence, and community support.
+                                            </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!-- Our Values: Horizontal Scroller / High-end Cards -->
+        <section class="max-w-7xl mx-auto px-8 py-24">
+            <div class="mb-16">
+                <h2 class="text-4xl font-headline font-black text-primary tracking-tighter">The Values We Live By</h2>
+                <div class="h-1 w-24 bg-secondary-container mt-4"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Value 1 -->
+                <div class="group">
+                    <div class="bg-surface-container-lowest border-t-4 border-tertiary-fixed p-8 rounded-xl shadow-sm hover:shadow-md transition-all h-full">
+                        <div class="w-12 h-12 rounded-lg bg-tertiary-container flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-tertiary-fixed">diversity_3</span>
+                        </div>
+                    <h3 class="text-xl font-headline font-bold text-primary mb-3">Student-First</h3>
+                    <p class="text-on-surface-variant leading-relaxed">
+                                                Every feature we build starts with a student's pain point. If it doesn't help you study, plan, or connect better, it doesn't belong on UniData.
+                                            </p>
+                    </div>
+                </div>
+            <!-- Value 2 -->
+                <div class="group">
+                    <div class="bg-surface-container-lowest border-t-4 border-secondary-container p-8 rounded-xl shadow-sm hover:shadow-md transition-all h-full">
+                        <div class="w-12 h-12 rounded-lg bg-secondary-container/10 flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-secondary-container">shield</span>
+                        </div>
+                        <h3 class="text-xl font-headline font-bold text-primary mb-3">Radical Integrity</h3>
+                        <p class="text-on-surface-variant leading-relaxed">
+                                                    Academic life requires trust. We maintain the highest standards of data security and verify all resources shared within our ecosystem.
+                                                </p>
+                    </div>
+                </div>
+            <!-- Value 3 -->
+                <div class="group">
+                    <div class="bg-surface-container-lowest border-t-4 border-primary p-8 rounded-xl shadow-sm hover:shadow-md transition-all h-full">
+                        <div class="w-12 h-12 rounded-lg bg-primary-container flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-on-primary-container">auto_graph</span>
+                        </div>
+                        <h3 class="text-xl font-headline font-bold text-primary mb-3">Relentless Growth</h3>
+                        <p class="text-on-surface-variant leading-relaxed">
+                                                Education is dynamic. We constantly evolve our technology to meet the changing needs of the modern, digital-native student body.
+                                            </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!-- The Team Section -->
+        <section class="bg-surface py-24 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <h2 class="text-4xl font-headline font-black text-primary tracking-tighter mb-4">Meet the Minds</h2>
+                    <p class="text-on-surface-variant text-lg">A diverse collective of engineers, designers, and educators working to redefine the student experience.</p>
+                </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <!-- Mapalo Lukundo -->
+                <div class="group text-center">
+                    <div class="relative mb-6 inline-block">
+                        <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-white shadow-xl relative z-10">
+                            <img class="w-full h-full object-cover" data-alt="Professional portrait of a young woman with a confident expression, outdoor soft natural lighting with blurred campus greenery background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDijjTF9SQ6Tpi3QFF3CMYMwg6eyoJrcYX9CERnt0oOiykIUmzMKkgDPokEgDiIVb7QGnUlnuqkQl0oUcLUm2h6cBZhQcPT7sQ5AJlrE2oY5aPVef7r-Ig2m0tbsG6MSE2AnXqGJt9uCUZ0PsTqI5Po5_zJCzrgOn-xVEdDCvm0tdjWRSZfuOgUHZVmNllIxzHWK7_gkkYkHvAYotp83FZsjXMm3aaNa6MGjwxwdHPLpi1f7YaVdYvjmgtJgBGkA4q_NyycN4eKE_TR"/>
+                        </div>
+                        <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-secondary-container rounded-full flex items-center justify-center z-20 border-4 border-white">
+                         <span class="material-symbols-outlined text-white text-3xl">lightbulb</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-headline font-bold text-primary">Mapalo Lukundo</h3>
+                    <p class="text-secondary font-semibold mb-3">CEO &amp; Co-Founder</p>
+                    <p class="text-on-surface-variant text-sm px-4">Visionary leader focused on building strategic partnerships and scaling our impact across universities.</p>
+                </div>
+            <!-- Newton Katete -->
+                <div class="group text-center">
+                    <div class="relative mb-6 inline-block">
+                        <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-white shadow-xl relative z-10">
+                            <img class="w-full h-full object-cover" data-alt="Close up portrait of a young man smiling warmly, wearing business casual attire, studio lighting with a clean grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNMQhgp2zVfJBGhRrvXHeFn094tj9mNU28UitjQG8N6ty_5yUwWUEA9u_QFfnS5UCTyEP1pFfO6G7lslQpY3YTrDxT-a4_5uwlcoN__G7xskbw7Bgq2XfBahL6wjelZabk9uLrwpaCJdysFyL1B8B-p83YfwYSLRxJddg_MA3e-jEMnD4jbfFwWsuS5UC1BGkZJzgVeb7s9TA3JrmCizkkH4d2BZh98S-c7zqVjcVyAgv5rZkki_TgzNyopk4TymwO22Ot98pPr-iG"/>
+                        </div>
+                        <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-primary rounded-full flex items-center justify-center z-20 border-4 border-white">
+                            <span class="material-symbols-outlined text-white text-3xl">terminal</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-headline font-bold text-primary">Newton Katete</h3>
+                    <p class="text-secondary font-semibold mb-3">CTO &amp; Co-Founder</p>
+                    <p class="text-on-surface-variant text-sm px-4">The architect behind UniData's engine, ensuring our platform is robust, fast, and secure for thousands of users.</p>
+                </div>
+            <!-- Contributing Team / Bento Style -->
+                <div class="bg-surface-container p-8 rounded-xl flex flex-col justify-center items-center text-center">
+                    <div class="flex -space-x-4 mb-6">
+                        <img class="w-12 h-12 rounded-full border-2 border-white object-cover" data-alt="team member 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcWbuYD_XFxn7CeZaf2GlbGQJ5wRRGfMEwpUkjoHvltcPea5WQyCOQtOBPZuGDFnszjblj0Y69Nz0bLVCqSm3z00zchNrEznKnw_83qSH-y6qwaGYt4waGoUz2N3xi1N21vFqImV7Pttw8fjepCs_odvG7OvQ-pPzlSvxBMsY5OoNPT23kN1agv4QjwxUkLGGidKB-ewuTDbrVgiZD2-8cFbm2kiN4nBS8e67npQ_fQsvqMtxxgZWvGFIxR_69ZTpofN5POQIDEd4a"/>
+                        <img class="w-12 h-12 rounded-full border-2 border-white object-cover" data-alt="team member 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDt7wDcjoWU5bpmxlvnNoXwifk4NI7ekiIMUAfKxOIVIxmbQ6RTCN5-3ycdFU_nPTEwZBP30tf4o_CZY2b8V46waPQYT5HxQrqzV7KO6iObbvglVlvP9ch1NWzN50LKAHxxJjJCVKU0Fo6GBd7vj78uBm8F-jLQOTaooXumYYRjarzJk6_tSFCKkzJ_jpHS60-7blB8zNQJJigMdQ1Hg70t71xk-NOYyZTWu2ldDrZCS7EhNGSNdc6m2fXIvDpyhdhAewGyzZzN-2dy"/>
+                        <img class="w-12 h-12 rounded-full border-2 border-white object-cover" data-alt="team member 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV-Q-wTZF-MaPCjjKgy3KVurC-Kwu99cqY-_WUgwLJ7TKzppzfn7D6wD2paGfa7ipknSsqSfb8vD8vVzljhcowF1vcdtik9hQkNgXb3AbC4uIpUboXOsxujL2xMmq72YVLX-ruJhxa82IyIbfYuylMYSEcIfwyxgaHaJCRIjudGbRibk-cnEHe2G9Zt7-gEqNOAX94r_3gyErPSXoM5WJRFSSH1zcSTbBrjr3BO3bR3aZvgiaXPVpOca2xtH7oFzPXDzIduiukGRXc"/>
+                        <div class="w-12 h-12 rounded-full border-2 border-white bg-primary flex items-center justify-center text-xs text-white font-bold">+12</div>
+                    </div>
+                    <h3 class="text-xl font-headline font-bold text-primary mb-2">The Collective</h3>
+                    <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                                                Our growing team of designers, data scientists, and student ambassadors who make the magic happen every single day.
+                                            </p>
+                    <button class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                                                Join the team <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+            </div>
+        </section>
+    <!-- Parent Company Section -->
+        <section class="max-w-7xl mx-auto px-8 py-24">
+            <div class="bg-white rounded-3xl p-12 lg:p-20 shadow-sm border border-outline-variant/20 flex flex-col lg:flex-row items-center gap-12">
+                    <div class="flex-1">
+                        <div class="inline-flex items-center gap-2 mb-6 text-tertiary font-bold text-sm tracking-widest uppercase">
+                        <span class="w-8 h-[2px] bg-tertiary"></span> Powered By
+                                            </div>
+                        <h2 class="text-4xl lg:text-5xl font-headline font-black text-primary mb-6 tracking-tighter">RyzeInc</h2>
+                        <p class="text-lg text-on-surface-variant leading-relaxed">
+                                                UniData is a flagship product of RyzeInc, an innovation lab dedicated to building digital infrastructure for emerging markets. Our parent company provides the institutional stability and technical resources that allow us to focus on what matters: the student.
+                                            </p>
+                    <div class="mt-8 flex gap-8">
+                        <div>
+                            <div class="text-3xl font-black text-primary">5+</div>
+                            <div class="text-sm font-medium text-on-surface-variant">Projects</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-black text-primary">Zambia</div>
+                            <div class="text-sm font-medium text-on-surface-variant">HQ Location</div>
+                        </div>
+                    </div>
+                    </div>
+                <div class="flex-1 w-full lg:w-auto">
+                    <div class="aspect-video bg-surface-container rounded-2xl flex items-center justify-center relative group overflow-hidden">
+                        <img class="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" data-alt="Modern high-tech corporate office interior with glass walls and minimalist furniture in cool tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBojFPKo-9UDQFslIuu4vIGKFIIhfPjIEzZRX0GGcoZGRIcPLTgplJIM8L9ktwf3NucgQnflaVLo49udBVdZoWKVWVtTN9yX-2BXSOP9uYg13IvIa-ChvIQiG1QWRiblCx2tXvSTvKpIWCEFRaJ13YSfiSiRNJMZyxA1H7wu6nzW0s-afk0p-DZpHabG0Ls5f-kJoPPuRGcqs9siwryXm2x3QG-xzM2RJFVbyhc43eWW6Sn6JsHC9VWZM9gs05gfQ1WnP2hKObRb4co"/>
+                        <div class="absolute inset-0 bg-primary/40 group-hover:bg-transparent transition-all duration-700"></div>
+                        <span class="absolute z-10 text-white font-headline font-black text-3xl tracking-tighter">RYZEINC</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+<!-- Footer -->
+    <footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 font-['Inter'] text-sm leading-relaxed">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 px-8 py-12 max-w-7xl mx-auto">
+            <div class="col-span-2">
+                <div class="text-xl font-bold text-blue-900 dark:text-white mb-4">UniData</div>
+                <p class="text-slate-500 dark:text-slate-400 mb-6 max-w-xs">Building the bridge between academic data and student success. Join the revolution in learning.</p>
+                <div class="text-slate-500 dark:text-slate-400 font-medium">© 2026 UniData | Powered by RyzeInc</div>
+            </div>
+        <div>
+            <div class="font-bold text-blue-900 dark:text-blue-400 mb-4">Quick Links</div>
+            <ul class="space-y-2">
+                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="#">Home</a></li>
+                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="#">Features</a></li>
+                <li><a class="text-orange-600 font-semibold block" href="#">About Us</a></li>
+                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="#">Contact</a></li>
+            </ul>
+        </div>
+            <div>
+                <div class="font-bold text-blue-900 dark:text-blue-400 mb-4">Socials</div>
+                <ul class="space-y-2">
+                    <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="#">Instagram</a></li>
+                    <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="#">Twitter</a></li>
+                    <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="#">LinkedIn</a></li>
+                    <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="#">TikTok</a></li>
+                </ul>
+            </div>
+            <div class="col-span-2">
+                <div class="font-bold text-blue-900 dark:text-blue-400 mb-4">Newsletter Signup</div>
+                <p class="text-slate-500 dark:text-slate-400 mb-4">Get the latest student resources and feature updates.</p>
+                <div class="flex gap-2">
+                    <input class="flex-1 px-4 py-2 rounded-lg bg-white border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Email address" type="email"/>
+                    <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all duration-300">Join</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
