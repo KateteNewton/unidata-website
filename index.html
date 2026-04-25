@@ -114,11 +114,9 @@
                 opacity: 1;
             }
         }
-        /* Extra scroll behavior: ensure smooth body scroll */
         html, body {
             scroll-behavior: smooth;
         }
-        /* Ensure fixed background orbs don't interfere with scrolling */
         .fixed-orb {
             position: fixed;
             z-index: -10;
@@ -129,7 +127,6 @@
             justify-content: center;
             line-height: 1;
         }
-    
         .logo-slot {
             display: flex;
             align-items: center;
@@ -139,6 +136,12 @@
             max-height: 36px;
             width: auto;
             display: block;
+        }
+        /* Ensure feature text wraps gracefully on very small screens */
+        .feature-label {
+            word-break: break-word;
+            hyphens: auto;
+            line-height: 1.3;
         }
     </style>
 </head>
@@ -152,14 +155,14 @@
     <div class="fixed top-10 left-10 w-64 h-64 bg-primary rounded-full filter blur-3xl opacity-10 animate-float -z-10"></div>
     <div class="fixed bottom-10 right-10 w-64 h-64 bg-secondary-container rounded-full filter blur-3xl opacity-10 animate-float -z-10" style="animation-delay: 2s;"></div>
 
-    <!-- Main Content - scrollable with min-h-screen and flex column -->
+    <!-- Main Content - scrollable with min-h-screen -->
     <div class="relative z-10 w-full min-h-screen flex flex-col px-4 py-8">
         
-        <!-- Logo/Branding - top area (auto) -->
+        <!-- Logo/Branding -->
         <div class="text-center mb-12 blur-in">
             <div class="logo-placeholder">
                 <div id="customLogoSlot" class="logo-slot text-sm md:text-base px-2 md:px-3 py-0.5 md:py-1">
-                    <span class="opacity-80 text-sm font-small"><a href="index.html"><img src="images/unidata-logo.png"></a></span>
+                    <span class="opacity-80 text-sm font-small"><a href="index.html"><img src="images/unidata-logo.png" alt="UniData Logo"></a></span>
                 </div>
             </div>
             <p class="text-lg md:text-2xl text-on-surface-variant font-headline font-semibold">
@@ -167,7 +170,7 @@
             </p>
         </div>
 
-        <!-- Countdown Timer (auto width, centered) -->
+        <!-- Countdown Timer -->
         <div class="max-w-4xl mx-auto w-full bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg rounded-3xl p-8 md:p-12 lg:p-20 shadow-2xl border border-primary/10 mb-12 blur-in" style="animation-delay: 0.2s;">
             
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-8">
@@ -224,51 +227,54 @@
             </div>
         </div>
 
-        <!-- Features Preview - with fully responsive font sizes for feature labels -->
+        <!-- Features Preview - Fully responsive typography for "Comprehensive Library", "Peer Learning", "Expert Verified" -->
         <div class="max-w-2xl mx-auto w-full blur-in" style="animation-delay: 0.4s;">
             <div class="text-center mb-8">
                 <h2 class="text-2xl font-headline font-bold text-primary mb-4">What's Coming</h2>
                 <div class="h-1 w-12 bg-secondary-container mx-auto rounded-full"></div>
             </div>
-            <div class="grid grid-cols-3 gap-4 md:gap-6">
-                <!-- Comprehensive Library card -->
-                <div class="bg-white/60 dark:bg-slate-900/60 backdrop-blur p-4 rounded-xl text-center transition hover:bg-white/80 dark:hover:bg-slate-800/80">
-                    <span class="material-symbols-outlined text-3xl text-primary block mb-2">auto_awesome</span>
-                    <!-- Font size adapts across devices: smallest to largest breakpoints -->
-                    <p class="text-[0.7rem] sm:text-xs md:text-sm lg:text-base font-bold text-on-surface">Comprehensive Library</p>
+            <div class="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+                <!-- Comprehensive Library -->
+                <div class="bg-white/60 dark:bg-slate-900/60 backdrop-blur p-3 sm:p-4 rounded-xl text-center transition hover:bg-white/80 dark:hover:bg-slate-800/80">
+                    <span class="material-symbols-outlined text-2xl sm:text-3xl text-primary block mb-1 sm:mb-2">auto_awesome</span>
+                    <p class="feature-label font-bold text-on-surface text-[0.65rem] sm:text-xs md:text-sm lg:text-base leading-tight">
+                        Comprehensive Library
+                    </p>
                 </div>
-                <!-- Peer Learning card -->
-                <div class="bg-white/60 dark:bg-slate-900/60 backdrop-blur p-4 rounded-xl text-center transition hover:bg-white/80 dark:hover:bg-slate-800/80">
-                    <span class="material-symbols-outlined text-3xl text-primary block mb-2">group_work</span>
-                    <p class="text-[0.7rem] sm:text-xs md:text-sm lg:text-base font-bold text-on-surface">Peer Learning</p>
+                <!-- Peer Learning -->
+                <div class="bg-white/60 dark:bg-slate-900/60 backdrop-blur p-3 sm:p-4 rounded-xl text-center transition hover:bg-white/80 dark:hover:bg-slate-800/80">
+                    <span class="material-symbols-outlined text-2xl sm:text-3xl text-primary block mb-1 sm:mb-2">group_work</span>
+                    <p class="feature-label font-bold text-on-surface text-[0.65rem] sm:text-xs md:text-sm lg:text-base leading-tight">
+                        Peer Learning
+                    </p>
                 </div>
-                <!-- Expert Verified card -->
-                <div class="bg-white/60 dark:bg-slate-900/60 backdrop-blur p-4 rounded-xl text-center transition hover:bg-white/80 dark:hover:bg-slate-800/80">
-                    <span class="material-symbols-outlined text-3xl text-primary block mb-2">verified</span>
-                    <p class="text-[0.7rem] sm:text-xs md:text-sm lg:text-base font-bold text-on-surface">Expert Verified</p>
+                <!-- Expert Verified -->
+                <div class="bg-white/60 dark:bg-slate-900/60 backdrop-blur p-3 sm:p-4 rounded-xl text-center transition hover:bg-white/80 dark:hover:bg-slate-800/80">
+                    <span class="material-symbols-outlined text-2xl sm:text-3xl text-primary block mb-1 sm:mb-2">verified</span>
+                    <p class="feature-label font-bold text-on-surface text-[0.65rem] sm:text-xs md:text-sm lg:text-base leading-tight">
+                        Expert Verified
+                    </p>
                 </div>
             </div>
         </div>
 
-        <!-- Spacer that pushes footer to the bottom when content is short, but allows scrolling when content overflows -->
+        <!-- Spacer for footer -->
         <div class="flex-grow"></div>
 
-        <!-- Footer Text - positioned at the bottom of the flex column -->
+        <!-- Footer -->
         <div class="text-center text-xs md:text-sm text-on-surface-variant mt-12 pt-4 pb-2">
             <p>© 2026 UniData | Powered by RyzeInc</p>
         </div>
     </div>
 
-    <!-- Hidden Audio for clock tick (silent wav placeholder) -->
+    <!-- Hidden Audio for clock tick -->
     <audio id="clockTick" preload="auto">
         <source src="data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAEAQB8AAAB9AAACABAAZGF0YQIAAAAAAA==" type="audio/wav">
     </audio>
 
     <script>
-        // Set the unlock flag in localStorage when accessing this page
         localStorage.setItem('unidata-site-launched', 'false');
         
-        // Clock tick sound generation (web audio)
         function generateClockTickSound() {
             try {
                 const AudioContextClass = window.AudioContext || window.webkitAudioContext;
@@ -289,28 +295,21 @@
                 osc.start(now);
                 osc.stop(now + duration);
                 
-                // Auto-close context after sound to avoid too many contexts
                 setTimeout(() => {
                     audioContext.close().catch(e => console.warn);
                 }, 1000);
-            } catch (e) {
-                // Silent fail if audio context not allowed
-            }
+            } catch (e) {}
         }
 
-        // Countdown timer
         function updateCountdown() {
-            // Target time: April 28, 2026, 20:00 (8:00 PM)
             const targetDate = new Date(2026, 3, 28, 20, 0, 0).getTime();
             const now = new Date().getTime();
             const difference = targetDate - now;
 
             if (difference <= 0) {
-                // Countdown finished, unlock the site
                 localStorage.setItem('unidata-unlocked', 'true');
                 localStorage.setItem('unidata-unlock-time', new Date().getTime());
                 
-                // Update display
                 document.getElementById('days').textContent = '0';
                 document.getElementById('hours').textContent = '0';
                 document.getElementById('minutes').textContent = '0';
@@ -324,11 +323,9 @@
                     </div>
                 `;
                 
-                // Redirect after 2 seconds
                 setTimeout(() => {
                     window.location.href = 'home.html';
                 }, 2000);
-                
                 return;
             }
 
@@ -337,25 +334,19 @@
             const minutes = Math.floor((difference / 1000 / 60) % 60);
             const seconds = Math.floor((difference / 1000) % 60);
 
-            // Store previous seconds to trigger tick
             const prevSeconds = parseInt(document.getElementById('seconds').textContent) || 0;
             
-            // Update display
             document.getElementById('days').textContent = String(days).padStart(2, '0');
             document.getElementById('hours').textContent = String(hours).padStart(2, '0');
             document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
             document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
 
-            // Play sound when seconds change and audio allowed (only if seconds decreased/increased)
             if (seconds !== prevSeconds) {
                 try {
                     generateClockTickSound();
-                } catch (e) {
-                    // Audio context may fail
-                }
+                } catch (e) {}
             }
 
-            // Pulse animation on seconds box
             const secondBox = document.getElementById('secondBox');
             const secondGlow = document.getElementById('secondGlow');
             if (seconds % 2 === 0) {
@@ -367,14 +358,8 @@
             }
         }
 
-        // Initial update
         updateCountdown();
-
-        // Update every 100ms for smooth countdown with smooth second transitions
         setInterval(updateCountdown, 100);
-        
-        // Minor: Ensure that any fixed background orbs remain below content while scrolling
-        // No additional changes needed
     </script>
 </body>
 </html>
