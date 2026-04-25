@@ -152,7 +152,7 @@
     <div class="fixed top-10 left-10 w-64 h-64 bg-primary rounded-full filter blur-3xl opacity-10 animate-float -z-10"></div>
     <div class="fixed bottom-10 right-10 w-64 h-64 bg-secondary-container rounded-full filter blur-3xl opacity-10 animate-float -z-10" style="animation-delay: 2s;"></div>
 
-    <!-- Main Content - Now scrollable with min-h-screen and flex column -->
+    <!-- Main Content - scrollable with min-h-screen and flex column -->
     <div class="relative z-10 w-full min-h-screen flex flex-col px-4 py-8">
         
         <!-- Logo/Branding - top area (auto) -->
@@ -224,24 +224,28 @@
             </div>
         </div>
 
-        <!-- Features Preview (blurred) -->
+        <!-- Features Preview - with fully responsive font sizes for feature labels -->
         <div class="max-w-2xl mx-auto w-full blur-in" style="animation-delay: 0.4s;">
             <div class="text-center mb-8">
                 <h2 class="text-2xl font-headline font-bold text-primary mb-4">What's Coming</h2>
                 <div class="h-1 w-12 bg-secondary-container mx-auto rounded-full"></div>
             </div>
             <div class="grid grid-cols-3 gap-4 md:gap-6">
+                <!-- Comprehensive Library card -->
                 <div class="bg-white/60 dark:bg-slate-900/60 backdrop-blur p-4 rounded-xl text-center transition hover:bg-white/80 dark:hover:bg-slate-800/80">
                     <span class="material-symbols-outlined text-3xl text-primary block mb-2">auto_awesome</span>
-                    <p class="text-xs md:text-sm font-bold text-on-surface">Comprehensive Library</p>
+                    <!-- Font size adapts across devices: smallest to largest breakpoints -->
+                    <p class="text-[0.7rem] sm:text-xs md:text-sm lg:text-base font-bold text-on-surface">Comprehensive Library</p>
                 </div>
+                <!-- Peer Learning card -->
                 <div class="bg-white/60 dark:bg-slate-900/60 backdrop-blur p-4 rounded-xl text-center transition hover:bg-white/80 dark:hover:bg-slate-800/80">
                     <span class="material-symbols-outlined text-3xl text-primary block mb-2">group_work</span>
-                    <p class="text-xs md:text-sm font-bold text-on-surface">Peer Learning</p>
+                    <p class="text-[0.7rem] sm:text-xs md:text-sm lg:text-base font-bold text-on-surface">Peer Learning</p>
                 </div>
+                <!-- Expert Verified card -->
                 <div class="bg-white/60 dark:bg-slate-900/60 backdrop-blur p-4 rounded-xl text-center transition hover:bg-white/80 dark:hover:bg-slate-800/80">
                     <span class="material-symbols-outlined text-3xl text-primary block mb-2">verified</span>
-                    <p class="text-xs md:text-sm font-bold text-on-surface">Expert Verified</p>
+                    <p class="text-[0.7rem] sm:text-xs md:text-sm lg:text-base font-bold text-on-surface">Expert Verified</p>
                 </div>
             </div>
         </div>
@@ -249,7 +253,7 @@
         <!-- Spacer that pushes footer to the bottom when content is short, but allows scrolling when content overflows -->
         <div class="flex-grow"></div>
 
-        <!-- Footer Text - Now positioned naturally at the bottom of the flex column -->
+        <!-- Footer Text - positioned at the bottom of the flex column -->
         <div class="text-center text-xs md:text-sm text-on-surface-variant mt-12 pt-4 pb-2">
             <p>© 2026 UniData | Powered by RyzeInc</p>
         </div>
