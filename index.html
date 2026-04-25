@@ -114,22 +114,31 @@
                 opacity: 1;
             }
         }
+        /* Extra scroll behavior: ensure smooth body scroll */
+        html, body {
+            scroll-behavior: smooth;
+        }
+        /* Ensure fixed background orbs don't interfere with scrolling */
+        .fixed-orb {
+            position: fixed;
+            z-index: -10;
+        }
     </style>
 </head>
 
-<body class="bg-surface font-body text-on-surface overflow-hidden">
+<body class="bg-surface font-body text-on-surface">
 
     <!-- Animated Background -->
     <div class="animated-bg fixed inset-0 opacity-5 -z-10"></div>
     
-    <!-- Floating Orbs -->
+    <!-- Floating Orbs (Fixed) -->
     <div class="fixed top-10 left-10 w-64 h-64 bg-primary rounded-full filter blur-3xl opacity-10 animate-float -z-10"></div>
-    <div class="fixed bottom-10 right-10 w-64 h-64 bg-secondary-container rounded-full filter blur-3xl opacity-10 animate-float" style="animation-delay: 2s; -z-10"></div>
+    <div class="fixed bottom-10 right-10 w-64 h-64 bg-secondary-container rounded-full filter blur-3xl opacity-10 animate-float -z-10" style="animation-delay: 2s;"></div>
 
-    <!-- Main Content -->
-    <div class="relative z-10 w-full h-screen flex flex-col items-center justify-center px-4">
+    <!-- Main Content - Now scrollable with min-h-screen and flex column -->
+    <div class="relative z-10 w-full min-h-screen flex flex-col px-4 py-8">
         
-        <!-- Logo/Branding -->
+        <!-- Logo/Branding - top area (auto) -->
         <div class="text-center mb-12 blur-in">
             <h1 class="text-5xl md:text-7xl font-headline font-black text-primary tracking-tighter mb-4">
                 UniData
@@ -139,8 +148,8 @@
             </p>
         </div>
 
-        <!-- Countdown Timer -->
-        <div class="bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg rounded-3xl p-12 md:p-20 shadow-2xl border border-primary/10 mb-12 blur-in" style="animation-delay: 0.2s;">
+        <!-- Countdown Timer (auto width, centered) -->
+        <div class="max-w-4xl mx-auto w-full bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg rounded-3xl p-8 md:p-12 lg:p-20 shadow-2xl border border-primary/10 mb-12 blur-in" style="animation-delay: 0.2s;">
             
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-8">
                 <!-- Days -->
@@ -197,34 +206,37 @@
         </div>
 
         <!-- Features Preview (blurred) -->
-        <div class="max-w-2xl blur-in" style="animation-delay: 0.4s;">
+        <div class="max-w-2xl mx-auto w-full blur-in" style="animation-delay: 0.4s;">
             <div class="text-center mb-8">
                 <h2 class="text-2xl font-headline font-bold text-primary mb-4">What's Coming</h2>
                 <div class="h-1 w-12 bg-secondary-container mx-auto rounded-full"></div>
             </div>
             <div class="grid grid-cols-3 gap-4 md:gap-6">
-                <div class="bg-white/60 dark:bg-slate-900/60 backdrop-blur p-4 rounded-xl text-center">
+                <div class="bg-white/60 dark:bg-slate-900/60 backdrop-blur p-4 rounded-xl text-center transition hover:bg-white/80 dark:hover:bg-slate-800/80">
                     <span class="material-symbols-outlined text-3xl text-primary block mb-2">auto_awesome</span>
                     <p class="text-xs md:text-sm font-bold text-on-surface">Comprehensive Library</p>
                 </div>
-                <div class="bg-white/60 dark:bg-slate-900/60 backdrop-blur p-4 rounded-xl text-center">
+                <div class="bg-white/60 dark:bg-slate-900/60 backdrop-blur p-4 rounded-xl text-center transition hover:bg-white/80 dark:hover:bg-slate-800/80">
                     <span class="material-symbols-outlined text-3xl text-primary block mb-2">group_work</span>
                     <p class="text-xs md:text-sm font-bold text-on-surface">Peer Learning</p>
                 </div>
-                <div class="bg-white/60 dark:bg-slate-900/60 backdrop-blur p-4 rounded-xl text-center">
+                <div class="bg-white/60 dark:bg-slate-900/60 backdrop-blur p-4 rounded-xl text-center transition hover:bg-white/80 dark:hover:bg-slate-800/80">
                     <span class="material-symbols-outlined text-3xl text-primary block mb-2">verified</span>
                     <p class="text-xs md:text-sm font-bold text-on-surface">Expert Verified</p>
                 </div>
             </div>
         </div>
 
-        <!-- Footer Text -->
-        <div class="absolute bottom-8 text-center text-xs md:text-sm text-on-surface-variant">
+        <!-- Spacer that pushes footer to the bottom when content is short, but allows scrolling when content overflows -->
+        <div class="flex-grow"></div>
+
+        <!-- Footer Text - Now positioned naturally at the bottom of the flex column -->
+        <div class="text-center text-xs md:text-sm text-on-surface-variant mt-12 pt-4 pb-2">
             <p>© 2026 UniData | Powered by RyzeInc</p>
         </div>
     </div>
 
-    <!-- Hidden Audio for clock tick -->
+    <!-- Hidden Audio for clock tick (silent wav placeholder) -->
     <audio id="clockTick" preload="auto">
         <source src="data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAEAQB8AAAB9AAACABAAZGF0YQIAAAAAAA==" type="audio/wav">
     </audio>
@@ -233,23 +245,34 @@
         // Set the unlock flag in localStorage when accessing this page
         localStorage.setItem('unidata-site-launched', 'false');
         
-        // Clock tick sound generation
+        // Clock tick sound generation (web audio)
         function generateClockTickSound() {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const duration = 0.1;
-            const now = audioContext.currentTime;
-            
-            const osc = audioContext.createOscillator();
-            const gain = audioContext.createGain();
-            osc.connect(gain);
-            gain.connect(audioContext.destination);
-            
-            osc.frequency.value = 800;
-            gain.gain.setValueAtTime(0.3, now);
-            gain.gain.exponentialRampToValueAtTime(0.01, now + duration);
-            
-            osc.start(now);
-            osc.stop(now + duration);
+            try {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContextClass) return;
+                const audioContext = new AudioContextClass();
+                const duration = 0.1;
+                const now = audioContext.currentTime;
+                
+                const osc = audioContext.createOscillator();
+                const gain = audioContext.createGain();
+                osc.connect(gain);
+                gain.connect(audioContext.destination);
+                
+                osc.frequency.value = 800;
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + duration);
+                
+                osc.start(now);
+                osc.stop(now + duration);
+                
+                // Auto-close context after sound to avoid too many contexts
+                setTimeout(() => {
+                    audioContext.close().catch(e => console.warn);
+                }, 1000);
+            } catch (e) {
+                // Silent fail if audio context not allowed
+            }
         }
 
         // Countdown timer
@@ -291,19 +314,21 @@
             const minutes = Math.floor((difference / 1000 / 60) % 60);
             const seconds = Math.floor((difference / 1000) % 60);
 
+            // Store previous seconds to trigger tick
+            const prevSeconds = parseInt(document.getElementById('seconds').textContent) || 0;
+            
             // Update display
-            const prevSeconds = document.getElementById('seconds').textContent;
             document.getElementById('days').textContent = String(days).padStart(2, '0');
             document.getElementById('hours').textContent = String(hours).padStart(2, '0');
             document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
             document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
 
-            // Play sound when seconds change
-            if (seconds !== parseInt(prevSeconds)) {
+            // Play sound when seconds change and audio allowed (only if seconds decreased/increased)
+            if (seconds !== prevSeconds) {
                 try {
                     generateClockTickSound();
                 } catch (e) {
-                    // Audio context may fail in some environments
+                    // Audio context may fail
                 }
             }
 
@@ -312,18 +337,21 @@
             const secondGlow = document.getElementById('secondGlow');
             if (seconds % 2 === 0) {
                 secondBox.style.boxShadow = '0 0 30px rgba(30, 58, 138, 0.5)';
-                secondGlow.style.boxShadow = '0 0 40px rgba(30, 58, 138, 0.8) inset';
+                if (secondGlow) secondGlow.style.boxShadow = '0 0 40px rgba(30, 58, 138, 0.8) inset';
             } else {
                 secondBox.style.boxShadow = '';
-                secondGlow.style.boxShadow = '';
+                if (secondGlow) secondGlow.style.boxShadow = '';
             }
         }
 
         // Initial update
         updateCountdown();
 
-        // Update every 100ms for smooth countdown
+        // Update every 100ms for smooth countdown with smooth second transitions
         setInterval(updateCountdown, 100);
+        
+        // Minor: Ensure that any fixed background orbs remain below content while scrolling
+        // No additional changes needed
     </script>
 </body>
 </html>
