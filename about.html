@@ -108,12 +108,14 @@
 <body class="bg-background text-on-background font-body antialiased">
 <!-- TopNavBar -->
     <nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm shadow-blue-900/5 font-['Plus_Jakarta_Sans'] tracking-tight antialiased">
-        <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+        <div class="flex justify-between items-center px-4 md:px-8 py-4 max-w-7xl mx-auto">
             <div class="logo-placeholder">
                 <div id="customLogoSlot" class="logo-slot text-sm md:text-base px-2 md:px-3 py-0.5 md:py-1">
-                    <span class="opacity-80 text-sm font-small"><a href="index.html"><img src="images/unidata-logo.png"></a></span>
+                    <span class="opacity-80 text-sm font-small"><a href="index.html"><img src="images/unidata-logo.png" alt="UniData"></a></span>
                 </div>
             </div>
+            
+            <!-- Desktop Navigation -->
             <div class="hidden md:flex items-center space-x-8">
                 <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 transition-all duration-300" href="index.html">Home</a>
                 <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 transition-all duration-300" href="features.html">Features</a>
@@ -121,12 +123,44 @@
                 <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 transition-all duration-300" href="events.html">Upcoming Events</a>
                 <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 transition-all duration-300" href="contact.html">Contact</a>
             </div>
-            <div class="flex gap-4">
+            
+            <div class="flex gap-2 md:gap-4 items-center">
                 <button class="hidden lg:block px-5 py-2 rounded-lg font-semibold text-primary border border-primary/20 hover:bg-surface-container transition-all">Web Version</button>
-                <button class="px-5 py-2 rounded-lg font-semibold text-white signature-gradient hover:scale-95 duration-150 ease-in-out">Google Play</button>
+                <button class="hidden md:block px-5 py-2 rounded-lg font-semibold text-white signature-gradient hover:scale-95 duration-150 ease-in-out">Google Play</button>
+                
+                <!-- Mobile Menu Toggle -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                    <span class="material-symbols-outlined text-2xl">menu</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+            <div class="px-4 py-4 space-y-2 max-w-7xl mx-auto">
+                <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-900 transition-all" href="index.html">Home</a>
+                <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-900 transition-all" href="features.html">Features</a>
+                <a class="block px-4 py-3 rounded-lg text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-slate-800 font-bold" href="about.html">About Us</a>
+                <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-900 transition-all" href="events.html">Upcoming Events</a>
+                <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-900 transition-all" href="contact.html">Contact</a>
+                <div class="pt-4 flex gap-2 px-4">
+                    <button class="flex-1 px-3 py-2 rounded-lg text-sm font-semibold text-white signature-gradient hover:scale-95 duration-150">Google Play</button>
+                </div>
             </div>
         </div>
     </nav>
+    
+    <script>
+        document.getElementById('mobileMenuBtn')?.addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+        });
+    </script>
 
     <main class="pt-24 pb-20">
     <!-- Hero Section: Our Story -->
@@ -152,8 +186,8 @@
                 </div>
             </div>
             <div class="lg:col-span-5 relative">
-                <div class="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl relative z-10">
-                    <img class="w-full h-full object-cover" data-alt="Group of diverse, smiling university students studying together in a modern, sunlit library with open laptops and notebooks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkp6lvIkfU096TNmnoTmf1xC2sLSpGGsmP3AI9_-3d8ZkBirvLID-k4YJ5Ve9Z72wUCb9VQ-9sr_Rc3JkhevdO0OeYpUjtW1uQdsKPWX__pKHAPPfhb9kgV5Db49TqZmwPcRLF5O4JlC8En1xcd0vyeu9kDTBLUE3s7z_7GIHIfHHpCAOebkMFpORXQ_Y59lpXcf07VhPOvjp1Lvm0irobFnPmXhE9ndKNytlayKUd523L2T3TclURHYUd5sH6xOMB-rPSW3W7Qq_f"/>
+                <div class="aspect-video rounded-xl overflow-hidden shadow-2xl relative z-10">
+                    <img class="w-full h-full object-cover" data-alt="Group of diverse, smiling university students studying together in a modern, sunlit library with open laptops and notebooks" src="images/LIGHT MEDIA PHOTOGRAPHY-4.JPG"/>
                 </div>
                 <div class="absolute -bottom-6 -left-6 w-48 h-48 bg-secondary-container rounded-lg -z-0 flex items-end p-4">
                     <span class="text-on-secondary-container font-headline font-bold text-4xl">2024</span>
@@ -231,61 +265,6 @@
                 </div>
             </div>
         </section>
-    <!-- The Team Section -->
-        <section class="bg-surface py-24 relative overflow-hidden">
-            <div class="max-w-7xl mx-auto px-8 relative z-10">
-                <div class="text-center max-w-3xl mx-auto mb-20">
-                    <h2 class="text-4xl font-headline font-black text-primary tracking-tighter mb-4">Meet the Minds</h2>
-                    <p class="text-on-surface-variant text-lg">A diverse collective of engineers, designers, and educators working to redefine the student experience.</p>
-                </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            <!-- Mapalo Lukundo -->
-                <div class="group text-center">
-                    <div class="relative mb-6 inline-block">
-                        <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-white shadow-xl relative z-10">
-                            <img class="w-full h-full object-cover" data-alt="Professional portrait of a young woman with a confident expression, outdoor soft natural lighting with blurred campus greenery background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDijjTF9SQ6Tpi3QFF3CMYMwg6eyoJrcYX9CERnt0oOiykIUmzMKkgDPokEgDiIVb7QGnUlnuqkQl0oUcLUm2h6cBZhQcPT7sQ5AJlrE2oY5aPVef7r-Ig2m0tbsG6MSE2AnXqGJt9uCUZ0PsTqI5Po5_zJCzrgOn-xVEdDCvm0tdjWRSZfuOgUHZVmNllIxzHWK7_gkkYkHvAYotp83FZsjXMm3aaNa6MGjwxwdHPLpi1f7YaVdYvjmgtJgBGkA4q_NyycN4eKE_TR"/>
-                        </div>
-                        <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-secondary-container rounded-full flex items-center justify-center z-20 border-4 border-white">
-                         <span class="material-symbols-outlined text-white text-3xl">lightbulb</span>
-                        </div>
-                    </div>
-                    <h3 class="text-2xl font-headline font-bold text-primary">Mapalo Lukundo</h3>
-                    <p class="text-secondary font-semibold mb-3">CEO &amp; Co-Founder</p>
-                    <p class="text-on-surface-variant text-sm px-4">Visionary leader focused on building strategic partnerships and scaling our impact across universities.</p>
-                </div>
-            <!-- Newton Katete -->
-                <div class="group text-center">
-                    <div class="relative mb-6 inline-block">
-                        <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-white shadow-xl relative z-10">
-                            <img class="w-full h-full object-cover" data-alt="Close up portrait of a young man smiling warmly, wearing business casual attire, studio lighting with a clean grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNMQhgp2zVfJBGhRrvXHeFn094tj9mNU28UitjQG8N6ty_5yUwWUEA9u_QFfnS5UCTyEP1pFfO6G7lslQpY3YTrDxT-a4_5uwlcoN__G7xskbw7Bgq2XfBahL6wjelZabk9uLrwpaCJdysFyL1B8B-p83YfwYSLRxJddg_MA3e-jEMnD4jbfFwWsuS5UC1BGkZJzgVeb7s9TA3JrmCizkkH4d2BZh98S-c7zqVjcVyAgv5rZkki_TgzNyopk4TymwO22Ot98pPr-iG"/>
-                        </div>
-                        <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-primary rounded-full flex items-center justify-center z-20 border-4 border-white">
-                            <span class="material-symbols-outlined text-white text-3xl">terminal</span>
-                        </div>
-                    </div>
-                    <h3 class="text-2xl font-headline font-bold text-primary">Newton Katete</h3>
-                    <p class="text-secondary font-semibold mb-3">CTO &amp; Co-Founder</p>
-                    <p class="text-on-surface-variant text-sm px-4">The architect behind UniData's engine, ensuring our platform is robust, fast, and secure for thousands of users.</p>
-                </div>
-            <!-- Contributing Team / Bento Style -->
-                <div class="bg-surface-container p-8 rounded-xl flex flex-col justify-center items-center text-center">
-                    <div class="flex -space-x-4 mb-6">
-                        <img class="w-12 h-12 rounded-full border-2 border-white object-cover" data-alt="team member 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcWbuYD_XFxn7CeZaf2GlbGQJ5wRRGfMEwpUkjoHvltcPea5WQyCOQtOBPZuGDFnszjblj0Y69Nz0bLVCqSm3z00zchNrEznKnw_83qSH-y6qwaGYt4waGoUz2N3xi1N21vFqImV7Pttw8fjepCs_odvG7OvQ-pPzlSvxBMsY5OoNPT23kN1agv4QjwxUkLGGidKB-ewuTDbrVgiZD2-8cFbm2kiN4nBS8e67npQ_fQsvqMtxxgZWvGFIxR_69ZTpofN5POQIDEd4a"/>
-                        <img class="w-12 h-12 rounded-full border-2 border-white object-cover" data-alt="team member 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDt7wDcjoWU5bpmxlvnNoXwifk4NI7ekiIMUAfKxOIVIxmbQ6RTCN5-3ycdFU_nPTEwZBP30tf4o_CZY2b8V46waPQYT5HxQrqzV7KO6iObbvglVlvP9ch1NWzN50LKAHxxJjJCVKU0Fo6GBd7vj78uBm8F-jLQOTaooXumYYRjarzJk6_tSFCKkzJ_jpHS60-7blB8zNQJJigMdQ1Hg70t71xk-NOYyZTWu2ldDrZCS7EhNGSNdc6m2fXIvDpyhdhAewGyzZzN-2dy"/>
-                        <img class="w-12 h-12 rounded-full border-2 border-white object-cover" data-alt="team member 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV-Q-wTZF-MaPCjjKgy3KVurC-Kwu99cqY-_WUgwLJ7TKzppzfn7D6wD2paGfa7ipknSsqSfb8vD8vVzljhcowF1vcdtik9hQkNgXb3AbC4uIpUboXOsxujL2xMmq72YVLX-ruJhxa82IyIbfYuylMYSEcIfwyxgaHaJCRIjudGbRibk-cnEHe2G9Zt7-gEqNOAX94r_3gyErPSXoM5WJRFSSH1zcSTbBrjr3BO3bR3aZvgiaXPVpOca2xtH7oFzPXDzIduiukGRXc"/>
-                        <div class="w-12 h-12 rounded-full border-2 border-white bg-primary flex items-center justify-center text-xs text-white font-bold">+12</div>
-                    </div>
-                    <h3 class="text-xl font-headline font-bold text-primary mb-2">The Collective</h3>
-                    <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
-                                                Our growing team of designers, data scientists, and student ambassadors who make the magic happen every single day.
-                                            </p>
-                    <button class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
-                                                Join the team <span class="material-symbols-outlined">arrow_forward</span>
-                    </button>
-                </div>
-            </div>
-            </div>
-        </section>
     <!-- Parent Company Section -->
         <section class="max-w-7xl mx-auto px-8 py-24">
             <div class="bg-white rounded-3xl p-12 lg:p-20 shadow-sm border border-outline-variant/20 flex flex-col lg:flex-row items-center gap-12">
@@ -349,11 +328,49 @@
                 <div class="font-bold text-blue-900 dark:text-blue-400 mb-4">Newsletter Signup</div>
                 <p class="text-slate-500 dark:text-slate-400 mb-4">Get the latest student resources and feature updates.</p>
                 <div class="flex gap-2">
-                    <input class="flex-1 px-4 py-2 rounded-lg bg-white border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Email address" type="email"/>
-                    <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all duration-300">Join</button>
+                    <input id="aboutNewsletterEmail" class="flex-1 px-4 py-2 rounded-lg bg-white border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Email address" type="email"/>
+                    <button id="aboutNewsletterSubscribe" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all duration-300">Join</button>
                 </div>
             </div>
         </div>
     </footer>
+    
+    <script>
+        // Newsletter Subscription Handler
+        function handleNewsletterSubscription(emailInputId, buttonId) {
+            const button = document.getElementById(buttonId);
+            if (!button) return;
+            
+            button.addEventListener('click', function() {
+                const emailInput = document.getElementById(emailInputId);
+                const email = emailInput.value.trim();
+                
+                if (!email) {
+                    alert('Please enter a valid email address');
+                    return;
+                }
+                
+                // Validate email format
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert('Please enter a valid email address');
+                    return;
+                }
+                
+                // Create mailto link with subscription confirmation
+                const subject = 'Newsletter Subscription Confirmation';
+                const body = `Thank you for subscribing to UniData newsletter!\n\nSubscriber Email: ${email}\n\nYou will now receive updates on all release dates, feature launches, and exclusive competition registrations.\n\nBest regards,\nUniData Team`;
+                const mailtoLink = `mailto:unidata04@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                
+                window.location.href = mailtoLink;
+                
+                // Clear the input after subscription
+                emailInput.value = '';
+            });
+        }
+        
+        // Initialize newsletter on About page
+        handleNewsletterSubscription('aboutNewsletterEmail', 'aboutNewsletterSubscribe');
+    </script>
 </body>
 </html>

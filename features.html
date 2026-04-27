@@ -125,10 +125,40 @@
             </div>
             <div class="flex items-center space-x-4">
                 <button class="hidden lg:block text-primary font-semibold hover:bg-surface-container transition-colors px-4 py-2 rounded-lg">Web Version</button>
-                <button class="signature-gradient text-on-primary px-6 py-2.5 rounded-xl font-bold active:scale-95 duration-150 transition-transform">Google Play</button>
+                <button class="hidden md:block signature-gradient text-on-primary px-6 py-2.5 rounded-xl font-bold active:scale-95 duration-150 transition-transform">Google Play</button>
+                <!-- Mobile Menu Toggle -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                    <span class="material-symbols-outlined text-2xl">menu</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+            <div class="px-4 py-4 space-y-2 max-w-7xl mx-auto">
+                <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-900 transition-all" href="index.html">Home</a>
+                <a class="block px-4 py-3 rounded-lg text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-slate-800 font-bold" href="features.html">Features</a>
+                <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-900 transition-all" href="about.html">About Us</a>
+                <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-900 transition-all" href="events.html">Upcoming Events</a>
+                <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-900 transition-all" href="contact.html">Contact</a>
+                <div class="pt-4 flex gap-2 px-4">
+                    <button class="flex-1 px-3 py-2 rounded-lg text-sm font-semibold text-white signature-gradient hover:scale-95 duration-150">Google Play</button>
+                </div>
             </div>
         </div>
     </nav>
+    
+    <script>
+        document.getElementById('mobileMenuBtn')?.addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+        });
+    </script>
 
 
     <main class="pt-32 pb-24">
@@ -396,15 +426,15 @@
             <h4 class="font-bold text-blue-900 dark:text-blue-400 mb-4">Resources</h4>
             <ul class="space-y-2">
                 <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 transition-transform hover:translate-x-1 block" href="#">Help Center</a></li>
-                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 transition-transform hover:translate-x-1 block" href="#">Privacy Policy</a></li>
+                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 transition-transform hover:translate-x-1 block" href="privacy.html">Privacy Policy</a></li>
                 <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 transition-transform hover:translate-x-1 block" href="#">Terms of Service</a></li>
             </ul>
         </div>
         <div class="col-span-2">
             <h4 class="font-bold text-blue-900 dark:text-blue-400 mb-4">Newsletter Signup</h4>
             <div class="flex bg-white dark:bg-slate-800 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700">
-                <input class="bg-transparent border-none focus:ring-0 px-4 py-2 w-full text-xs" placeholder="Email address" type="email"/>
-                <button class="bg-primary text-white px-4 py-2 text-xs font-bold">Join</button>
+                <input id="featuresNewsletterEmail" class="bg-transparent border-none focus:ring-0 px-4 py-2 w-full text-xs" placeholder="Email address" type="email"/>
+                <button id="featuresNewsletterSubscribe" class="bg-primary text-white px-4 py-2 text-xs font-bold">Join</button>
             </div>
         </div>
     </div>
@@ -412,4 +442,42 @@
                 © 2026 UniData | Powered by RyzeInc
             </div>
 </footer>
+
+<script>
+    // Newsletter Subscription Handler
+    function handleNewsletterSubscription(emailInputId, buttonId) {
+        const button = document.getElementById(buttonId);
+        if (!button) return;
+        
+        button.addEventListener('click', function() {
+            const emailInput = document.getElementById(emailInputId);
+            const email = emailInput.value.trim();
+            
+            if (!email) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Create mailto link with subscription confirmation
+            const subject = 'Newsletter Subscription Confirmation';
+            const body = `Thank you for subscribing to UniData newsletter!\n\nSubscriber Email: ${email}\n\nYou will now receive updates on all release dates, feature launches, and exclusive competition registrations.\n\nBest regards,\nUniData Team`;
+            const mailtoLink = `mailto:unidata04@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            window.location.href = mailtoLink;
+            
+            // Clear the input after subscription
+            emailInput.value = '';
+        });
+    }
+    
+    // Initialize newsletter on Features page
+    handleNewsletterSubscription('featuresNewsletterEmail', 'featuresNewsletterSubscribe');
+</script>
 </body></html>
