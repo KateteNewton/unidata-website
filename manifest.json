@@ -1,0 +1,71 @@
+{
+  "name": "UniData - Study Smarter, Not Harder",
+  "short_name": "UniData",
+  "description": "Premium academic resources, interactive quizzes, and collaborative notes for Zambian students. For Students By Students.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#00236f",
+  "categories": ["education", "productivity"],
+  "screenshots": [
+    {
+      "src": "/images/screenshort.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/images/unidata-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/unidata-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Features",
+      "short_name": "Features",
+      "description": "Browse UniData features",
+      "url": "/features.html",
+      "icons": [
+        {
+          "src": "/images/unidata-logo.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Events",
+      "short_name": "Events",
+      "description": "View upcoming events",
+      "url": "/events.html",
+      "icons": [
+        {
+          "src": "/images/unidata-logo.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Download App",
+      "short_name": "Download",
+      "description": "Get UniData on Google Play",
+      "url": "https://play.google.com/store/search?q=unidata&c=apps",
+      "icons": [
+        {
+          "src": "/images/unidata-logo.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
