@@ -1,88 +1,25 @@
-<!DOCTYPE html><html class="light" lang="en"><head>
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="description" content="UniData - Premium academic resources, interactive quizzes, and collaborative notes for Zambian students. Study smarter, not harder.">
     <meta name="keywords" content="education, study app, university, UNZA, CBU, past papers, quizzes, Zambia">
     <meta name="author" content="UniData">
     <meta name="theme-color" content="#00236f">
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/png" href="images/unidata-logo.png">
-        <title>UniData | For Students By Students</title>
+    <title>UniData | Study Smarter, Not Harder</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "on-secondary-fixed": "#341100",
-              "background": "#f9f9ff",
-              "tertiary-container": "#004941",
-              "secondary-fixed-dim": "#ffb690",
-              "on-error-container": "#93000a",
-              "secondary": "#9d4300",
-              "inverse-on-surface": "#ebf1ff",
-              "surface-tint": "#4059aa",
-              "surface-container-low": "#f0f3ff",
-              "primary-fixed": "#dce1ff",
-              "on-primary-fixed": "#00164e",
-              "on-background": "#151c27",
-              "on-tertiary-fixed-variant": "#005048",
-              "on-secondary-container": "#5c2400",
-              "tertiary-fixed-dim": "#4fdbc8",
-              "error": "#ba1a1a",
-              "on-secondary": "#ffffff",
-              "inverse-primary": "#b6c4ff",
-              "secondary-fixed": "#ffdbca",
-              "on-surface": "#151c27",
-              "surface-dim": "#d3daea",
-              "surface": "#f9f9ff",
-              "surface-container": "#e7eefe",
-              "on-primary-container": "#90a8ff",
-              "on-tertiary": "#ffffff",
-              "outline-variant": "#c5c5d3",
-              "on-surface-variant": "#444651",
-              "on-error": "#ffffff",
-              "surface-variant": "#dce2f3",
-              "tertiary-fixed": "#71f8e4",
-              "primary-container": "#1e3a8a",
-              "outline": "#757682",
-              "surface-bright": "#f9f9ff",
-              "primary-fixed-dim": "#b6c4ff",
-              "error-container": "#ffdad6",
-              "secondary-container": "#fd761a",
-              "inverse-surface": "#2a313d",
-              "on-primary-fixed-variant": "#264191",
-              "surface-container-lowest": "#ffffff",
-              "primary": "#00236f",
-              "surface-container-highest": "#dce2f3",
-              "surface-container-high": "#e2e8f8",
-              "on-tertiary-container": "#27c0ae",
-              "on-primary": "#ffffff",
-              "on-tertiary-fixed": "#00201c",
-              "tertiary": "#00312b",
-              "on-secondary-fixed-variant": "#783200"
-            },
-            fontFamily: {
-              "headline": ["Plus Jakarta Sans"],
-              "body": ["Inter"],
-              "label": ["Inter"]
-            },
-            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
-          },
-        },
-      }
-    </script>
-<style>
+    <style>
+        /* custom config overrides */
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        .editorial-shadow {
-            box-shadow: 0 8px 24px -4px rgba(21, 28, 39, 0.06);
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
         .signature-gradient {
             background: linear-gradient(135deg, #1e3a8a 0%, #00236f 100%);
@@ -91,10 +28,6 @@
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
         }
-        .asymmetric-track {
-            margin-left: 1.5rem;
-        }
-        /* Carousel animations */
         .carousel-container {
             position: relative;
             height: 100%;
@@ -116,64 +49,167 @@
             height: 100%;
             object-fit: cover;
         }
-        .fade-transition {
-            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        .editorial-shadow {
+            box-shadow: 0 8px 24px -4px rgba(21, 28, 39, 0.06);
         }
-        .logo-placeholder {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1;
+        .asymmetric-track {
+            margin-left: 1.5rem;
         }
-    
+        @media (max-width: 768px) {
+            .asymmetric-track {
+                margin-left: 1rem;
+            }
+        }
         .logo-slot {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: left;
+            justify-content: left;
         }
         .logo-slot img {
             max-height: 36px;
             width: auto;
             display: block;
         }
-    
+        .fade-transition {
+            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        /* testimonial carousel custom */
+        .testimonial-carousel {
+            position: relative;
+            overflow: hidden;
+        }
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            will-change: transform;
+        }
+        .testimonial-card {
+            flex: 0 0 100%;
+            padding: 0 1rem;
+        }
+        @media (min-width: 768px) {
+            .testimonial-card {
+                flex: 0 0 33.333%;
+                padding: 0 1rem;
+            }
+        }
+        .testimonial-nav-btn {
+            transition: all 0.2s ease;
+        }
+        .testimonial-nav-btn:active {
+            transform: scale(0.95);
+        }
+        .testimonial-dot {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
     </style>
-
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00236f",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#1e3a8a",
+                        "on-primary-container": "#90a8ff",
+                        "primary-fixed": "#dce1ff",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-primary-fixed": "#00164e",
+                        "on-primary-fixed-variant": "#264191",
+                        "secondary": "#9d4300",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#fd761a",
+                        "on-secondary-container": "#5c2400",
+                        "secondary-fixed": "#ffdbca",
+                        "secondary-fixed-dim": "#ffb690",
+                        "on-secondary-fixed": "#341100",
+                        "on-secondary-fixed-variant": "#783200",
+                        "tertiary": "#00312b",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#004941",
+                        "on-tertiary-container": "#27c0ae",
+                        "tertiary-fixed": "#71f8e4",
+                        "tertiary-fixed-dim": "#4fdbc8",
+                        "on-tertiary-fixed": "#00201c",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "background": "#f9f9ff",
+                        "on-background": "#151c27",
+                        "surface": "#f9f9ff",
+                        "on-surface": "#151c27",
+                        "surface-variant": "#dce2f3",
+                        "on-surface-variant": "#444651",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-container": "#e7eefe",
+                        "surface-container-high": "#e2e8f8",
+                        "surface-container-highest": "#dce2f3",
+                        "surface-bright": "#f9f9ff",
+                        "surface-dim": "#d3daea",
+                        "inverse-surface": "#2a313d",
+                        "inverse-on-surface": "#ebf1ff",
+                        "inverse-primary": "#b6c4ff",
+                        "outline": "#757682",
+                        "outline-variant": "#c5c5d3",
+                        "surface-tint": "#4059aa",
+                        "accent-teal": "#71F8E4",
+                        "action-orange": "#FD761A",
+                        "deep-navy": "#00236F",
+                        "ghost-blue": "#F9F9FF"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    }
+                }
+            }
+        }
+    </script>
 </head>
+<body class="bg-background text-on-background font-body">
 
-
-<body class="bg-surface font-body text-on-surface" data-mode="connect">
-
+    <!-- Integrated Navigation (Unified header with mobile drawer from mobile view + desktop nav from web) -->
     <nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm shadow-blue-900/5 font-['Plus_Jakarta_Sans'] tracking-tight antialiased">
         <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
-            <div class="logo-placeholder">
+           <div class="logo-placeholder">
                 <div id="customLogoSlot" class="logo-slot text-sm md:text-base px-2 md:px-3 py-0.5 md:py-1">
                     <span class="opacity-80 text-sm font-small"><a href="index.html"><img src="images/unidata-logo.png"></a></span>
                 </div>
             </div>
-                <div class="hidden md:flex gap-8 items-center">
-                    <a class="text-blue-700 dark:text-blue-400 font-bold border-b-2 border-orange-500 pb-1" href="index.html">Home</a>
-                    <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 px-2 py-1 rounded" href="features.html">Features</a>
-                    <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 px-2 py-1 rounded" href="about.html">About Us</a>
-                    <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 px-2 py-1 rounded" href="events.html">Upcoming Events</a>
-                    <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:bg-slate-10０ dark:hover:bg-slate-8０ transition-all duration-3００ px-2 py-1 rounded" href="contact.html">Contact</a>
-                </div>
-
-                <div class="flex gap-4">
-                    <button class="hidden lg:block px-5 py-2 rounded-lg font-bold text-sm bg-surface-container-high text-primary hover:bg-surface-container-highest transition-colors"><a href="https://unidata-929a9.web.app/" target="_blank">Web Version</a></button>
-                    <button class="hidden md:block px-5 py-2 rounded-lg font-bold text-sm signature-gradient text-white shadow-lg shadow-primary/20 active:scale-95 duration-150"><a href="https://play.google.com/store/search?q=unidata&c=apps" target="_blank">Google Play</a></button>
-                    <!-- Mobile Menu Toggle -->
-                    <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
-                        <span class="material-symbols-outlined text-2xl">menu</span>
-                    </button>
-                </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a class="text-blue-700 dark:text-blue-400 font-bold border-b-2 border-orange-500 pb-1" href="index.html">Home</a>
+                <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 px-3 py-1 rounded-lg" href="features.html">Features</a>
+                <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 px-3 py-1 rounded-lg" href="about.html">About Us</a>
+                <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 px-3 py-1 rounded-lg" href="events.html">Upcoming Events</a>
+                <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 px-3 py-1 rounded-lg" href="contact.html">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="hidden lg:block text-primary font-semibold hover:bg-surface-container transition-colors px-4 py-2 rounded-lg">Web Version</button>
+                <button class="hidden md:block signature-gradient text-on-primary px-6 py-2.5 rounded-xl font-bold active:scale-95 duration-150 transition-transform">Google Play</button>
+                <!-- Mobile Menu Toggle -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                    <span class="material-symbols-outlined text-2xl">menu</span>
+                </button>
+            </div>
         </div>
         
         <!-- Mobile Navigation Menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
             <div class="px-4 py-4 space-y-2 max-w-7xl mx-auto">
-                <a class="block px-4 py-3 rounded-lg text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-slate-800 font-bold" href="index.html">Home</a>
-                <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-900 transition-all" href="features.html">Features</a>
+                <a class="block px-4 py-3 rounded-lg text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-slate-800 font-bold " href="index.html">Home</a>
+                <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-bold" href="features.html">Features</a>
                 <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-900 transition-all" href="about.html">About Us</a>
                 <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-900 transition-all" href="events.html">Upcoming Events</a>
                 <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-900 transition-all" href="contact.html">Contact</a>
@@ -183,453 +219,325 @@
             </div>
         </div>
     </nav>
-    
+
+    <main class="pt-16 overflow-x-hidden">
+        <!-- Hero Section: Integrated (carousel + branding from web, mobile friendly) -->
+        <section class="relative h-[600px] md:h-[870px] overflow-hidden bg-surface-container-low">
+            <div class="carousel-container absolute inset-0">
+                <div class="carousel-slide active" id="slide1">
+                    <img alt="diverse students collaborating" src="images/Group.JPG">
+                    <div class="absolute inset-0 bg-black/50"></div>
+                </div>
+                <div class="carousel-slide" id="slide2">
+                    <img alt="blueprint engineering" src="images/Group2.JPG">
+                    <div class="absolute inset-0 bg-black/50"></div>
+                </div>
+                <div class="carousel-slide" id="slide3">
+                    <img alt="tech visualization" src="images/Group3.JPG">
+                    <div class="absolute inset-0 bg-black/50"></div>
+                </div>
+            </div>
+            <div class="relative z-20 h-full flex items-center px-6 md:px-24">
+                <div class="max-w-2xl space-y-5 md:space-y-6">
+                    <span class="inline-block py-1 px-3 rounded-full bg-secondary-container text-on-secondary-container font-label text-xs font-bold uppercase tracking-widest">STUDENT'S STUDY HUB</span>
+                    <h1 class="font-headline text-4xl md:text-7xl font-extrabold text-white leading-tight tracking-tighter">Study Smarter, <br><span class="text-tertiary-fixed">Not Harder.</span></h1>
+                    <p class="text-white/80 text-base md:text-xl leading-relaxed font-body asymmetric-track border-l-4 border-secondary-container pl-4 md:pl-6">Join thousands of students accessing premium academic resources, interactive quizzes, and collaborative notes in one unified platform.</p>
+                    <div class="flex flex-wrap gap-3 md:gap-4 pt-4">
+                        <a href="https://play.google.com/store/search?q=unidata&c=apps" target="_blank" class="px-6 py-3 md:px-8 md:py-4 rounded-xl font-bold signature-gradient text-white flex items-center gap-2 shadow-lg active:scale-95 transition-all"> <span class="material-symbols-outlined">download</span> Download on Google Play </a>
+                        <a href="https://unidata-929a9.web.app/" target="_blank" class="px-6 py-3 md:px-8 md:py-4 rounded-xl font-bold glass-panel text-primary border border-white/20 hover:bg-white transition-all"> Try Web Version </a>
+                        <button class="px-6 py-3 md:px-8 md:py-4 rounded-xl font-bold text-tertiary bg-tertiary-container hover:bg-tertiary transition-all text-white"> Get Premium - K20/month </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Carousel Dots -->
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-30">
+                <div class="dot w-8 h-1.5 rounded-full bg-tertiary-fixed cursor-pointer transition-all" data-index="0"></div>
+                <div class="dot w-3 h-1.5 rounded-full bg-white/50 cursor-pointer transition-all" data-index="1"></div>
+                <div class="dot w-3 h-1.5 rounded-full bg-white/50 cursor-pointer transition-all" data-index="2"></div>
+            </div>
+        </section>
+
+        <!-- Split Screen Mockup + Feature Highlights (merged from both) -->
+        <section class="py-16 md:py-24 px-6 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 md:space-y-8">
+                    <h2 class="font-headline text-3xl md:text-5xl font-black text-primary leading-tight">UniData on <br>Your Device</h2>
+                    <p class="text-on-surface-variant text-base md:text-lg">The most powerful study tool ever built for the Zambian University curriculum. Designed for offline access and high-impact learning.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="flex items-start gap-3 p-4 rounded-xl bg-surface-container-lowest editorial-shadow"> <span class="material-symbols-outlined text-secondary-container">cloud_off</span> <div> <h4 class="font-bold text-primary">Offline Mode</h4> <p class="text-sm text-on-surface-variant">Study anywhere without data.</p> </div> </div>
+                        <div class="flex items-start gap-3 p-4 rounded-xl bg-surface-container-lowest editorial-shadow"> <span class="material-symbols-outlined text-tertiary-fixed-dim">quiz</span> <div> <h4 class="font-bold text-primary">Smart Quizzes</h4> <p class="text-sm text-on-surface-variant">Test your knowledge daily.</p> </div> </div>
+                        <div class="flex items-start gap-3 p-4 rounded-xl bg-surface-container-lowest editorial-shadow"> <span class="material-symbols-outlined text-primary-container">library_books</span> <div> <h4 class="font-bold text-primary">Library</h4> <p class="text-sm text-on-surface-variant">1000+ past papers & notes.</p> </div> </div>
+                        <div class="flex items-start gap-3 p-4 rounded-xl bg-surface-container-lowest editorial-shadow"> <span class="material-symbols-outlined text-on-surface">dark_mode</span> <div> <h4 class="font-bold text-primary">System Themes</h4> <p class="text-sm text-on-surface-variant">Dark/light mode comfort.</p> </div> </div>
+                    </div>
+                </div>
+                <div class="relative flex justify-center">
+                    <div class="absolute -inset-4 bg-primary/5 rounded-full blur-3xl"></div>
+                    <div class="relative w-64 md:w-72 h-[520px] md:h-[580px] bg-slate-900 rounded-[3rem] border-8 border-slate-800 shadow-2xl overflow-hidden">
+                        <div class="absolute top-0 inset-x-0 h-6 bg-slate-800 flex justify-center items-end pb-1"><div class="w-16 h-4 bg-black rounded-full"></div></div>
+                        <div class="bg-surface-bright h-full pt-8 overflow-hidden"><img src="images/screenshort.jpg" alt="app mockup" class="w-full h-full object-cover"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Grid (Engineered for Excellence) -->
+        <section class="bg-surface-container-low py-16 md:py-24">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-12 text-center"><h2 class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-4">Engineered for Excellence</h2><p class="text-on-surface-variant max-w-2xl mx-auto">We've focused on the features that actually move the needle for your GPA.</p></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                    <div class="bg-surface-container-lowest p-6 md:p-8 rounded-2xl editorial-shadow hover:-translate-y-2 transition border-t-4 border-tertiary-fixed"><div class="w-12 h-12 bg-tertiary-container text-tertiary-fixed rounded-xl flex items-center justify-center mb-5"><span class="material-symbols-outlined">auto_stories</span></div><h3 class="font-headline text-xl font-bold text-primary mb-3">Comprehensive Library</h3><p class="text-sm text-on-surface-variant">Curated UNZA, CBU, Mulungushi course materials.</p></div>
+                    <div class="bg-surface-container-lowest p-6 md:p-8 rounded-2xl editorial-shadow hover:-translate-y-2 transition border-t-4 border-secondary-container"><div class="w-12 h-12 bg-secondary-fixed text-secondary rounded-xl flex items-center justify-center mb-5"><span class="material-symbols-outlined">psychology</span></div><h3 class="font-headline text-xl font-bold text-primary mb-3">Smart Quizzes</h3><p class="text-sm text-on-surface-variant">AI-driven tests that adapt to your knowledge gaps.</p></div>
+                    <div class="bg-surface-container-lowest p-6 md:p-8 rounded-2xl editorial-shadow hover:-translate-y-2 transition border-t-4 border-primary"><div class="w-12 h-12 bg-primary-fixed text-primary rounded-xl flex items-center justify-center mb-5"><span class="material-symbols-outlined">wifi_off</span></div><h3 class="font-headline text-xl font-bold text-primary mb-3">Offline Mode</h3><p class="text-sm text-on-surface-variant">Download semester content & study without internet.</p></div>
+                    <div class="bg-surface-container-lowest p-6 md:p-8 rounded-2xl editorial-shadow hover:-translate-y-2 transition border-t-4 border-on-surface"><div class="w-12 h-12 bg-surface-variant text-on-surface-variant rounded-xl flex items-center justify-center mb-5"><span class="material-symbols-outlined">contrast</span></div><h3 class="font-headline text-xl font-bold text-primary mb-3">Dark/Light Mode</h3><p class="text-sm text-on-surface-variant">Protect your eyes during late-night sessions.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Premium Plan (merged stylish card) -->
+        <section class="py-16 md:py-24 px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-primary text-white rounded-[2rem] overflow-hidden flex flex-col md:flex-row shadow-2xl shadow-primary/30">
+                    <div class="p-8 md:p-12 md:w-3/5 space-y-5"><span class="text-tertiary-fixed font-bold tracking-widest text-xs uppercase">MOST POPULAR CHOICE</span><h2 class="font-headline text-3xl md:text-4xl font-extrabold">UniData Premium</h2><p class="text-white/70">Unlock full access to specialized journals, unlimited quizzes, and ad-free learning.</p><ul class="space-y-3"><li class="flex items-center gap-3"><span class="material-symbols-outlined text-tertiary-fixed">check_circle</span><span>Unlimited PDF Access</span></li><li class="flex items-center gap-3"><span class="material-symbols-outlined text-tertiary-fixed">check_circle</span><span>Unlimited Quiz Attempts</span></li><li class="flex items-center gap-3"><span class="material-symbols-outlined text-tertiary-fixed">check_circle</span><span>Access to all Videos</span></li><li class="flex items-center gap-3"><span class="material-symbols-outlined text-tertiary-fixed">check_circle</span><span>Custom Study Timetables</span></li></ul></div>
+                    <div class="p-8 md:p-12 md:w-2/5 bg-white/10 flex flex-col items-center justify-center text-center space-y-6"><div class="font-headline text-5xl md:text-6xl font-black">K20<span class="text-xl font-medium opacity-60">/month</span></div><button class="w-full py-4 rounded-xl bg-tertiary-fixed text-on-tertiary-fixed font-black text-lg hover:scale-105 transition shadow-xl"><a href="https://play.google.com/store/search?q=unidata&c=apps" target="_blank">Get Premium Now</a></button><p class="text-xs text-white/50">No hidden fees.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Events (merged layout) -->
+        <section class="py-16 md:py-24 px-6 max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4"><div><h2 class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-2">Mark Your Calendars</h2><p class="text-on-surface-variant">Don't miss exclusive materials & competitions.</p></div><a href="#" class="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all">View All Events <span class="material-symbols-outlined">arrow_forward</span></a></div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="group cursor-pointer"><div class="relative h-56 md:h-64 rounded-2xl overflow-hidden mb-5"><img alt="business materials" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="images/sob.jpg"><div class="absolute top-4 left-4 bg-white px-3 py-1 rounded-lg text-primary font-bold text-sm shadow-md">JUNE 2026</div></div><h3 class="font-headline text-xl font-extrabold text-primary mb-2">School of Business Materials</h3><p class="text-on-surface-variant text-sm">Materials for Marketing, Operations and more coming soon.</p></div>
+                <div class="group cursor-pointer"><div class="relative h-56 md:h-64 rounded-2xl overflow-hidden mb-5"><img alt="app launch" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="images/Graphic Feature.jpg"><div class="absolute top-4 left-4 bg-white px-3 py-1 rounded-lg text-primary font-bold text-sm shadow-md">JUNE 2026</div></div><h3 class="font-headline text-xl font-extrabold text-primary mb-2">App v3.0 Launch</h3><p class="text-on-surface-variant text-sm mb-2">Join us for the launch with exciting new features!</p><div class="flex items-center gap-2 text-secondary-container font-bold text-xs uppercase"><span class="material-symbols-outlined text-sm">rocket_launch</span> Get Early Access</div></div>
+                <div class="group cursor-pointer"><div class="relative h-56 md:h-64 rounded-2xl overflow-hidden mb-5"><img alt="cbu campus" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="images/cbulsk.jpg"><div class="absolute top-4 left-4 bg-white px-3 py-1 rounded-lg text-primary font-bold text-sm shadow-md">COMING SOON</div></div><h3 class="font-headline text-xl font-extrabold text-primary mb-2">CBU Lusaka Campus Launch</h3><p class="text-on-surface-variant text-sm">Expanding to Lusaka Campus too.</p></div>
+            </div>
+        </section>
+
+        <!-- Testimonials - MOVING CAROUSEL VERSION -->
+        <section class="py-16 md:py-24 bg-surface-container overflow-hidden testimonial-carousel-section">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-10"><h2 class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-2">Student Stories</h2><p class="text-on-surface-variant">Real impact, real students, real results.</p></div>
+                <div class="relative">
+                    <div class="overflow-hidden testimonial-carousel">
+                        <div class="testimonial-track" id="testimonialTrack">
+                            <div class="testimonial-card">
+                                <div class="p-6 md:p-8 bg-surface-container-lowest rounded-2xl editorial-shadow relative h-full">
+                                    <span class="material-symbols-outlined text-6xl text-primary/5 absolute top-4 right-4" style="font-variation-settings: 'FILL' 1;">
+                                        format_quote
+                                    </span>
+                                    <p class="text-on-surface leading-relaxed mb-5 italic">
+                                        "UniData changed the way I prepare for exams. The quizzes are a lifesaver."
+                                    </p>
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center font-bold text-primary">
+                                            TS
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-primary">
+                                                Temwani S.
+                                            </h4>
+                                            <p class="text-xs text-on-surface-variant">
+                                                Computer Science, CBU
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-card"><div class="p-6 md:p-8 bg-surface-container-lowest rounded-2xl editorial-shadow relative h-full"><span class="material-symbols-outlined text-6xl text-primary/5 absolute top-4 right-4" style="font-variation-settings: 'FILL' 1;">format_quote</span><p class="text-on-surface leading-relaxed mb-5 italic">"Amazing app with exceptional UI. Easy to navigate, past papers and quizzes — education made easy."</p><div class="flex items-center gap-4"><div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center font-bold text-secondary">GK</div><div><h4 class="font-bold text-primary">Gift K.</h4><p class="text-xs text-on-surface-variant">Computer Science, CBU</p></div></div></div></div>
+                            <div class="testimonial-card"><div class="p-6 md:p-8 bg-surface-container-lowest rounded-2xl editorial-shadow relative h-full"><span class="material-symbols-outlined text-6xl text-primary/5 absolute top-4 right-4" style="font-variation-settings: 'FILL' 1;">format_quote</span><p class="text-on-surface leading-relaxed mb-5 italic">"UniData Premium is the best K20 I spend every month. An investment in my future."</p><div class="flex items-center gap-4"><div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center font-bold text-tertiary">AS</div><div><h4 class="font-bold text-primary">Albert S.</h4><p class="text-xs text-on-surface-variant">Business, UNZA</p></div></div></div></div>
+                            
+                            <div class="testimonial-card">
+                                <div class="p-6 md:p-8 bg-surface-container-lowest rounded-2xl editorial-shadow relative h-full">
+                                    <span class="material-symbols-outlined text-6xl text-primary/5 absolute top-4 right-4" style="font-variation-settings: 'FILL' 1;">
+                                        format_quote
+                                    </span>
+                                    <p class="text-on-surface leading-relaxed mb-5 italic">
+                                        "UniData Quizzes have significanlty improved the way i now reverse my notes"
+                                    </p>
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center font-bold text-primary">
+                                            LS
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-primary">
+                                                Lukundo S.
+                                            </h4>
+                                            <p class="text-xs text-on-surface-variant">
+                                                Computer Engineering, CBU
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Navigation Arrows -->
+                    <button id="prevTestimonial" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-4 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-md testimonial-nav-btn z-10"><span class="material-symbols-outlined">chevron_left</span></button>
+                    <button id="nextTestimonial" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-4 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-md testimonial-nav-btn z-10"><span class="material-symbols-outlined">chevron_right</span></button>
+                    <!-- Dots indicator -->
+                    <div class="flex justify-center gap-2 mt-8" id="testimonialDots"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA merged: from both layouts -->
+        <section class="py-16 md:py-24 px-6 max-w-7xl mx-auto text-center">
+            <div class="bg-surface-container-highest rounded-[2rem] md:rounded-[3rem] p-8 md:p-16 relative overflow-hidden"><div class="absolute top-0 right-0 w-96 h-96 bg-secondary-container/10 rounded-full blur-3xl"></div><div class="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div><h2 class="font-headline text-3xl md:text-5xl font-black text-primary mb-5 relative z-10">Ready to Transform Your <br>Study Experience?</h2><p class="text-on-surface-variant text-base md:text-lg max-w-2xl mx-auto mb-8 relative z-10">Download UniData today and join the community of top-performing Zambian students.</p><div class="flex flex-col sm:flex-row gap-5 justify-center relative z-10"><a href="https://play.google.com/store/search?q=unidata&c=apps" target="_blank" class="px-8 py-4 rounded-2xl font-bold signature-gradient text-white flex items-center justify-center gap-3 shadow-xl shadow-primary/30"><span class="material-symbols-outlined">download</span> Get it on Google Play</a><a href="https://unidata-929a9.web.app/" target="_blank" class="px-8 py-4 rounded-2xl font-bold bg-white text-primary border border-outline-variant hover:bg-surface-container-low transition-all">Launch Web Version</a></div></div>
+        </section>
+    </main>
+
+    <!-- Footer (merged style) -->
+    <footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 px-6 py-12 max-w-7xl mx-auto">
+            <div class="col-span-2 space-y-4"><div class="text-xl font-bold text-primary">UniData</div><p class="text-slate-500 max-w-xs">Building the future of digital education in Zambia. Designed for students, by students.</p><div class="flex gap-4"><a class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-primary shadow-sm hover:translate-y-[-2px] transition" href="#"><span class="material-symbols-outlined text-base">public</span></a><a class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-primary shadow-sm hover:translate-y-[-2px] transition" href="#"><span class="material-symbols-outlined text-base">mail</span></a></div></div>
+            <div><h4 class="font-bold text-primary mb-4">Quick Links</h4><ul class="space-y-2"><li><a class="text-slate-500 hover:text-primary block" href="#">Home</a></li><li><a class="text-slate-500 hover:text-primary block" href="#">Features</a></li><li><a class="text-slate-500 hover:text-primary block" href="#">Upcoming Events</a></li></ul></div>
+            <div><h4 class="font-bold text-primary mb-4">Socials</h4><ul class="space-y-2"><li><a class="text-slate-500 hover:text-primary block" href="#">Facebook</a></li><li><a class="text-slate-500 hover:text-primary block" href="#">TikTok</a></li><li><a class="text-slate-500 hover:text-primary block" href="#">YouTube</a></li></ul></div>
+            <div><h4 class="font-bold text-primary mb-4">Contact</h4><ul class="space-y-2"><li><a class="text-slate-500 hover:text-primary block" href="#">Newsletter</a></li><li><a class="text-slate-500 hover:text-primary block" href="#">Help Center</a></li></ul></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 py-6 border-t border-slate-200 flex flex-col md:flex-row justify-between text-slate-500 text-xs gap-4"><div>© 2026 UniData | Powered by RyzeInc</div><div class="flex gap-6"><a class="hover:text-primary" href="#">Privacy Policy</a><a class="hover:text-primary" href="#">Terms of Service</a></div></div>
+    </footer>
+
     <script>
-        document.getElementById('mobileMenuBtn')?.addEventListener('click', function() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        });
-        document.querySelectorAll('#mobileMenu a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('mobileMenu').classList.add('hidden');
-            });
-        });
-    </script>
+        // Carousel functionality from web version
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+        let currentIndex = 0;
+        let interval;
+        function showSlide(index) { slides.forEach((s, i) => s.classList.toggle('active', i === index)); dots.forEach((dot, i) => { if (i === index) { dot.classList.remove('w-3','bg-white/50'); dot.classList.add('w-8','bg-tertiary-fixed'); } else { dot.classList.remove('w-8','bg-tertiary-fixed'); dot.classList.add('w-3','bg-white/50'); } }); currentIndex = index; }
+        function nextSlide() { showSlide((currentIndex + 1) % slides.length); }
+        function startCarousel() { if (interval) clearInterval(interval); interval = setInterval(nextSlide, 5000); }
+        dots.forEach((dot, idx) => { dot.addEventListener('click', () => { showSlide(idx); startCarousel(); }); });
+        showSlide(0); startCarousel();
 
-<main class="pt-20">
+        // Mobile Drawer Logic (mobile view)
+        const drawer = document.getElementById('drawer');
+        const drawerContent = document.getElementById('drawer-content');
+        const menuBtn = document.getElementById('mobileMenuBtnDrawer');
+        const overlay = document.getElementById('drawerOverlay');
+        function toggleDrawer() { if (drawer.classList.contains('hidden')) { drawer.classList.remove('hidden'); setTimeout(() => drawerContent.classList.remove('-translate-x-full'), 10); } else { drawerContent.classList.add('-translate-x-full'); setTimeout(() => drawer.classList.add('hidden'), 300); } }
+        if (menuBtn) menuBtn.addEventListener('click', toggleDrawer);
+        if (overlay) overlay.addEventListener('click', toggleDrawer);
+        document.querySelectorAll('#drawer-content a').forEach(link => link.addEventListener('click', () => { if (window.innerWidth < 768) toggleDrawer(); }));
 
-    <section class="relative h-[870px] overflow-hidden bg-surface-container-low">
-        <div class="carousel-container absolute inset-0">
-            <!-- Slide 1: Collaborating Students -->
-            <div class="carousel-slide active" id="slide1">
-                <img alt="diverse group of university students collaborating in a modern sunlit library with open laptops and notebooks, warm academic atmosphere" src="images/Group.JPG">
-                <div class="absolute inset-0 bg-black/50"></div>
-            </div>
-            <!-- Slide 2: Engineering/Blueprint Hero -->
-            <div class="carousel-slide" id="slide2">
-                <img alt="close up of complex architectural blueprints with mathematical instruments under bright office lighting" src="images/Group2.JPG">
-                <div class="absolute inset-0 bg-black/50"></div>
-            </div>
-            <!-- Slide 3: Digital / Tech Visualization -->
-            <div class="carousel-slide" id="slide3">
-                <img alt="abstract high-tech visualization of software update with flowing digital nodes and glowing cyan light" src="images/Group3.JPG">
-                <div class="absolute inset-0 bg-black/50"></div>
-            </div>
-        </div>
-    
-        <div class="relative z-20 h-full flex items-center px-8 md:px-24">
-            <div class="max-w-2xl space-y-6">
-                <span class="inline-block py-1 px-3 rounded-full bg-secondary-container text-on-secondary-container font-label text-xs font-bold uppercase tracking-widest">Student's Study Hub</span>
-                <h1 class="font-headline text-5xl md:text-7xl font-extrabold text-white leading-tight tracking-tighter">
-                    Study Smarter, <br><span class="text-tertiary-fixed">Not Harder.</span>
-                </h1>
-                <p class="text-white/80 text-xl leading-relaxed font-body asymmetric-track border-l-4 border-secondary-container pl-6">
-                    Join thousands of students accessing premium academic resources, interactive quizzes, and collaborative notes in one unified platform.
-                </p>
-                <div class="flex flex-wrap gap-4 pt-4">
-                    <button class="px-8 py-4 rounded-xl font-bold signature-gradient text-white flex items-center gap-2 group">
-                        <span class="material-symbols-outlined">download</span> <a href="https://play.google.com/store/search?q=unidata&c=apps" class="group-hover:underline">Download on Google Play</a>
-                    </button>
-                    <button class="px-8 py-4 rounded-xl font-bold glass-panel text-primary border border-white/20 hover:bg-white transition-all">
-                        <a href="https://unidata-929a9.web.app/" class="group-hover:underline">Try Web Version</a>
-                    </button>
-                    <button class="px-8 py-4 rounded-xl font-bold text-tertiary-fixed bg-tertiary-container hover:bg-tertiary transition-all">
-                        Get Premium - K20/month
-                    </button>
-                </div>
-            </div>
-        </div>
-        </div>
+        // TESTIMONIAL CAROUSEL (moving)
+        const track = document.getElementById('testimonialTrack');
+        const cards = document.querySelectorAll('.testimonial-card');
+        const prevBtn = document.getElementById('prevTestimonial');
+        const nextBtn = document.getElementById('nextTestimonial');
+        const dotsContainer = document.getElementById('testimonialDots');
+        let currentTestimonial = 0;
+        let totalTestimonials = cards.length;
+        let autoSlideInterval;
+        let isMobile = window.innerWidth < 768;
+        let slidesToShow = isMobile ? 1 : 3;
+        let slideWidthPercent = 100 / slidesToShow;
 
-    <!-- Carousel Pagination Dots -->
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-30">
-            <div class="dot w-8 h-1.5 rounded-full bg-tertiary-fixed cursor-pointer transition-all duration-300" data-index="0"></div>
-            <div class="dot w-3 h-1.5 rounded-full bg-white/50 cursor-pointer transition-all duration-300" data-index="1"></div>
-            <div class="dot w-3 h-1.5 rounded-full bg-white/50 cursor-pointer transition-all duration-300" data-index="2"></div>
-        </div>
-    </section>
+        function updateSlidesToShow() {
+            isMobile = window.innerWidth < 768;
+            slidesToShow = isMobile ? 1 : 3;
+            slideWidthPercent = 100 / slidesToShow;
+            track.style.transform = `translateX(-${currentTestimonial * slideWidthPercent}%)`;
+            updateDots();
+        }
 
-<!-- Split Screen Mockup Section -->
-<section class="py-24 px-8 max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div class="space-y-8">
-            <h2 class="font-headline text-4xl md:text-5xl font-black text-primary leading-tight">UniData on <br>Your Device</h2>
-            <p class="text-on-surface-variant text-lg leading-relaxed max-w-md">The most powerful study tool ever built for the Zambian University curriculum. Designed for offline access and high-impact learning.</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="flex items-start gap-4 p-4 rounded-xl bg-surface-container-lowest editorial-shadow">
-                <span class="material-symbols-outlined text-secondary-container" data-weight="fill">cloud_off</span>
-            <div>
-                <h4 class="font-bold text-primary">Offline Mode</h4>
-                <p class="text-sm text-on-surface-variant">Study anywhere without data.</p>
-            </div>
-            </div>
-            <div class="flex items-start gap-4 p-4 rounded-xl bg-surface-container-lowest editorial-shadow">
-                <span class="material-symbols-outlined text-tertiary-fixed-dim" data-weight="fill">quiz</span>
-            <div>
-                <h4 class="font-bold text-primary">Smart Quizzes</h4>
-                <p class="text-sm text-on-surface-variant">Test your knowledge daily.</p>
-            </div>
-            </div>
-            <div class="flex items-start gap-4 p-4 rounded-xl bg-surface-container-lowest editorial-shadow">
-                <span class="material-symbols-outlined text-primary-container" data-weight="fill">library_books</span>
-            <div>
-                <h4 class="font-bold text-primary">Library</h4>
-                <p class="text-sm text-on-surface-variant">1000+ past papers &amp; notes.</p>
-            </div>
-            </div>
-            <div class="flex items-start gap-4 p-4 rounded-xl bg-surface-container-lowest editorial-shadow">
-                <span class="material-symbols-outlined text-on-surface" data-weight="fill">dark_mode</span>
-            <div>
-                <h4 class="font-bold text-primary">System Themes</h4>
-                <p class="text-sm text-on-surface-variant">Comfortable dark/light mode.</p>
-            </div>
-            </div>
-        </div>
-        </div>
-
-        <div class="relative flex justify-center">
-            <div class="absolute -inset-4 bg-primary/5 rounded-full blur-3xl"></div>
-        <!-- Simplified Smartphone Mockup -->
-                <div class="relative w-72 h-[580px] bg-slate-900 rounded-[3rem] border-8 border-slate-800 shadow-2xl overflow-hidden">
-                    <div class="absolute top-0 inset-x-0 h-6 bg-slate-800 flex justify-center items-end pb-1">
-                        <div class="w-16 h-4 bg-black rounded-full"></div>
-                    </div>
-                    <div class="bg-surface-bright h-full pt-8 overflow-hidden">
-                        <img src="images/screenshort.jpg" alt="UniData mobile app screenshot" class="w-full h-full object-cover">
-                    </div>
-        </div>
-        </div>
-    </div>
-</section>
-
-<!-- Features Grid (Editorial Style) -->
-<section class="bg-surface-container-low py-24">
-    <div class="max-w-7xl mx-auto px-8">
-        <div class="mb-16 text-center">
-            <h2 class="font-headline text-4xl font-extrabold text-primary mb-4">Engineered for Excellence</h2>
-            <p class="text-on-surface-variant max-w-2xl mx-auto">We've focused on the features that actually move the needle for your GPA.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-        <!-- Card 1 -->
-            <div class="bg-surface-container-lowest p-8 rounded-2xl editorial-shadow hover:-translate-y-2 transition-transform border-t-4 border-tertiary-fixed">
-                <div class="w-12 h-12 bg-tertiary-container text-tertiary-fixed rounded-xl flex items-center justify-center mb-6">
-                    <span class="material-symbols-outlined">auto_stories</span>
-                </div>
-                <h3 class="font-headline text-xl font-bold text-primary mb-3">Comprehensive Library</h3>
-                <p class="text-sm text-on-surface-variant leading-relaxed">Access a curated database of UNZA, CBU, and Mulungushi University course materials.</p>
-            </div>
-
-        <!-- Card 2 -->
-            <div class="bg-surface-container-lowest p-8 rounded-2xl editorial-shadow hover:-translate-y-2 transition-transform border-t-4 border-secondary-container">
-                <div class="w-12 h-12 bg-secondary-fixed text-secondary rounded-xl flex items-center justify-center mb-6">
-                    <span class="material-symbols-outlined">psychology</span>
-                </div>
-                <h3 class="font-headline text-xl font-bold text-primary mb-3">Smart Quizzes</h3>
-                <p class="text-sm text-on-surface-variant leading-relaxed">AI-driven practice tests that adapt to your knowledge gaps as you study.</p>
-            </div>
-
-        <!-- Card 3 -->
-            <div class="bg-surface-container-lowest p-8 rounded-2xl editorial-shadow hover:-translate-y-2 transition-transform border-t-4 border-primary">
-                <div class="w-12 h-12 bg-primary-fixed text-primary rounded-xl flex items-center justify-center mb-6">
-                    <span class="material-symbols-outlined">wifi_off</span>
-                </div>
-                <h3 class="font-headline text-xl font-bold text-primary mb-3">Offline Mode</h3>
-                <p class="text-sm text-on-surface-variant leading-relaxed">Download your entire semester's content and study during commutes without internet.</p>
-            </div>
-
-        <!-- Card 4 -->
-            <div class="bg-surface-container-lowest p-8 rounded-2xl editorial-shadow hover:-translate-y-2 transition-transform border-t-4 border-on-surface">
-                <div class="w-12 h-12 bg-surface-variant text-on-surface-variant rounded-xl flex items-center justify-center mb-6">
-                    <span class="material-symbols-outlined">contrast</span>
-                </div>
-                <h3 class="font-headline text-xl font-bold text-primary mb-3">Dark/Light Mode</h3>
-                <p class="text-sm text-on-surface-variant leading-relaxed">Protect your eyes during late-night cram sessions with optimized dark mode.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<!-- Pricing Section -->
-<section class="py-24 px-8">
-    <div class="max-w-4xl mx-auto">
-        <div class="bg-primary text-white rounded-[2rem] overflow-hidden flex flex-col md:flex-row shadow-2xl shadow-primary/30">
-            <div class="p-12 md:w-3/5 space-y-6">
-                <span class="text-tertiary-fixed font-bold tracking-widest text-xs uppercase">Most Popular Choice</span>
-                <h2 class="font-headline text-4xl font-extrabold">UniData Premium</h2>
-                <p class="text-white/70">Unlock full access to specialized engineering and medical journals, unlimited quiz attempts, and ad-free browsing.</p>
-                <ul class="space-y-4">
-                    <li class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-tertiary-fixed">check_circle</span>
-                        <span class="">Unlimited PDF Access</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-tertiary-fixed">check_circle</span>
-                        <span class="">Unlimited Quiz Attempts</span>
-                    </li>
-                     <li class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-tertiary-fixed">check_circle</span>
-                        <span class="">Priority Support</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-tertiary-fixed">check_circle</span>
-                        <span class="">Access to all Videos</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-tertiary-fixed">check_circle</span>
-                        <span class="">Priority 24/7 Support</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-tertiary-fixed">check_circle</span>
-                        <span class="">Custom Study Timetables</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="p-12 md:w-2/5 bg-white/10 flex flex-col items-center justify-center text-center space-y-6">
-                <div class="font-headline text-6xl font-black">K20<span class="text-xl font-medium opacity-60">/month</span></div>
-                    <button class="w-full py-4 rounded-xl bg-tertiary-fixed text-on-tertiary-fixed font-black text-lg hover:scale-105 transition-transform shadow-xl shadow-tertiary-fixed/20"><a href="https://play.google.com/store/search?q=unidata&c=apps" class="text-on-tertiary-fixed no-underline">Get Premium Now</a></button>
-                <p class="text-xs text-white/50">&nbsp;No hidden fees.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Upcoming Events -->
-<section class="py-24 px-8 max-w-7xl mx-auto">
-    <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
-        <div>
-            <h2 class="font-headline text-4xl font-extrabold text-primary mb-2">Mark Your Calendars</h2>
-            <p class="text-on-surface-variant">Don't miss out on exclusive materials and competitions.</p>
-        </div>
-        <button class="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all"><a href="events.html" class="text-primary no-underline">View All Events <span class="material-symbols-outlined">arrow_forward</span></a></button>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-    <!-- Event 1 -->
-        <div class="group cursor-pointer">
-            <div class="relative h-64 rounded-2xl overflow-hidden mb-6">
-                <img alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="close up of complex architectural blueprints with mathematical instruments under bright office lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv9g5nok4RGgi9tNlpM_VNSq3zRTzTz7KJhT_PQwKfrECfb3pLe1JNAtvBJl8fspHdifNl9sLOJuOn-cEkzpzywIxlMaNjJbHfD-sihpY11felaApQAzCyMlXLas_KTJkfMgw1qhwO0XAKEnjU8sByRdV5ImD90ZZTFlPJ04ohbgpeVLTSA4_Ir1Mxxli6ymi_wwT4IawPnihlZdF1huYFcnAHETBAj26fRetCsee7OWxVIRA6XW3CExi5W-kebVTH3pWyRB_OU5xS">
-                <div class="absolute top-4 left-4 bg-white px-3 py-1 rounded-lg text-primary font-bold text-sm shadow-md">JUNE 2026</div>
-            </div>
-            <h3 class="font-headline text-xl font-extrabold text-primary mb-2">School of Bussiness Materials</h3>
-            <p class="text-on-surface-variant text-sm mb-4">Materials for Producations and Operations Managament, Marketing and More is epected to be added</p>
-            <div class="flex items-center gap-2 text-secondary-container font-bold text-xs uppercase tracking-wider">
-                <!--<span class="material-symbols-outlined text-sm">notifications_active</span> Remind Me -->
-            </div>
-        </div>
-
-    <!-- Event 2 -->
-        <div class="group cursor-pointer">
-            <div class="relative h-64 rounded-2xl overflow-hidden mb-6">
-                <img alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="abstract high-tech visualization of software update with flowing digital nodes and glowing cyan light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPUDbuyfR4J1Kr9PJs8H3AhPR3YgqgSYoPb5LVogh3-ygYiJYYoFm-inzT98CapM9yUTtwd4pF8PLfC2mHT7hLUz5gKsBfRgAKrFTREAxrxGHX3GxmQHgtvyO6o4seewNk1Apn3BDKuG2E7zgLbGufXToH0qU444PYPgqdt1vu2rBfHfboceRI2fGBapcSJRUIhT8T2vZdaLvKIIsUNvRAtHGGFiLiYd9v4GrAOPcrAEWrDjbCdVfdOOn-LdlXqKEvgRMVF3D-ZHXi">
-                <div class="absolute top-4 left-4 bg-white px-3 py-1 rounded-lg text-primary font-bold text-sm shadow-md">JUNE 2026</div>
-            </div>
-            <h3 class="font-headline text-xl font-extrabold text-primary mb-2">App v3.0 Launch</h3>
-            <p class="text-on-surface-variant text-sm mb-4">Join us for the launch of our latest app version with exciting new features!</p>
-            <div class="flex items-center gap-2 text-secondary-container font-bold text-xs uppercase tracking-wider">
-                <span class="material-symbols-outlined text-sm">rocket_launch</span> Get Early Access
-            </div>
-        </div>
-
-    <!-- Event 3 -->
-        <div class="group cursor-pointer">
-            <div class="relative h-64 rounded-2xl overflow-hidden mb-6">
-                    <img alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="untitled event will get unviled soon" src="images/cbulsk.jpg">
-                    <div class="absolute top-4 left-4 bg-white px-3 py-1 rounded-lg text-primary font-bold text-sm shadow-md">Coming Soon</div>
-            </div>
-            <h3 class="font-headline text-xl font-extrabold text-primary mb-2">CBU Lusaka Campus Launch</h3>
-            <p class="text-on-surface-variant text-sm mb-4">Expanding to Lusaka Campus Too</p>
-            <!--<div class="flex items-center gap-2 text-secondary-container font-bold text-xs uppercase tracking-wider">
-                <span class="material-symbols-outlined text-sm">event</span> Learn More
-            </div> -->
-        </div>
-    </div>
-</section>
-
-
-<!-- Testimonials -->
-<section class="py-24 bg-surface-container overflow-hidden">
-    <div class="max-w-7xl mx-auto px-8">
-        <div class="mb-16">
-            <h2 class="font-headline text-4xl font-extrabold text-primary mb-2">Student Stories</h2>
-            <p class="text-on-surface-variant">Real impact, real students, real results.</p>
-        </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-    <!-- Testimonial 1 -->
-    <div class="p-8 bg-surface-container-lowest rounded-2xl editorial-shadow relative">
-        <span class="material-symbols-outlined text-6xl text-primary/5 absolute top-4 right-4" style="font-variation-settings: 'FILL' 1;">format_quote</span>
-        <p class="text-on-surface leading-relaxed mb-6 italic">"UniData changed the way I prepare for exams. The quizzes are a lifesaver when reviewing a topic"</p>
-        <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center font-bold text-primary">TS</div>
-            <div>
-                <h4 class="font-bold text-primary text-sm">Temwani S.</h4>
-                <p class="text-xs text-on-surface-variant">Computer Science, CBU</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Testimonial 2 -->
-    <div class="p-8 bg-surface-container-lowest rounded-2xl editorial-shadow relative mt-8 md:mt-12">
-        <span class="material-symbols-outlined text-6xl text-primary/5 absolute top-4 right-4" style="font-variation-settings: 'FILL' 1;">format_quote</span>
-        <p class="text-on-surface leading-relaxed mb-6 italic">"It is an Amazing app with an exceptional user interface. Easy to navigate to the needed materials, It has past papers and quizzes too. I can't imagine my education being this easy"</p>
-        <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center font-bold text-secondary">GK</div>
-            <div>
-                <h4 class="font-bold text-primary text-sm">Gift K.</h4>
-                <p class="text-xs text-on-surface-variant">Computer Science, CBU</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Testimonial 3 -->
-    <div class="p-8 bg-surface-container-lowest rounded-2xl editorial-shadow relative">
-        <span class="material-symbols-outlined text-6xl text-primary/5 absolute top-4 right-4" style="font-variation-settings: 'FILL' 1;">format_quote</span>
-        <p class="text-on-surface leading-relaxed mb-6 italic">"UniData Premium is the best K20 I spend every month. It's an investment in my future, simple as that."</p>
-        <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center font-bold text-tertiary">AS</div>
-            <div>
-                <h4 class="font-bold text-primary text-sm">Albert S.</h4>
-                <p class="text-xs text-on-surface-variant">Bussiness Administration, UNZA</p>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
-</section>
-
-<!-- Final Download CTA -->
-<section class="py-24 px-8 max-w-7xl mx-auto text-center">
-    <div class="bg-surface-container-highest rounded-[3rem] p-12 md:p-24 relative overflow-hidden">
-        <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-secondary-container/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-        <h2 class="font-headline text-4xl md:text-5xl font-black text-primary mb-6 relative z-10">Ready to Transform Your <br>Study Experience?</h2>
-        <p class="text-on-surface-variant text-lg max-w-2xl mx-auto mb-12 relative z-10">Download UniData today and join the community of top-performing Zambian students.</p>
-        <div class="flex flex-col sm:flex-row gap-6 justify-center relative z-10">
-            <button class="px-10 py-5 rounded-2xl font-bold signature-gradient text-white flex items-center justify-center gap-3 shadow-xl shadow-primary/30">
-            <span class="material-symbols-outlined">download</span><a href="https://play.google.com/store/search?q=unidata&c=apps" class="text-white no-underline">
-                                Get it on Google Play
-                                </a>
-                            </button>
-            <button class="px-10 py-5 rounded-2xl font-bold bg-white text-primary border border-outline-variant hover:bg-surface-container-low transition-all"> <a href="https://unidata-929a9.web.app/" class="text-primary no-underline">
-                                Launch Web Version
-                                </a>
-                            </button>
-        </div>
-    </div>
-</section>
-</main>
-
-
-
-<!-- Footer -->
-<footer class="bg-slate-50 dark:bg-slate-900 w-full border-t border-slate-200 dark:border-slate-800 font-['Inter'] text-sm leading-relaxed">
-    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 px-8 py-12 max-w-7xl mx-auto">
-        <div class="col-span-2 space-y-4">
-            <div class="text-xl font-bold text-blue-900 dark:text-white">UniData</div>
-            <p class="text-slate-500 dark:text-slate-400 max-w-xs">Building the future of digital education in Zambia. Designed for students, by students.</p>
-            <div class="flex gap-4">
-                <a class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-primary shadow-sm hover:translate-y-[-2px] transition-transform" href="#">
-                    <span class="material-symbols-outlined text-base">public</span>
-                </a>
-                <a class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-primary shadow-sm hover:translate-y-[-2px] transition-transform" href="#">
-                    <span class="material-symbols-outlined text-base">mail</span>
-                </a>
-            </div>
-        </div>
-
-        <div class="space-y-4">
-            <h4 class="font-bold text-blue-900 dark:text-white">Quick Links</h4>
-            <ul class="space-y-2">
-                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="index.html">Home</a></li>
-                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="features.html">Features</a></li>
-                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="events.html">Upcoming Events</a></li>
-            </ul>
-        </div>
-
-        <!--<div class="space-y-4">
-            <h4 class="font-bold text-blue-900 dark:text-white">Resources</h4>
-            <ul class="space-y-2">
-                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="#">Study Guide</a></li>
-                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="#">Scholarships</a></li>
-                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="#">Materials</a></li>
-            </ul>
-        </div> -->
-
-        <div class="space-y-4">
-            <h4 class="font-bold text-blue-900 dark:text-white">Socials</h4>
-            <ul class="space-y-2">
-                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="#">Facebook</a></li>
-                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="#">TikTok</a></li>
-                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="#">YouTube</a></li>
-                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="#">LinkedIn</a></li>
-            </ul>
-        </div>
-        <div class="space-y-4">
-            <h4 class="font-bold text-blue-900 dark:text-white">Contact</h4>
-            <ul class="space-y-2">
-                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="#">Newsletter Signup</a></li>
-                <li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="#">Help Center</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="max-w-7xl mx-auto px-8 py-6 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center text-slate-500 dark:text-slate-400 text-xs">
-        <div>© 2026 UniData | Powered by RyzeInc</div>
-        <div class="flex gap-6">
-            <a class="hover:text-primary transition-colors" href="privacy.html">Privacy Policy</a>
-            <a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
-        </div>
-    </div>
-</footer>
-</body>
-
-<script>
-    
-    const slides = document.querySelectorAll('.carousel-slide');
-    const dots = document.querySelectorAll('.dot');
-    let currentIndex = 0;
-    let interval;
-
-    function showSlide(index) {
-        slides.forEach((slide, i) => {
-            slide.classList.toggle('active', i === index);
-        });
-    
-        dots.forEach((dot, i) => {
-            if (i === index) {
-                dot.classList.remove('w-3', 'bg-white/50');
-                dot.classList.add('w-8', 'bg-tertiary-fixed');
-            } else {
-                dot.classList.remove('w-8', 'bg-tertiary-fixed');
-                dot.classList.add('w-3', 'bg-white/50');
+        function updateDots() {
+            const dotCount = Math.ceil(totalTestimonials / slidesToShow);
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < dotCount; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('w-2', 'h-2', 'rounded-full', 'bg-primary/30', 'transition-all', 'testimonial-dot');
+                if (i === Math.floor(currentTestimonial / slidesToShow)) {
+                    dot.classList.remove('w-2', 'bg-primary/30');
+                    dot.classList.add('w-6', 'bg-primary');
+                }
+                dot.addEventListener('click', () => {
+                    currentTestimonial = i * slidesToShow;
+                    if (currentTestimonial >= totalTestimonials) currentTestimonial = totalTestimonials - slidesToShow;
+                    if (currentTestimonial < 0) currentTestimonial = 0;
+                    track.style.transform = `translateX(-${currentTestimonial * slideWidthPercent}%)`;
+                    updateDots();
+                    resetAutoPlay();
+                });
+                dotsContainer.appendChild(dot);
             }
+        }
+
+        function moveTestimonial(direction) {
+            let newIndex = currentTestimonial + direction * slidesToShow;
+            if (newIndex < 0) newIndex = 0;
+            if (newIndex + slidesToShow > totalTestimonials) newIndex = totalTestimonials - slidesToShow;
+            if (newIndex !== currentTestimonial) {
+                currentTestimonial = newIndex;
+                track.style.transform = `translateX(-${currentTestimonial * slideWidthPercent}%)`;
+                updateDots();
+                resetAutoPlay();
+            }
+        }
+
+        function resetAutoPlay() {
+            if (autoSlideInterval) clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(() => {
+                let nextIndex = currentTestimonial + slidesToShow;
+                if (nextIndex + slidesToShow > totalTestimonials) nextIndex = 0;
+                if (nextIndex !== currentTestimonial) {
+                    currentTestimonial = nextIndex;
+                    track.style.transform = `translateX(-${currentTestimonial * slideWidthPercent}%)`;
+                    updateDots();
+                }
+            }, 6000);
+        }
+
+        prevBtn.addEventListener('click', () => moveTestimonial(-1));
+        nextBtn.addEventListener('click', () => moveTestimonial(1));
+        window.addEventListener('resize', () => {
+            updateSlidesToShow();
+            track.style.transform = `translateX(-${currentTestimonial * slideWidthPercent}%)`;
         });
-        currentIndex = index;
-    }
-
-    function nextSlide() {
-        let next = (currentIndex + 1) % slides.length;
-        showSlide(next);
-    }
-
-    function startCarousel() {
-        if (interval) clearInterval(interval);
-        interval = setInterval(nextSlide, 5000);
-    }
-
-    
-    dots.forEach((dot, idx) => {
-        dot.addEventListener('click', () => {
-            showSlide(idx);
-            startCarousel(); 
-        });
+        updateSlidesToShow();
+        resetAutoPlay();
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                mobileMenu.classList.toggle('hidden');
+                // Optional: toggle icon between menu and close
+                const icon = this.querySelector('.material-symbols-outlined');
+                if (icon) {
+                    icon.textContent = mobileMenu.classList.contains('hidden') ? 'menu' : 'close';
+                }
+            });
+            
+            // Close menu when a link is clicked
+            mobileMenu.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                    const icon = menuBtn.querySelector('.material-symbols-outlined');
+                    if (icon) {
+                        icon.textContent = 'menu';
+                    }
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!mobileMenu.classList.contains('hidden') && 
+                    !mobileMenu.contains(e.target) && 
+                    !menuBtn.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
+                    const icon = menuBtn.querySelector('.material-symbols-outlined');
+                    if (icon) {
+                        icon.textContent = 'menu';
+                    }
+                }
+            });
+        }
     });
-
-    
-    showSlide(0);
-    startCarousel();
-
 </script>
+</body>
 </html>
