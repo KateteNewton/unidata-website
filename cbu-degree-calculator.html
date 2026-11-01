@@ -84,28 +84,98 @@
       }
     </script>
 <style>
-        .signature-gradient {
-            background: linear-gradient(135deg, #1e3a8a 0%, #00236f 100%);
-        }
-        .editorial-shadow {
-            box-shadow: 0 8px 24px -4px rgba(21, 28, 39, 0.06);
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
+        .signature-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #00236f 100%); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
         .logo-placeholder { display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
         .logo-slot { display: flex; align-items: center; justify-content: center; }
         .logo-slot img { max-height: 36px; width: auto; display: block; }
         .tabular { font-variant-numeric: tabular-nums; }
-        details > summary { list-style: none; }
+        html { -webkit-text-size-adjust: 100%; }
+        body { overflow-x: hidden; }
+
+        /* ---- Course list ---- */
+        /* input.field / select.field outrank the Tailwind forms plugin's [type=text] and select rules */
+        input.field, select.field {
+            display: block; width: 100%; height: 2.5rem;
+            border: 1px solid #c5c5d3; border-radius: 6px; background-color: #fff;
+            font-size: 1rem; line-height: 1.25; color: #151c27; padding: 0 0.75rem;
+        }
+        input.field:focus, select.field:focus { outline: none; border-color: #00236f; box-shadow: 0 0 0 3px rgba(0, 35, 111, .15); }
+        select.field { padding-left: 0.625rem; padding-right: 1.6rem; background-position: right 0.25rem center; font-size: 0.9375rem; font-weight: 600; color: #00236f; }
+        input.field::placeholder { color: #8a8c99; }
+
+        .course-row {
+            display: grid; align-items: center; column-gap: 0.5rem; row-gap: 0.5rem;
+            grid-template-columns: auto 5.5rem 1fr 2.5rem;
+            grid-template-areas:
+                "name name name remove"
+                "type grade pts pts";
+            padding: 0.875rem 0;
+            border-top: 1px solid #e2e8f8;
+        }
+        .course-row:first-child { border-top: 0; }
+        .course-row .c-name { grid-area: name; min-width: 0; }
+        .course-row .c-type { grid-area: type; }
+        .course-row .c-grade { grid-area: grade; }
+        .course-row .c-pts { grid-area: pts; text-align: right; }
+        .course-row .c-remove { grid-area: remove; justify-self: end; }
+        .list-head { display: none; }
+        @media (min-width: 640px) {
+            .course-row, .list-head {
+                grid-template-columns: minmax(0, 1fr) auto 6rem 3.25rem 2.5rem;
+                grid-template-areas: "name type grade pts remove";
+                column-gap: 0.75rem;
+            }
+            .course-row { padding: 0.625rem 0; }
+            .list-head { display: grid; }
+        }
+
+        .seg { display: inline-flex; border: 1px solid #c5c5d3; border-radius: 6px; overflow: hidden; height: 2.5rem; background: #fff; }
+        .seg button { padding: 0 0.75rem; font-size: 0.875rem; font-weight: 600; color: #444651; }
+        .seg button + button { border-left: 1px solid #c5c5d3; }
+        .seg button[aria-pressed="true"] { background: #00236f; color: #fff; }
+        .seg button:focus-visible { outline: 2px solid #fd761a; outline-offset: -2px; }
+
+        .icon-btn { width: 2.5rem; height: 2.5rem; display: inline-flex; align-items: center; justify-content: center; border-radius: 6px; color: #757682; }
+        .icon-btn:hover { color: #ba1a1a; background: #ffdad6; }
+        .icon-btn:focus-visible, .btn:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid #fd761a; outline-offset: 2px; }
+
+        /* ---- Result ruler: the average plotted on CBU's 0–5 scale ---- */
+        .ruler { position: relative; height: 2.75rem; margin-top: 0.5rem; }
+        .ruler-line { position: absolute; left: 0; right: 0; top: 1rem; height: 2px; background: rgba(255,255,255,.35); }
+        .ruler-tick { position: absolute; top: 0.625rem; width: 1px; height: 0.8rem; background: rgba(255,255,255,.55); }
+        .ruler-num { position: absolute; top: 1.6rem; transform: translateX(-50%); font-size: 0.6875rem; color: rgba(255,255,255,.65); }
+        .ruler-num.edge-l { transform: none; }
+        .ruler-num.edge-r { transform: translateX(-100%); }
+        .ruler-mark { position: absolute; top: 0.2rem; width: 0; transition: left .35s ease-out; }
+        .ruler-mark::before { content: ""; position: absolute; left: -2px; top: 0; width: 4px; height: 1.6rem; border-radius: 2px; background: #fd761a; }
+        .bands { display: grid; grid-template-columns: 30% 20% 20% 30%; font-size: 0.75rem; color: rgba(255,255,255,.55); margin-top: 0.25rem; }
+        .bands span { border-top: 2px solid transparent; padding-top: 0.35rem; text-align: center; }
+        .bands span:first-child { text-align: left; }
+        .bands span:last-child { text-align: right; }
+        .bands span.on { color: #fff; font-weight: 700; border-color: #fd761a; }
+
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; height: 2.75rem; padding: 0 1.25rem; border-radius: 8px; font-weight: 700; font-size: 0.9375rem; }
+
+        /* ---- Reference tables ---- */
+        .ref-table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+        .ref-table th, .ref-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #e2e8f8; }
+        .ref-table thead th { font-size: 0.8125rem; font-weight: 600; color: #444651; text-align: right; border-bottom: 2px solid #00236f; }
+        .ref-table thead th:first-child, .ref-table tbody th { text-align: left; }
+        .ref-table td { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+        .ref-table th:first-child, .ref-table td:first-child { padding-left: 0; }
+        .ref-table th:last-child, .ref-table td:last-child { padding-right: 0; }
+
+        details > summary { list-style: none; cursor: pointer; }
         details > summary::-webkit-details-marker { display: none; }
-        details[open] .faq-chevron { transform: rotate(180deg); }
-        .row-enter { animation: rowIn .25s ease-out; }
-        @keyframes rowIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
-        #scalePointer { transition: left .4s cubic-bezier(.2,.8,.2,1); }
+        details[open] .faq-sign { transform: rotate(45deg); }
+        .faq-sign { transition: transform .2s; }
+
+        @media (prefers-reduced-motion: reduce) { .ruler-mark, .faq-sign { transition: none; } }
         @media print {
-            nav, footer, #planner, #reference, #faq, .no-print { display: none !important; }
+            nav, footer, #mobileBar, #rules, #faq, #app, .no-print { display: none !important; }
             main { padding-top: 0 !important; }
+            .result-panel { background: #fff !important; color: #000 !important; border: 1px solid #000; }
         }
     </style>
 
@@ -227,356 +297,251 @@
         });
     </script>
 
-    <main class="pt-28 md:pt-32 pb-24">
+    <main class="pt-24 md:pt-28 pb-20">
 
-        <!-- Breadcrumb -->
-        <div class="max-w-7xl mx-auto px-5 md:px-8 mb-6">
-            <ol class="flex items-center gap-1 text-sm text-on-surface-variant">
-                <li><a class="hover:text-primary" href="index.html">Home</a></li>
-                <li><span class="material-symbols-outlined text-base align-middle opacity-60">chevron_right</span></li>
-                <li class="text-primary font-semibold" aria-current="page">CBU Degree Calculator</li>
-            </ol>
-        </div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Breadcrumb -->
+            <nav aria-label="Breadcrumb" class="text-sm text-on-surface-variant mb-6">
+                <a class="hover:text-primary underline-offset-4 hover:underline" href="index.html">Home</a>
+                <span class="mx-1.5 text-outline" aria-hidden="true">/</span>
+                <span class="text-on-surface" aria-current="page">CBU degree calculator</span>
+            </nav>
 
-        <!-- Hero -->
-        <header class="max-w-7xl mx-auto px-5 md:px-8 mb-12">
-            <div class="inline-flex items-center space-x-2 bg-secondary-fixed text-on-secondary-fixed px-4 py-1.5 rounded-full mb-6">
-                <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">school</span>
-                <span class="text-xs font-bold tracking-widest uppercase">For CBU Students</span>
-            </div>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-headline font-extrabold text-primary tracking-tighter mb-6 max-w-4xl leading-[1.1]">
-                CBU Degree <span class="text-secondary-container">Classification</span> Calculator
-            </h1>
-            <p class="text-lg md:text-xl text-on-surface-variant max-w-3xl leading-relaxed">
-                Enter the grades for the courses that count towards your degree to see your total points and whether you're heading for a
-                <strong class="text-primary">Distinction</strong>, <strong class="text-primary">Merit</strong>,
-                <strong class="text-primary">Credit</strong> or <strong class="text-primary">Pass</strong>, worked out with Copperbelt University's own rules.
-            </p>
-            <div class="mt-8 flex items-start gap-3 bg-surface-container-low border-l-4 border-secondary-container rounded-xl p-4 max-w-3xl">
-                <span class="material-symbols-outlined text-secondary-container mt-0.5">info</span>
-                <p class="text-sm text-on-surface-variant leading-relaxed">
-                    <strong class="text-on-surface">This calculator is for Copperbelt University (CBU) only.</strong>
-                    It follows section 3.9, "Classification of Degree", of the CBU academic regulations. Other universities, including UNZA, use different rules.
+            <!-- Intro -->
+            <header class="max-w-3xl mb-8 md:mb-10">
+                <h1 class="font-headline font-extrabold text-primary tracking-tight leading-[1.1] text-[2rem] sm:text-4xl lg:text-[2.75rem]">
+                    CBU degree classification calculator
+                </h1>
+                <p class="mt-4 text-base sm:text-lg text-on-surface-variant leading-relaxed">
+                    List the courses that count towards your degree and the grade you got in each.
+                    You'll see your total points and whether you're on course for a Distinction, Merit, Credit or Pass.
                 </p>
-            </div>
-        </header>
+                <p class="mt-3 text-sm text-on-surface-variant">
+                    Uses Copperbelt University's rules (section 3.9 of the academic regulations). Other universities work it out differently.
+                </p>
+            </header>
 
-        <!-- Calculator -->
-        <section id="calculator" class="max-w-7xl mx-auto px-5 md:px-8" aria-label="Degree calculator">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+            <!-- Calculator -->
+            <section id="calculator" aria-label="Degree calculator" class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_21rem] gap-6 lg:gap-8 items-start">
 
-                <!-- Inputs -->
-                <div class="lg:col-span-8 space-y-6">
-                    <div class="bg-surface-container-lowest rounded-2xl editorial-shadow border border-outline-variant/30 overflow-hidden">
-                        <div class="flex items-center justify-between gap-4 px-5 md:px-8 py-5 border-b border-outline-variant/30">
-                            <div class="flex items-center gap-3">
-                                <div class="w-11 h-11 bg-primary/10 text-primary rounded-xl flex items-center justify-center">
-                                    <span class="material-symbols-outlined">list_alt</span>
-                                </div>
-                                <div>
-                                    <h2 class="font-headline text-xl font-bold text-primary">Your Courses</h2>
-                                    <p class="text-xs text-on-surface-variant" data-year-summary="all">No grades yet</p>
-                                </div>
+                <div class="min-w-0">
+                    <div class="bg-white border border-outline-variant/70 rounded-xl">
+                        <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 px-4 sm:px-6 pt-5 pb-3">
+                            <h2 class="font-headline text-lg font-bold text-primary">Your courses</h2>
+                            <p class="text-sm text-on-surface-variant" data-year-summary="all">No grades yet</p>
+                        </div>
+                        <p class="px-4 sm:px-6 text-sm text-on-surface-variant leading-relaxed max-w-2xl">
+                            Add every course from the years your programme counts. For most CBU degrees that's 3rd and 4th year;
+                            if yours counts 3rd to 5th year, add those courses too.
+                        </p>
+
+                        <div class="px-4 sm:px-6 mt-4">
+                            <div class="list-head text-xs font-semibold text-on-surface-variant pb-2 border-b border-outline-variant/60" aria-hidden="true">
+                                <span style="grid-area:name">Course</span>
+                                <span style="grid-area:type">Type</span>
+                                <span style="grid-area:grade">Grade</span>
+                                <span style="grid-area:pts" class="text-right">Points</span>
+                                <span style="grid-area:remove"></span>
                             </div>
-                            <button type="button" class="no-print inline-flex items-center gap-1 text-sm font-bold text-primary hover:bg-surface-container px-3 py-2 rounded-lg transition-colors" data-add="all">
-                                <span class="material-symbols-outlined text-lg">add</span><span class="hidden sm:inline">Add course</span>
+                            <div data-rows="all"></div>
+                        </div>
+
+                        <div class="no-print flex flex-wrap items-center justify-between gap-3 px-4 sm:px-6 py-4 border-t border-outline-variant/60 bg-surface-container-low/60 rounded-b-xl">
+                            <button type="button" class="btn bg-white border border-primary/30 text-primary hover:border-primary" data-add="all">
+                                <span class="material-symbols-outlined text-xl" aria-hidden="true">add</span> Add a course
                             </button>
-                        </div>
-                        <div class="flex items-start gap-3 mx-5 md:mx-8 mt-5 bg-surface-container-low rounded-xl px-4 py-3">
-                            <span class="material-symbols-outlined text-primary text-xl mt-0.5">tips_and_updates</span>
-                            <p class="text-sm text-on-surface-variant leading-relaxed">
-                                Add every course from the years that count towards your degree class. For most CBU degrees that's 3rd and 4th year. If your programme counts more years (for example 3rd to 5th year), add those courses too.
-                            </p>
-                        </div>
-                        <div class="hidden md:grid grid-cols-12 gap-3 px-8 pt-5 text-[11px] font-bold uppercase tracking-wider text-outline">
-                            <div class="col-span-5">Course (optional)</div>
-                            <div class="col-span-3">Type</div>
-                            <div class="col-span-2">Grade</div>
-                            <div class="col-span-2 text-right pr-10">Points</div>
-                        </div>
-                        <div class="px-5 md:px-8 py-4 space-y-3" data-rows="all"></div>
-                        <div class="no-print px-5 md:px-8 pb-6">
-                            <button type="button" class="w-full inline-flex items-center justify-center gap-2 border-2 border-dashed border-outline-variant text-primary font-bold py-3 rounded-xl hover:border-primary hover:bg-surface-container-low transition-colors" data-add="all">
-                                <span class="material-symbols-outlined">add</span> Add another course
-                            </button>
+                            <p class="text-xs text-on-surface-variant max-w-xs">Courses without a grade aren't counted. Saved on this device only.</p>
                         </div>
                     </div>
-
-                    <p class="text-xs text-on-surface-variant px-1 leading-relaxed">
-                        Only courses with a grade selected are counted. A half course earns half the points and counts as half a course.
-                        Grades below C are fails, which must be cleared before you can graduate, so they are not listed. Your entries are saved on this device only.
-                    </p>
 
                     <!-- Planner -->
-                    <div id="planner" class="bg-surface-container-low rounded-2xl p-5 md:p-8 border-l-4 border-tertiary-fixed">
-                        <div class="flex items-start gap-3 mb-5">
-                            <div class="w-11 h-11 bg-tertiary-fixed/30 text-tertiary rounded-xl flex items-center justify-center shrink-0">
-                                <span class="material-symbols-outlined">flag</span>
-                            </div>
-                            <div>
-                                <h2 class="font-headline text-xl font-bold text-primary">Still in progress? Plan your target</h2>
-                                <p class="text-sm text-on-surface-variant mt-1">Enter how many courses you haven't been graded on yet. We'll show what you need on those to reach each class.</p>
-                            </div>
-                        </div>
-                        <div class="flex flex-wrap items-end gap-4 mb-5">
-                            <label class="block">
-                                <span class="text-xs font-bold uppercase tracking-wider text-outline">Full courses left</span>
-                                <input id="remainingFull" type="number" min="0" max="30" step="1" inputmode="numeric" value="0" class="mt-1 block w-32 rounded-lg border-outline-variant bg-white focus:border-primary focus:ring-primary tabular">
+                    <div id="planner" class="mt-6 border-t-2 border-primary pt-5">
+                        <h2 class="font-headline text-lg font-bold text-primary">Courses still to come</h2>
+                        <p class="mt-1 text-sm text-on-surface-variant max-w-2xl">If you haven't finished yet, enter how many courses are left. You'll see what you need on them for each class.</p>
+                        <div class="mt-4 flex flex-wrap gap-4">
+                            <label class="text-sm font-medium text-on-surface">
+                                Full courses left
+                                <input id="remainingFull" type="number" min="0" max="40" step="1" inputmode="numeric" value="0" class="field mt-1 w-28 tabular">
                             </label>
-                            <label class="block">
-                                <span class="text-xs font-bold uppercase tracking-wider text-outline">Half courses left</span>
-                                <input id="remainingHalf" type="number" min="0" max="30" step="1" inputmode="numeric" value="0" class="mt-1 block w-32 rounded-lg border-outline-variant bg-white focus:border-primary focus:ring-primary tabular">
+                            <label class="text-sm font-medium text-on-surface">
+                                Half courses left
+                                <input id="remainingHalf" type="number" min="0" max="40" step="1" inputmode="numeric" value="0" class="field mt-1 w-28 tabular">
                             </label>
                         </div>
-                        <div id="plannerOutput" class="text-sm text-on-surface-variant"></div>
+                        <div id="plannerOutput" class="mt-4 text-sm text-on-surface-variant"></div>
                     </div>
                 </div>
 
-                <!-- Result card -->
-                <aside id="result" class="lg:col-span-4 lg:sticky lg:top-28 scroll-mt-24" aria-live="polite">
-                    <div class="signature-gradient text-white rounded-2xl shadow-2xl shadow-primary/20 p-6 md:p-8 relative overflow-hidden">
-                        <div class="absolute -top-16 -right-16 w-48 h-48 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
-                        <p class="text-xs font-bold uppercase tracking-widest text-white/60 mb-3">Your degree class</p>
-                        <div id="classBadge" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl font-headline font-extrabold text-2xl md:text-3xl bg-white/10">
-                            <span class="material-symbols-outlined" id="classIcon">hourglass_empty</span>
-                            <span id="classLabel">Add grades</span>
-                        </div>
+                <!-- Result -->
+                <aside id="result" class="lg:sticky lg:top-24 scroll-mt-24" aria-live="polite">
+                    <div class="result-panel bg-primary text-white rounded-xl p-5 sm:p-6">
+                        <p class="text-sm text-white/70">Your degree class</p>
+                        <p id="classLabel" class="font-headline font-extrabold text-[2.5rem] leading-none mt-2 mb-5">–</p>
 
-                        <div class="grid grid-cols-2 gap-4 mt-8">
+                        <dl class="grid grid-cols-3 gap-3 border-t border-white/20 pt-4">
                             <div>
-                                <p class="text-xs text-white/60 mb-1">Total points</p>
-                                <p class="font-headline text-4xl font-black tabular" id="totalPoints">0</p>
+                                <dt class="text-xs text-white/65">Points</dt>
+                                <dd id="totalPoints" class="font-headline text-2xl font-bold tabular mt-0.5">0</dd>
                             </div>
                             <div>
-                                <p class="text-xs text-white/60 mb-1">Courses counted</p>
-                                <p class="font-headline text-4xl font-black tabular" id="courseCount">0</p>
-                                <p class="text-[11px] text-white/70 mt-1 leading-snug" id="courseBreakdown"></p>
+                                <dt class="text-xs text-white/65">Courses</dt>
+                                <dd id="courseCount" class="font-headline text-2xl font-bold tabular mt-0.5">0</dd>
                             </div>
-                        </div>
-                        <p id="ungradedWarn" class="hidden mt-4 text-xs leading-relaxed bg-secondary-container/25 border border-secondary-container/50 rounded-lg px-3 py-2"></p>
+                            <div>
+                                <dt class="text-xs text-white/65">Average</dt>
+                                <dd id="avgPoints" class="font-headline text-2xl font-bold tabular mt-0.5">0.00</dd>
+                            </div>
+                        </dl>
+                        <p id="courseBreakdown" class="text-xs text-white/65 mt-2"></p>
 
-                        <div class="mt-6">
-                            <div class="flex justify-between text-xs text-white/60 mb-2">
-                                <span>Average per course</span>
-                                <span class="font-bold text-white tabular" id="avgPoints">0.00</span>
-                            </div>
-                            <!-- 0–5 scale with CBU boundaries at 1.5, 2.5, 3.5 -->
-                            <div class="relative h-3 rounded-full overflow-hidden flex">
-                                <div class="h-full bg-white/15" style="width:30%"></div>
-                                <div class="h-full bg-white/30" style="width:20%"></div>
-                                <div class="h-full bg-secondary-container/80" style="width:20%"></div>
-                                <div class="h-full bg-tertiary-fixed" style="width:30%"></div>
-                            </div>
-                            <div class="relative h-4">
-                                <div id="scalePointer" class="absolute -top-1 -translate-x-1/2 w-0 h-0 border-l-[7px] border-r-[7px] border-b-[9px] border-l-transparent border-r-transparent border-b-white" style="left:0%"></div>
-                            </div>
-                            <div class="relative text-[10px] text-white/60 h-4 tabular">
-                                <span class="absolute left-0">0</span>
-                                <span class="absolute -translate-x-1/2" style="left:30%">1.5</span>
-                                <span class="absolute -translate-x-1/2" style="left:50%">2.5</span>
-                                <span class="absolute -translate-x-1/2" style="left:70%">3.5</span>
-                                <span class="absolute right-0">5</span>
-                            </div>
-                            <div class="grid grid-cols-4 text-[10px] font-semibold text-white/70 mt-1">
-                                <span>Pass</span><span class="text-center">Credit</span><span class="text-center">Merit</span><span class="text-right">Distinction</span>
-                            </div>
+                        <div class="ruler" aria-hidden="true">
+                            <div class="ruler-line"></div>
+                            <div class="ruler-tick" style="left:0"></div>
+                            <div class="ruler-tick" style="left:30%"></div>
+                            <div class="ruler-tick" style="left:50%"></div>
+                            <div class="ruler-tick" style="left:70%"></div>
+                            <div class="ruler-tick" style="left:calc(100% - 1px)"></div>
+                            <span class="ruler-num edge-l" style="left:0">0</span>
+                            <span class="ruler-num" style="left:30%">1.5</span>
+                            <span class="ruler-num" style="left:50%">2.5</span>
+                            <span class="ruler-num" style="left:70%">3.5</span>
+                            <span class="ruler-num edge-r" style="left:100%">5</span>
+                            <div id="scalePointer" class="ruler-mark" style="left:0%"></div>
+                        </div>
+                        <div class="bands" id="bands" aria-hidden="true">
+                            <span data-band="Pass">Pass</span><span data-band="Credit">Credit</span><span data-band="Merit">Merit</span><span data-band="Distinction">Distinction</span>
                         </div>
 
-                        <div id="nextStep" class="mt-6 bg-white/10 rounded-xl p-4 text-sm leading-relaxed text-white/90">
-                            Pick a grade for each of your courses to see your result.
-                        </div>
+                        <p id="ungradedWarn" class="hidden mt-4 text-sm text-white bg-white/10 border-l-2 border-secondary-container pl-3 py-2 pr-2"></p>
+                        <p id="nextStep" class="mt-4 text-sm leading-relaxed text-white/85">Choose a grade for each course to see your result.</p>
 
-                        <div class="no-print flex gap-3 mt-6">
-                            <button type="button" id="printBtn" class="flex-1 inline-flex items-center justify-center gap-2 bg-white text-primary font-bold py-3 rounded-xl hover:bg-white/90 transition-all active:scale-95">
-                                <span class="material-symbols-outlined text-lg">download</span> Save
-                            </button>
-                            <button type="button" id="resetBtn" class="flex-1 inline-flex items-center justify-center gap-2 bg-white/10 border border-white/20 text-white font-bold py-3 rounded-xl hover:bg-white/20 transition-all active:scale-95">
-                                <span class="material-symbols-outlined text-lg">restart_alt</span> Reset
-                            </button>
+                        <div class="no-print grid grid-cols-2 gap-2 mt-5">
+                            <button type="button" id="printBtn" class="btn bg-white text-primary hover:bg-white/90">Print or save</button>
+                            <button type="button" id="resetBtn" class="btn border border-white/40 text-white hover:bg-white/10">Clear all</button>
                         </div>
                     </div>
-                    <p class="text-xs text-on-surface-variant mt-4 px-1 leading-relaxed">
-                        Unofficial estimate. Your final class is confirmed by the University, so check with your School if you're unsure.
+                    <p class="text-xs text-on-surface-variant mt-3 leading-relaxed">
+                        This is an estimate. Your final class is confirmed by the University; check with your School if you're unsure.
                     </p>
                 </aside>
-            </div>
-        </section>
+            </section>
+        </div>
 
-        <!-- Reference: how CBU classifies degrees -->
-        <section id="reference" class="mt-24 py-20 bg-surface-container-low">
-            <div class="max-w-7xl mx-auto px-5 md:px-8">
-                <div class="text-center mb-14">
-                    <h2 class="font-headline text-3xl md:text-5xl font-bold text-primary mb-4">How CBU Classifies Your Degree</h2>
-                    <p class="text-lg text-on-surface-variant max-w-2xl mx-auto">The rules behind the calculator, from the CBU academic regulations (section 3.9).</p>
-                </div>
+        <!-- How it's worked out -->
+        <section id="rules" class="mt-16 md:mt-24 border-t border-outline-variant/60 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+                <h2 class="font-headline text-2xl sm:text-3xl font-extrabold text-primary tracking-tight">How CBU works out your class</h2>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <!-- Grade points -->
-                    <div class="bg-surface-container-lowest p-6 md:p-8 rounded-2xl editorial-shadow">
-                        <div class="flex items-center gap-3 mb-2">
-                            <span class="w-9 h-9 rounded-lg bg-primary text-white font-headline font-bold flex items-center justify-center">1</span>
-                            <h3 class="text-xl font-headline font-bold text-primary">Turn each grade into points</h3>
-                        </div>
-                        <p class="text-sm text-on-surface-variant mb-5">Only courses from the years that count towards your degree are used (for a BSc, <strong>3rd and 4th year</strong>).</p>
-                        <table class="w-full text-sm tabular">
-                            <thead>
-                                <tr class="text-left text-[11px] uppercase tracking-wider text-outline border-b border-outline-variant/40">
-                                    <th class="py-2 font-bold">Grade</th>
-                                    <th class="py-2 font-bold text-right">Full course</th>
-                                    <th class="py-2 font-bold text-right">Half course</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-outline-variant/30">
-                                <tr><td class="py-2.5 font-bold text-primary">A+</td><td class="py-2.5 text-right">5</td><td class="py-2.5 text-right">2.5</td></tr>
-                                <tr><td class="py-2.5 font-bold text-primary">A</td><td class="py-2.5 text-right">4</td><td class="py-2.5 text-right">2.0</td></tr>
-                                <tr><td class="py-2.5 font-bold text-primary">B+</td><td class="py-2.5 text-right">3</td><td class="py-2.5 text-right">1.5</td></tr>
-                                <tr><td class="py-2.5 font-bold text-primary">B</td><td class="py-2.5 text-right">2</td><td class="py-2.5 text-right">1.0</td></tr>
-                                <tr><td class="py-2.5 font-bold text-primary">C+</td><td class="py-2.5 text-right">1</td><td class="py-2.5 text-right">0.5</td></tr>
-                                <tr><td class="py-2.5 font-bold text-primary">C</td><td class="py-2.5 text-right">0</td><td class="py-2.5 text-right">0</td></tr>
+                <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+                    <div class="max-w-xl">
+                        <ol class="space-y-4 text-on-surface leading-relaxed list-decimal pl-5 marker:text-primary marker:font-bold">
+                            <li>Each grade is turned into points. A half course earns half the points of a full course.</li>
+                            <li>The points are added up and divided by the number of courses. The calculator counts a half course as half a course.</li>
+                            <li>That average decides the class. It has to be <em>above</em> the line: an average of exactly 3.5 is a Merit, not a Distinction.</li>
+                        </ol>
+
+                        <table class="ref-table mt-8">
+                            <caption class="sr-only">Average points per course needed for each class</caption>
+                            <thead><tr><th scope="col">Class</th><th scope="col">Average per course</th></tr></thead>
+                            <tbody>
+                                <tr><th scope="row" class="font-semibold text-primary">Distinction</th><td>above 3.5</td></tr>
+                                <tr><th scope="row" class="font-semibold text-primary">Merit</th><td>above 2.5</td></tr>
+                                <tr><th scope="row" class="font-semibold text-primary">Credit</th><td>above 1.5</td></tr>
+                                <tr><th scope="row" class="font-semibold text-primary">Pass</th><td>1.5 or below</td></tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <!-- Average to class -->
-                    <div class="bg-surface-container-lowest p-6 md:p-8 rounded-2xl editorial-shadow flex flex-col">
-                        <div class="flex items-center gap-3 mb-2">
-                            <span class="w-9 h-9 rounded-lg bg-primary text-white font-headline font-bold flex items-center justify-center">2</span>
-                            <h3 class="text-xl font-headline font-bold text-primary">Divide by your number of courses</h3>
-                        </div>
-                        <p class="text-sm text-on-surface-variant mb-5">Your average score per course decides the class.</p>
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between p-4 rounded-xl bg-tertiary-fixed/30">
-                                <span class="font-headline font-bold text-tertiary">Distinction</span>
-                                <span class="text-sm font-semibold text-tertiary tabular">above 3.5</span>
-                            </div>
-                            <div class="flex items-center justify-between p-4 rounded-xl bg-secondary-fixed/60">
-                                <span class="font-headline font-bold text-secondary">Merit</span>
-                                <span class="text-sm font-semibold text-secondary tabular">above 2.5</span>
-                            </div>
-                            <div class="flex items-center justify-between p-4 rounded-xl bg-primary-fixed">
-                                <span class="font-headline font-bold text-primary">Credit</span>
-                                <span class="text-sm font-semibold text-primary tabular">above 1.5</span>
-                            </div>
-                            <div class="flex items-center justify-between p-4 rounded-xl bg-surface-container">
-                                <span class="font-headline font-bold text-on-surface">Pass</span>
-                                <span class="text-sm font-semibold text-on-surface-variant tabular">1.5 or below</span>
-                            </div>
-                        </div>
-                        <p class="text-xs text-on-surface-variant mt-4 leading-relaxed">Landing exactly on a boundary puts you in the lower class. With 10 courses, 35 points is a Merit and 35.5 is a Distinction, as in the official table below.</p>
+                    <div>
+                        <table class="ref-table">
+                            <caption class="text-left text-sm text-on-surface-variant pb-3">Points for each grade</caption>
+                            <thead><tr><th scope="col">Grade</th><th scope="col">Full course</th><th scope="col">Half course</th></tr></thead>
+                            <tbody>
+                                <tr><th scope="row" class="font-semibold text-primary">A+</th><td>5</td><td>2.5</td></tr>
+                                <tr><th scope="row" class="font-semibold text-primary">A</th><td>4</td><td>2</td></tr>
+                                <tr><th scope="row" class="font-semibold text-primary">B+</th><td>3</td><td>1.5</td></tr>
+                                <tr><th scope="row" class="font-semibold text-primary">B</th><td>2</td><td>1</td></tr>
+                                <tr><th scope="row" class="font-semibold text-primary">C+</th><td>1</td><td>0.5</td></tr>
+                                <tr><th scope="row" class="font-semibold text-primary">C</th><td>0</td><td>0</td></tr>
+                            </tbody>
+                        </table>
+                        <p class="mt-3 text-sm text-on-surface-variant">Grades below C are fails and have to be cleared before you graduate, so they're not in the calculator.</p>
                     </div>
                 </div>
 
-                <!-- Official table -->
-                <div class="bg-surface-container-lowest p-6 md:p-8 rounded-2xl editorial-shadow">
-                    <div class="flex items-center gap-3 mb-2">
-                        <span class="w-9 h-9 rounded-lg bg-primary text-white font-headline font-bold flex items-center justify-center">3</span>
-                        <h3 class="text-xl font-headline font-bold text-primary">Total points needed by number of courses</h3>
-                    </div>
-                    <p class="text-sm text-on-surface-variant mb-5">The University's worked example for programmes with 10 to 15 courses that count towards the degree.</p>
-                    <div class="overflow-x-auto -mx-2 px-2">
-                        <table class="w-full text-sm tabular min-w-[560px]">
-                            <thead>
-                                <tr class="text-left text-[11px] uppercase tracking-wider text-outline border-b border-outline-variant/40">
-                                    <th class="py-2 pr-3 font-bold">Class</th>
-                                    <th class="py-2 px-2 font-bold text-right">10 courses</th>
-                                    <th class="py-2 px-2 font-bold text-right">11 courses</th>
-                                    <th class="py-2 px-2 font-bold text-right">12 courses</th>
-                                    <th class="py-2 px-2 font-bold text-right">13 courses</th>
-                                    <th class="py-2 px-2 font-bold text-right">14 courses</th>
-                                    <th class="py-2 pl-2 font-bold text-right">15 courses</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-outline-variant/30">
-                                <tr><th scope="row" class="py-2.5 pr-3 text-left font-bold text-tertiary">Distinction</th><td class="py-2.5 px-2 text-right">35.5+</td><td class="py-2.5 px-2 text-right">39+</td><td class="py-2.5 px-2 text-right">42.5+</td><td class="py-2.5 px-2 text-right">46+</td><td class="py-2.5 px-2 text-right">49.5+</td><td class="py-2.5 pl-2 text-right">53+</td></tr>
-                                <tr><th scope="row" class="py-2.5 pr-3 text-left font-bold text-secondary">Merit</th><td class="py-2.5 px-2 text-right">25.5 – 35</td><td class="py-2.5 px-2 text-right">28 – 38.5</td><td class="py-2.5 px-2 text-right">30.5 – 42</td><td class="py-2.5 px-2 text-right">33 – 45.5</td><td class="py-2.5 px-2 text-right">35.5 – 49</td><td class="py-2.5 pl-2 text-right">38 – 52.5</td></tr>
-                                <tr><th scope="row" class="py-2.5 pr-3 text-left font-bold text-primary">Credit</th><td class="py-2.5 px-2 text-right">15.5 – 25</td><td class="py-2.5 px-2 text-right">17 – 27.5</td><td class="py-2.5 px-2 text-right">18.5 – 30</td><td class="py-2.5 px-2 text-right">20 – 32.5</td><td class="py-2.5 px-2 text-right">21.5 – 35</td><td class="py-2.5 pl-2 text-right">23 – 37.5</td></tr>
-                                <tr><th scope="row" class="py-2.5 pr-3 text-left font-bold text-on-surface">Pass</th><td class="py-2.5 px-2 text-right">0 – 15</td><td class="py-2.5 px-2 text-right">0 – 16.5</td><td class="py-2.5 px-2 text-right">0 – 18</td><td class="py-2.5 px-2 text-right">0 – 19.5</td><td class="py-2.5 px-2 text-right">0 – 21</td><td class="py-2.5 pl-2 text-right">0 – 22.5</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="mt-6 flex items-start gap-3 bg-surface-container-low rounded-xl p-4">
-                        <span class="material-symbols-outlined text-primary mt-0.5">calculate</span>
-                        <p class="text-sm text-on-surface-variant leading-relaxed">
-                            <strong class="text-on-surface">Worked example:</strong> 12 courses with 3 × A, 5 × B+ and 4 × B gives
-                            12 + 15 + 8 = <strong class="text-on-surface">35 points</strong>. That's an average of 2.92 per course, which falls in the 30.5 – 42 band, so it's a <strong class="text-secondary">Merit</strong>.
-                        </p>
-                    </div>
+                <h3 class="mt-14 font-headline text-xl font-bold text-primary">Total points needed, by number of courses</h3>
+                <p class="mt-1 text-sm text-on-surface-variant max-w-2xl">The University's own worked example for programmes with 10 to 15 courses.</p>
+                <div class="mt-4 overflow-x-auto">
+                    <table class="ref-table min-w-[36rem]">
+                        <thead>
+                            <tr><th scope="col">Class</th><th scope="col">10</th><th scope="col">11</th><th scope="col">12</th><th scope="col">13</th><th scope="col">14</th><th scope="col">15</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><th scope="row" class="font-semibold text-primary">Distinction</th><td>35.5+</td><td>39+</td><td>42.5+</td><td>46+</td><td>49.5+</td><td>53+</td></tr>
+                            <tr><th scope="row" class="font-semibold text-primary">Merit</th><td>25.5–35</td><td>28–38.5</td><td>30.5–42</td><td>33–45.5</td><td>35.5–49</td><td>38–52.5</td></tr>
+                            <tr><th scope="row" class="font-semibold text-primary">Credit</th><td>15.5–25</td><td>17–27.5</td><td>18.5–30</td><td>20–32.5</td><td>21.5–35</td><td>23–37.5</td></tr>
+                            <tr><th scope="row" class="font-semibold text-primary">Pass</th><td>0–15</td><td>0–16.5</td><td>0–18</td><td>0–19.5</td><td>0–21</td><td>0–22.5</td></tr>
+                        </tbody>
+                    </table>
                 </div>
+                <p class="mt-6 text-on-surface leading-relaxed max-w-2xl">
+                    For example, 12 courses with three As, five B+ and four Bs give 12 + 15 + 8 = 35 points. That's an average of 2.92, inside the 30.5–42 range, so it's a Merit.
+                </p>
             </div>
         </section>
 
         <!-- FAQ -->
-        <section id="faq" class="max-w-4xl mx-auto px-5 md:px-8 mt-24">
-            <h2 class="font-headline text-3xl md:text-4xl font-bold text-primary mb-8 text-center">Frequently Asked Questions</h2>
-            <div class="space-y-3">
-                <details class="group bg-surface-container-lowest rounded-xl editorial-shadow border border-outline-variant/30">
-                    <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 font-headline font-bold text-primary">
-                        Which years count towards my CBU degree classification?
-                        <span class="material-symbols-outlined faq-chevron transition-transform">expand_more</span>
-                    </summary>
-                    <p class="px-5 pb-5 text-on-surface-variant leading-relaxed">For a BSc, the grades from your 3rd and 4th year. If your programme counts more years, such as 3rd to 5th year, add the courses from all of those years. The calculator works the same way however many years you include.</p>
+        <section id="faq" class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 md:mt-20">
+            <h2 class="font-headline text-2xl sm:text-3xl font-extrabold text-primary tracking-tight mb-4">Questions</h2>
+            <div class="border-t border-outline-variant/70">
+                <details class="border-b border-outline-variant/70">
+                    <summary class="flex items-start justify-between gap-4 py-4 font-semibold text-on-surface">Which years count towards my degree class?<span class="faq-sign text-primary text-xl leading-none" aria-hidden="true">+</span></summary>
+                    <p class="pb-5 text-on-surface-variant leading-relaxed">For a BSc, the grades from your 3rd and 4th year. If your programme counts more years, such as 3rd to 5th year, add the courses from all of those years. The calculator works the same way however many years you include.</p>
                 </details>
-                <details class="group bg-surface-container-lowest rounded-xl editorial-shadow border border-outline-variant/30">
-                    <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 font-headline font-bold text-primary">
-                        How many points is each grade worth at CBU?
-                        <span class="material-symbols-outlined faq-chevron transition-transform">expand_more</span>
-                    </summary>
-                    <p class="px-5 pb-5 text-on-surface-variant leading-relaxed">For a full course: A+ = 5, A = 4, B+ = 3, B = 2, C+ = 1 and C = 0. A half course earns half of that: A+ = 2.5, A = 2.0, B+ = 1.5, B = 1.0, C+ = 0.5 and C = 0.</p>
+                <details class="border-b border-outline-variant/70">
+                    <summary class="flex items-start justify-between gap-4 py-4 font-semibold text-on-surface">How many points is each grade worth?<span class="faq-sign text-primary text-xl leading-none" aria-hidden="true">+</span></summary>
+                    <p class="pb-5 text-on-surface-variant leading-relaxed">For a full course: A+ is 5, A is 4, B+ is 3, B is 2, C+ is 1 and C is 0. A half course earns half of that: A+ is 2.5, A is 2, B+ is 1.5, B is 1, C+ is 0.5 and C is 0.</p>
                 </details>
-                <details class="group bg-surface-container-lowest rounded-xl editorial-shadow border border-outline-variant/30">
-                    <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 font-headline font-bold text-primary">
-                        What average do I need for a Distinction, Merit or Credit?
-                        <span class="material-symbols-outlined faq-chevron transition-transform">expand_more</span>
-                    </summary>
-                    <p class="px-5 pb-5 text-on-surface-variant leading-relaxed">Divide your total points by your number of courses. An average above 3.5 is a Distinction, above 2.5 is a Merit, above 1.5 is a Credit, and anything else is a Pass. With 12 courses, for example, you need 42.5 points or more for a Distinction.</p>
+                <details class="border-b border-outline-variant/70">
+                    <summary class="flex items-start justify-between gap-4 py-4 font-semibold text-on-surface">What average do I need for a Distinction, Merit or Credit?<span class="faq-sign text-primary text-xl leading-none" aria-hidden="true">+</span></summary>
+                    <p class="pb-5 text-on-surface-variant leading-relaxed">Divide your total points by your number of courses. Above 3.5 is a Distinction, above 2.5 is a Merit, above 1.5 is a Credit, and anything else is a Pass. With 12 courses, for example, you need 42.5 points or more for a Distinction.</p>
                 </details>
-                <details class="group bg-surface-container-lowest rounded-xl editorial-shadow border border-outline-variant/30">
-                    <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 font-headline font-bold text-primary">
-                        How are half courses counted?
-                        <span class="material-symbols-outlined faq-chevron transition-transform">expand_more</span>
-                    </summary>
-                    <p class="px-5 pb-5 text-on-surface-variant leading-relaxed">A half course earns half the points of a full course. This calculator also counts it as half a course when working out your average, so two half courses weigh the same as one full course.</p>
+                <details class="border-b border-outline-variant/70">
+                    <summary class="flex items-start justify-between gap-4 py-4 font-semibold text-on-surface">How are half courses counted?<span class="faq-sign text-primary text-xl leading-none" aria-hidden="true">+</span></summary>
+                    <p class="pb-5 text-on-surface-variant leading-relaxed">A half course earns half the points of a full course, and the calculator counts it as half a course when working out your average. Two half courses weigh the same as one full course.</p>
                 </details>
-                <details class="group bg-surface-container-lowest rounded-xl editorial-shadow border border-outline-variant/30">
-                    <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 font-headline font-bold text-primary">
-                        Does this calculator work for UNZA or other universities?
-                        <span class="material-symbols-outlined faq-chevron transition-transform">expand_more</span>
-                    </summary>
-                    <p class="px-5 pb-5 text-on-surface-variant leading-relaxed">No. It follows the Copperbelt University (CBU) regulations only. Other universities use different grading and classification rules.</p>
+                <details class="border-b border-outline-variant/70">
+                    <summary class="flex items-start justify-between gap-4 py-4 font-semibold text-on-surface">Does this work for UNZA or other universities?<span class="faq-sign text-primary text-xl leading-none" aria-hidden="true">+</span></summary>
+                    <p class="pb-5 text-on-surface-variant leading-relaxed">No. It follows the Copperbelt University (CBU) rules only. Other universities grade and classify degrees differently.</p>
                 </details>
-                <details class="group bg-surface-container-lowest rounded-xl editorial-shadow border border-outline-variant/30">
-                    <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 font-headline font-bold text-primary">
-                        Is the result official?
-                        <span class="material-symbols-outlined faq-chevron transition-transform">expand_more</span>
-                    </summary>
-                    <p class="px-5 pb-5 text-on-surface-variant leading-relaxed">No. It's an unofficial estimate based on CBU's published rules. Your final degree class is confirmed by the University, so check with your School if anything looks unclear.</p>
+                <details class="border-b border-outline-variant/70">
+                    <summary class="flex items-start justify-between gap-4 py-4 font-semibold text-on-surface">Is the result official?<span class="faq-sign text-primary text-xl leading-none" aria-hidden="true">+</span></summary>
+                    <p class="pb-5 text-on-surface-variant leading-relaxed">No. It's an estimate based on CBU's published rules. Your final class is confirmed by the University, so check with your School if anything looks unclear.</p>
                 </details>
             </div>
         </section>
 
-        <!-- CTA -->
-        <section class="max-w-7xl mx-auto px-5 md:px-8 mt-24">
-            <div class="signature-gradient rounded-[2rem] p-10 lg:p-16 text-center relative overflow-hidden">
-                <div class="absolute -bottom-20 -left-20 w-72 h-72 bg-secondary-container/20 rounded-full blur-3xl pointer-events-none"></div>
-                <h2 class="text-3xl lg:text-5xl font-headline font-extrabold text-white mb-4 tracking-tighter relative">Aiming for a Distinction?</h2>
-                <p class="text-white/80 text-lg max-w-2xl mx-auto mb-8 relative">Past papers, quizzes and notes for CBU courses, all in one app.</p>
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 relative">
-                    <a class="bg-secondary-container text-on-secondary-container px-10 py-4 rounded-xl font-black text-lg hover:scale-105 transition-transform" href="https://play.google.com/store/apps/details?id=com.ryzeinc.UniData" target="_blank" rel="noopener">Get on Google Play Store</a>
-                    <a class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-4 rounded-xl font-black text-lg hover:bg-white/20 transition-all" href="https://unidata-929a9.web.app/" target="_blank" rel="noopener">Access Web Version</a>
+        <!-- App -->
+        <section id="app" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 md:mt-20">
+            <div class="bg-primary text-white rounded-xl px-5 py-6 sm:px-8 sm:py-8 flex flex-col md:flex-row md:items-center justify-between gap-5">
+                <div>
+                    <h2 class="font-headline text-xl sm:text-2xl font-bold">Revising for your next exams?</h2>
+                    <p class="mt-1 text-white/80">UniData has past papers, quizzes and notes for CBU courses.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+                    <a class="btn bg-secondary-container text-white hover:brightness-95" href="https://play.google.com/store/apps/details?id=com.ryzeinc.UniData" target="_blank" rel="noopener">Get it on Google Play</a>
+                    <a class="btn border border-white/40 text-white hover:bg-white/10" href="https://unidata-929a9.web.app/" target="_blank" rel="noopener">Open the web version</a>
                 </div>
             </div>
         </section>
     </main>
 
 <!-- Mobile result bar -->
-<a id="mobileBar" href="#result" class="no-print lg:hidden fixed bottom-4 inset-x-4 z-40 signature-gradient text-white rounded-2xl shadow-2xl shadow-primary/30 px-5 py-3 flex items-center justify-between gap-3 transition-all duration-300 translate-y-24 opacity-0">
-    <span class="flex flex-col leading-tight">
-        <span class="text-[10px] uppercase tracking-widest text-white/60 font-bold">Your class</span>
-        <span id="mbClass" class="font-headline font-extrabold text-lg">Add grades</span>
-    </span>
-    <span class="text-right leading-tight tabular">
-        <span id="mbPoints" class="font-headline font-black text-lg">0 pts</span>
-        <span id="mbCourses" class="block text-[11px] text-white/70">0 courses</span>
+<a id="mobileBar" href="#result" class="no-print lg:hidden fixed bottom-3 left-3 right-3 z-40 bg-primary text-white rounded-xl shadow-lg shadow-primary/30 px-4 py-3 flex items-center justify-between gap-3 transition-all duration-300 translate-y-24 opacity-0 pointer-events-none">
+    <span id="mbClass" class="font-headline font-extrabold text-lg">–</span>
+    <span class="text-right text-sm tabular leading-tight">
+        <span id="mbPoints" class="font-bold">0 points</span>
+        <span id="mbCourses" class="block text-xs text-white/70">0 courses</span>
     </span>
 </a>
 
@@ -627,12 +592,12 @@
         { g: 'B', p: 2 }, { g: 'C+', p: 1 }, { g: 'C', p: 0 }
     ];
     const POINTS = Object.fromEntries(GRADES.map(x => [x.g, x.p]));
-    // Average must be strictly ABOVE the boundary (matches the official 10–15 course table).
+    // The average must be strictly ABOVE the line (matches the official 10–15 course table).
     const CLASSES = [
-        { name: 'Distinction', min: 3.5, icon: 'workspace_premium', badge: 'bg-tertiary-fixed text-on-tertiary-fixed' },
-        { name: 'Merit',       min: 2.5, icon: 'military_tech',     badge: 'bg-secondary-container text-white' },
-        { name: 'Credit',      min: 1.5, icon: 'verified',          badge: 'bg-white text-primary' },
-        { name: 'Pass',        min: 0,   icon: 'check_circle',      badge: 'bg-white/20 text-white' }
+        { name: 'Distinction', min: 3.5 },
+        { name: 'Merit', min: 2.5 },
+        { name: 'Credit', min: 1.5 },
+        { name: 'Pass', min: 0 }
     ];
     const EPS = 1e-9;
 
@@ -641,19 +606,17 @@
         for (const c of CLASSES.slice(0, 3)) if (total > c.min * n + EPS) return c;
         return CLASSES[3];
     }
-    // Smallest total (points come in 0.5 steps) strictly above boundary × n
-    function minTotalFor(boundary, n) {
-        return Math.floor(boundary * n * 2 + EPS) / 2 + 0.5;
+    // Smallest total (points come in 0.5 steps) strictly above line × courses
+    function minTotalFor(line, n) {
+        return Math.floor(line * n * 2 + EPS) / 2 + 0.5;
     }
     const fmt = (x) => (Math.round(x * 100) / 100).toString();
+    const plural = (k, word) => `${fmt(k)} ${word}${k === 1 ? '' : 's'}`;
 
     // ---- State ----
     const STORE_KEY = 'unidata-cbu-degree-calc-v1';
     const blankRow = () => ({ code: '', type: 'full', grade: '' });
-    const defaultState = () => ({
-        all: Array.from({ length: 8 }, blankRow),
-        remFull: 0, remHalf: 0
-    });
+    const defaultState = () => ({ all: Array.from({ length: 8 }, blankRow), remFull: 0, remHalf: 0 });
     let state;
     try {
         state = JSON.parse(localStorage.getItem(STORE_KEY)) || defaultState();
@@ -666,57 +629,61 @@
     } catch (e) { state = defaultState(); }
     function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {} }
 
-    // ---- Rendering rows ----
+    const $ = (id) => document.getElementById(id);
+    const list = document.querySelector('[data-rows="all"]');
     const esc = (s) => String(s).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
-    const inputCls = 'block w-full rounded-lg border-outline-variant/70 bg-white text-sm focus:border-primary focus:ring-primary';
 
     function rowPoints(r) {
         if (!(r.grade in POINTS)) return null;
         return POINTS[r.grade] * (r.type === 'half' ? 0.5 : 1);
     }
 
-    function rowHTML(year, i, r) {
+    // ---- Course rows ----
+    function rowHTML(i, r) {
         const pts = rowPoints(r);
-        const gradeOpts = ['<option value="">–</option>']
+        const n = i + 1;
+        const gradeOpts = ['<option value="">Grade</option>']
             .concat(GRADES.map(x => `<option value="${x.g}"${r.grade === x.g ? ' selected' : ''}>${x.g}</option>`)).join('');
         return `
-        <div class="row-enter grid grid-cols-12 gap-2 md:gap-3 items-center" data-row="${i}">
-            <div class="col-span-12 md:col-span-5">
-                <label class="sr-only" for="${year}-code-${i}">Course ${i + 1} name or code</label>
-                <input id="${year}-code-${i}" data-field="code" type="text" maxlength="40" value="${esc(r.code)}" placeholder="Course ${i + 1}, e.g. CS 310" class="${inputCls}">
+        <div class="course-row" data-row="${i}">
+            <div class="c-name">
+                <label class="sr-only" for="code-${i}">Course ${n} name or code</label>
+                <input id="code-${i}" data-field="code" type="text" maxlength="40" autocomplete="off" value="${esc(r.code)}" placeholder="Course ${n}, e.g. CS 310" class="field">
             </div>
-            <div class="col-span-6 md:col-span-3">
-                <label class="sr-only" for="${year}-type-${i}">Course ${i + 1} type</label>
-                <select id="${year}-type-${i}" data-field="type" class="${inputCls}">
-                    <option value="full"${r.type !== 'half' ? ' selected' : ''}>Full course</option>
-                    <option value="half"${r.type === 'half' ? ' selected' : ''}>Half course</option>
-                </select>
+            <div class="c-type seg" role="group" aria-label="Course ${n} type">
+                <button type="button" data-type="full" aria-pressed="${r.type !== 'half'}">Full</button>
+                <button type="button" data-type="half" aria-pressed="${r.type === 'half'}">Half</button>
             </div>
-            <div class="col-span-3 md:col-span-2">
-                <label class="sr-only" for="${year}-grade-${i}">Course ${i + 1} grade</label>
-                <select id="${year}-grade-${i}" data-field="grade" class="${inputCls} font-bold text-primary">${gradeOpts}</select>
+            <div class="c-grade">
+                <label class="sr-only" for="grade-${i}">Course ${n} grade</label>
+                <select id="grade-${i}" data-field="grade" class="field">${gradeOpts}</select>
             </div>
-            <div class="col-span-3 md:col-span-2 flex items-center justify-end gap-0 md:gap-1">
-                <span class="tabular font-headline font-bold w-8 md:w-12 text-right ${pts === null ? 'text-outline-variant' : 'text-primary'}" data-pts>${pts === null ? '–' : fmt(pts)}</span>
-                <button type="button" data-remove class="no-print p-2 rounded-lg text-outline hover:text-error hover:bg-error-container/50 transition-colors" aria-label="Remove course ${i + 1}">
-                    <span class="material-symbols-outlined text-lg">close</span>
-                </button>
+            <div class="c-pts font-headline font-bold tabular ${pts === null ? 'text-outline-variant' : 'text-primary'}" data-pts>
+                ${pts === null ? '–' : fmt(pts)}<span class="sm:hidden font-body font-normal text-xs text-on-surface-variant">${pts === null ? '' : ' pts'}</span>
             </div>
+            <button type="button" data-remove class="c-remove icon-btn no-print" aria-label="Remove course ${n}">
+                <span class="material-symbols-outlined text-xl" aria-hidden="true">close</span>
+            </button>
         </div>`;
     }
 
-    function renderRows(year) {
-        const box = document.querySelector(`[data-rows="${year}"]`);
-        box.innerHTML = state[year].map((r, i) => rowHTML(year, i, r)).join('');
+    function renderRows() { list.innerHTML = state.all.map((r, i) => rowHTML(i, r)).join(''); }
+
+    function refreshRow(rowEl, r) {
+        const p = rowPoints(r);
+        const el = rowEl.querySelector('[data-pts]');
+        el.innerHTML = p === null ? '–' : `${fmt(p)}<span class="sm:hidden font-body font-normal text-xs text-on-surface-variant"> pts</span>`;
+        el.classList.toggle('text-primary', p !== null);
+        el.classList.toggle('text-outline-variant', p === null);
     }
 
     // ---- Totals & result ----
-    function yearTotals(year) {
+    function totals() {
         let pts = 0, n = 0, full = 0, half = 0, ungraded = 0;
-        for (const r of state[year]) {
+        for (const r of state.all) {
             const p = rowPoints(r);
             if (p === null) {
-                // A row the student has started filling in (named it or marked it half) but not graded
+                // Started (named or marked half) but no grade yet
                 if (String(r.code).trim() || r.type === 'half') ungraded++;
                 continue;
             }
@@ -726,66 +693,56 @@
         return { pts, n, full, half, ungraded };
     }
 
-    const plural = (k, word) => `${k} ${word}${k === 1 ? '' : 's'}`;
-    function breakdown(full, half) {
-        if (!half) return plural(full, 'full course');
-        if (!full) return `${plural(half, 'half course')} (½ each)`;
-        return `${full} full + ${half} half (½ each)`;
+    function mix(full, half) {
+        if (!half) return '';
+        if (!full) return `all half courses, counted as ½ each`;
+        return `${full} full and ${half} half, counted as ½ each`;
     }
 
-    const $ = (id) => document.getElementById(id);
-
     function update() {
-        const a = yearTotals('all');
-        const total = a.pts, n = a.n;
+        const t = totals();
+        const total = t.pts, n = t.n, graded = t.full + t.half;
 
-        for (const [y, t] of [['all', a]]) {
-            const el = document.querySelector(`[data-year-summary="${y}"]`);
-            const graded = t.full + t.half;
-            let html = graded
-                ? `${plural(graded, 'course')} graded${t.half ? ': ' + breakdown(t.full, t.half) : ''} · <span class="tabular font-semibold text-on-surface">${fmt(t.pts)} pts</span>`
-                : 'No grades yet';
-            if (t.ungraded) html += ` · <span class="font-semibold text-secondary">${t.ungraded} without a grade</span>`;
-            el.innerHTML = html;
-        }
+        const summary = document.querySelector('[data-year-summary="all"]');
+        summary.innerHTML = graded
+            ? `${plural(graded, 'course')} graded, <span class="font-semibold text-on-surface tabular">${fmt(total)} points</span>` +
+              (t.ungraded ? `, <span class="font-semibold text-secondary">${t.ungraded} still need a grade</span>` : '')
+            : (t.ungraded ? `<span class="font-semibold text-secondary">${t.ungraded} still need a grade</span>` : 'No grades yet');
 
-        const full = a.full, half = a.half, ungraded = a.ungraded;
         $('totalPoints').textContent = fmt(total);
         $('courseCount').textContent = fmt(n);
-        $('courseBreakdown').textContent = half
-            ? `${plural(full + half, 'course')}: ${breakdown(full, half)}`
-            : '';
-        const warn = $('ungradedWarn');
-        warn.classList.toggle('hidden', !ungraded);
-        warn.textContent = ungraded
-            ? `${ungraded === 1 ? '1 course has' : ungraded + ' courses have'} no grade selected, so ${ungraded === 1 ? "it isn't" : "they aren't"} counted yet.`
-            : '';
+        $('courseBreakdown').textContent = t.half ? `${plural(graded, 'course')}: ${mix(t.full, t.half)}` : '';
         const avg = n > 0 ? total / n : 0;
         $('avgPoints').textContent = avg.toFixed(2);
         $('scalePointer').style.left = Math.min(100, Math.max(0, (avg / 5) * 100)) + '%';
 
+        const warn = $('ungradedWarn');
+        warn.classList.toggle('hidden', !t.ungraded);
+        warn.textContent = t.ungraded
+            ? `${t.ungraded === 1 ? '1 course has' : t.ungraded + ' courses have'} no grade yet and ${t.ungraded === 1 ? "isn't" : "aren't"} counted.`
+            : '';
+
         const c = classify(total, n);
-        const badge = $('classBadge');
-        badge.className = 'inline-flex items-center gap-2 px-4 py-2 rounded-xl font-headline font-extrabold text-2xl md:text-3xl ' + (c ? c.badge : 'bg-white/10');
-        $('classIcon').textContent = c ? c.icon : 'hourglass_empty';
-        $('classLabel').textContent = c ? c.name : 'Add grades';
+        $('classLabel').textContent = c ? c.name : '–';
+        document.querySelectorAll('#bands [data-band]').forEach(b => b.classList.toggle('on', !!c && b.dataset.band === c.name));
 
         const next = $('nextStep');
         if (!c) {
-            next.textContent = 'Pick a grade for each of your courses to see your result.';
+            next.textContent = 'Choose a grade for each course to see your result.';
         } else if (c.name === 'Distinction') {
-            const spare = total - minTotalFor(3.5, n);
-            next.innerHTML = `<strong>Excellent work.</strong> You're ${fmt(spare)} point(s) clear of the Distinction line of ${fmt(minTotalFor(3.5, n))} points for ${fmt(n)} course(s).`;
+            const line = minTotalFor(3.5, n);
+            const spare = total - line;
+            next.innerHTML = `With ${plural(n, 'course')}, a Distinction needs <strong class="text-white">${fmt(line)} points</strong>. ` +
+                (spare > EPS ? `You have ${fmt(spare)} to spare.` : `You're right on that line.`);
         } else {
-            const idx = CLASSES.indexOf(c);
-            const up = CLASSES[idx - 1];
+            const up = CLASSES[CLASSES.indexOf(c) - 1];
             const need = minTotalFor(up.min, n);
-            next.innerHTML = `With ${fmt(n)} course(s), a <strong>${up.name}</strong> needs <strong>${fmt(need)}+</strong> points. You're <strong>${fmt(need - total)}</strong> point(s) away.`;
+            next.innerHTML = `With ${plural(n, 'course')}, a ${up.name} needs <strong class="text-white">${fmt(need)} points</strong>. You're ${fmt(need - total)} short.`;
         }
 
-        $('mbClass').textContent = c ? c.name : 'Add grades';
-        $('mbPoints').textContent = fmt(total) + ' pts';
-        $('mbCourses').textContent = plural(full + half, 'course') + (half ? ` (${fmt(n)} weighted)` : '') + ' · avg ' + avg.toFixed(2);
+        $('mbClass').textContent = c ? c.name : 'No result yet';
+        $('mbPoints').textContent = `${fmt(total)} points`;
+        $('mbCourses').textContent = `${plural(graded, 'course')}, average ${avg.toFixed(2)}`;
 
         renderPlanner(total, n);
         save();
@@ -793,7 +750,6 @@
 
     // ---- Planner ----
     function gradeForAvg(avg) {
-        // Lowest grade whose full-course points reach the required average
         for (let i = GRADES.length - 1; i >= 0; i--) if (GRADES[i].p + EPS >= avg) return GRADES[i].g;
         return null;
     }
@@ -803,75 +759,66 @@
         const rh = Math.max(0, parseInt(state.remHalf, 10) || 0);
         const r = rf + rh * 0.5;
         const out = $('plannerOutput');
-        if (r <= 0) {
-            out.innerHTML = '<p>Set the number of courses you still have to sit to see your targets.</p>';
-            return;
-        }
+        if (r <= 0) { out.innerHTML = ''; return; }
         const N = n + r;
-        const maxExtra = 5 * r;
         const rows = CLASSES.slice(0, 3).map(c => {
             const need = minTotalFor(c.min, N) - total;
             let verdict;
-            if (need <= EPS) {
-                verdict = '<span class="inline-flex items-center gap-1 font-bold text-on-tertiary-container"><span class="material-symbols-outlined text-base">check_circle</span>Already secured</span>';
-            } else if (need > maxExtra + EPS) {
-                verdict = '<span class="font-semibold text-outline">Out of reach</span>';
-            } else {
+            if (need <= EPS) verdict = '<span class="font-semibold text-on-surface">Already reached</span>';
+            else if (need > 5 * r + EPS) verdict = '<span class="text-on-surface-variant">Not possible with the courses left</span>';
+            else {
                 const avgNeed = need / r;
-                verdict = `<span class="font-bold text-primary">${fmt(need)} pts</span> <span class="text-on-surface-variant">(avg ${avgNeed.toFixed(2)}, about ${gradeForAvg(avgNeed)} on each)</span>`;
+                verdict = `<span class="font-semibold text-on-surface tabular">${fmt(need)} more points</span>, about ${gradeForAvg(avgNeed)} in each course`;
             }
-            return `<tr class="border-t border-outline-variant/40">
-                <th scope="row" class="py-3 pr-4 text-left font-headline font-bold text-primary">${c.name}</th>
-                <td class="py-3 pr-4 tabular">${fmt(minTotalFor(c.min, N))}+</td>
-                <td class="py-3">${verdict}</td></tr>`;
+            return `<tr><th scope="row" class="font-semibold text-primary">${c.name}</th><td class="tabular">${fmt(minTotalFor(c.min, N))}</td><td style="text-align:left;white-space:normal">${verdict}</td></tr>`;
         }).join('');
         out.innerHTML = `
-            <p class="mb-3">Final total: <strong class="text-on-surface">${fmt(N)} courses</strong> (${fmt(n)} graded + ${fmt(r)} still to come).</p>
-            <div class="overflow-x-auto bg-white rounded-xl px-4">
-            <table class="w-full text-sm min-w-[420px]">
-                <thead><tr class="text-left text-[11px] uppercase tracking-wider text-outline">
-                    <th class="py-3 pr-4 font-bold">Target</th><th class="py-3 pr-4 font-bold">Final total</th><th class="py-3 font-bold">Still needed from remaining courses</th>
-                </tr></thead>
+            <p class="mb-2">You'll finish with ${plural(N, 'course')} (${fmt(n)} graded, ${fmt(r)} to come).</p>
+            <div class="overflow-x-auto">
+            <table class="ref-table min-w-[26rem]">
+                <thead><tr><th scope="col">Class</th><th scope="col">Points needed</th><th scope="col" style="text-align:left">From the courses left</th></tr></thead>
                 <tbody>${rows}</tbody>
             </table></div>`;
     }
 
     // ---- Events ----
-    ['all'].forEach(year => {
-        const box = document.querySelector(`[data-rows="${year}"]`);
-        const onChange = (e) => {
-            const rowEl = e.target.closest('[data-row]');
-            const field = e.target.dataset.field;
-            if (!rowEl || !field) return;
-            const r = state[year][+rowEl.dataset.row];
-            r[field] = e.target.value;
-            if (field !== 'code') {
-                const p = rowPoints(r);
-                const ptsEl = rowEl.querySelector('[data-pts]');
-                ptsEl.textContent = p === null ? '–' : fmt(p);
-                ptsEl.classList.toggle('text-primary', p !== null);
-                ptsEl.classList.toggle('text-outline-variant', p === null);
-            }
+    const onField = (e) => {
+        const rowEl = e.target.closest('[data-row]');
+        const field = e.target.dataset.field;
+        if (!rowEl || !field) return;
+        const r = state.all[+rowEl.dataset.row];
+        r[field] = e.target.value;
+        if (field === 'grade') refreshRow(rowEl, r);
+        update();
+    };
+    list.addEventListener('input', onField);
+    list.addEventListener('change', onField);
+    list.addEventListener('click', (e) => {
+        const typeBtn = e.target.closest('[data-type]');
+        if (typeBtn) {
+            const rowEl = typeBtn.closest('[data-row]');
+            const r = state.all[+rowEl.dataset.row];
+            r.type = typeBtn.dataset.type;
+            rowEl.querySelectorAll('[data-type]').forEach(b => b.setAttribute('aria-pressed', String(b === typeBtn)));
+            refreshRow(rowEl, r);
             update();
-        };
-        box.addEventListener('input', onChange);
-        box.addEventListener('change', onChange);
-        box.addEventListener('click', (e) => {
-            const btn = e.target.closest('[data-remove]');
-            if (!btn) return;
-            const i = +btn.closest('[data-row]').dataset.row;
-            state[year].splice(i, 1);
-            if (state[year].length === 0) state[year].push(blankRow());
-            renderRows(year); update();
-        });
-        document.querySelectorAll(`[data-add="${year}"]`).forEach(btn => btn.addEventListener('click', () => {
-            if (state[year].length >= 60) return;
-            state[year].push(blankRow());
-            renderRows(year); update();
-            const rows = box.querySelectorAll('[data-row]');
-            rows[rows.length - 1]?.querySelector('input')?.focus();
-        }));
+            return;
+        }
+        const rm = e.target.closest('[data-remove]');
+        if (rm) {
+            const i = +rm.closest('[data-row]').dataset.row;
+            state.all.splice(i, 1);
+            if (!state.all.length) state.all.push(blankRow());
+            renderRows(); update();
+        }
     });
+    document.querySelectorAll('[data-add="all"]').forEach(btn => btn.addEventListener('click', () => {
+        if (state.all.length >= 60) return;
+        state.all.push(blankRow());
+        renderRows(); update();
+        const rows = list.querySelectorAll('[data-row]');
+        rows[rows.length - 1]?.querySelector('input')?.focus();
+    }));
 
     $('remainingFull').value = state.remFull || 0;
     $('remainingHalf').value = state.remHalf || 0;
@@ -879,17 +826,17 @@
     $('remainingHalf').addEventListener('input', (e) => { state.remHalf = e.target.value; update(); });
 
     $('resetBtn').addEventListener('click', () => {
+        if (!confirm('Clear all your courses and grades?')) return;
         state = defaultState();
         $('remainingFull').value = 0; $('remainingHalf').value = 0;
-        renderRows('all'); update();
+        renderRows(); update();
     });
     $('printBtn').addEventListener('click', () => window.print());
 
-    renderRows('all'); update();
+    renderRows(); update();
 
-    // Show the mobile result bar while the inputs are on screen but the result card isn't
+    // Show the phone result bar while the course list is on screen but the result panel isn't
     const bar = $('mobileBar');
-    const calc = $('calculator'), result = $('result');
     if ('IntersectionObserver' in window) {
         let calcVisible = false, resultVisible = false;
         const sync = () => {
@@ -898,8 +845,8 @@
             bar.classList.toggle('opacity-0', !show);
             bar.classList.toggle('pointer-events-none', !show);
         };
-        new IntersectionObserver(([e]) => { calcVisible = e.isIntersecting; sync(); }).observe(calc);
-        new IntersectionObserver(([e]) => { resultVisible = e.isIntersecting; sync(); }, { threshold: 0.3 }).observe(result);
+        new IntersectionObserver(([e]) => { calcVisible = e.isIntersecting; sync(); }).observe(list);
+        new IntersectionObserver(([e]) => { resultVisible = e.isIntersecting; sync(); }, { threshold: 0.3 }).observe($('result'));
     }
 })();
 
