@@ -10,6 +10,22 @@
     <link rel="manifest" href="manifest.json" />
     <link rel="icon" type="image/png" href="images/unidata-logo.png" />
     <title>Terms and Conditions | UniData</title>
+    <!-- SEO -->
+    <link rel="canonical" href="https://unidata-website.vercel.app/terms.html">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="UniData">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:title" content="Terms and Conditions | UniData">
+    <meta property="og:description" content="Terms and Conditions for UniData - Legal terms governing your use of the UniData platform">
+    <meta property="og:url" content="https://unidata-website.vercel.app/terms.html">
+    <meta property="og:image" content="https://unidata-website.vercel.app/images/screenshort.jpg">
+    <meta property="og:image:alt" content="UniData app for Zambian university students">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Terms and Conditions | UniData">
+    <meta name="twitter:description" content="Terms and Conditions for UniData - Legal terms governing your use of the UniData platform">
+    <meta name="twitter:image" content="https://unidata-website.vercel.app/images/screenshort.jpg">
+    <link rel="apple-touch-icon" href="images/unidata-logo.png">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
@@ -200,29 +216,31 @@
     <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm shadow-blue-900/5 font-['Plus_Jakarta_Sans'] tracking-tight antialiased">
         <div class="flex justify-between items-center px-4 md:px-8 py-4 max-w-7xl mx-auto">
             <div class="logo-slot">
-                <a href="index.html"><img src="images/unidata-logo.png" alt="UniData"></a>
+                <a href="index.html"><img src="images/unidata-logo.png" alt="UniData logo"></a>
             </div>
-            <div class="hidden md:flex items-center space-x-8">
+            <div class="hidden lg:flex items-center lg:space-x-2 xl:space-x-6 whitespace-nowrap">
                 <a class="text-slate-600 font-medium hover:text-blue-900 transition-all duration-300" href="index.html">Home</a>
                 <a class="text-slate-600 font-medium hover:text-blue-900 transition-all duration-300" href="features.html">Features</a>
                 <a class="text-slate-600 font-medium hover:text-blue-900 transition-all duration-300" href="about.html">About Us</a>
                 <a class="text-slate-600 font-medium hover:text-blue-900 transition-all duration-300" href="events.html">Upcoming Events</a>
+                <a class="text-slate-600 font-medium hover:text-blue-900 transition-all duration-300" href="cbu-degree-calculator.html">Degree Calculator</a>
                 <a class="text-slate-600 font-medium hover:text-blue-900 transition-all duration-300" href="contact.html">Contact</a>
             </div>
             <div class="flex gap-2 md:gap-4 items-center">
-                <button class="hidden lg:block px-5 py-2 rounded-lg font-semibold text-primary border border-primary/20 hover:bg-surface-container transition-all">Web Version</button>
+                <button class="hidden xl:block px-5 py-2 rounded-lg font-semibold text-primary border border-primary/20 hover:bg-surface-container transition-all">Web Version</button>
                 <button class="hidden md:block px-5 py-2 rounded-lg font-semibold text-white signature-gradient hover:scale-95 duration-150 ease-in-out">Google Play</button>
-                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors">
+                <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors">
                     <span class="material-symbols-outlined text-2xl">menu</span>
                 </button>
             </div>
         </div>
-        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-200">
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-slate-200">
             <div class="px-4 py-4 space-y-2 max-w-7xl mx-auto">
                 <a class="block px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-blue-900 transition-all" href="index.html">Home</a>
                 <a class="block px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-blue-900 transition-all" href="features.html">Features</a>
                 <a class="block px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-blue-900 transition-all" href="about.html">About Us</a>
                 <a class="block px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-blue-900 transition-all" href="events.html">Upcoming Events</a>
+                <a class="block px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-blue-900 transition-all" href="cbu-degree-calculator.html">Degree Calculator</a>
                 <a class="block px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-blue-900 transition-all" href="contact.html">Contact</a>
                 <div class="pt-4 flex gap-2 px-4">
                     <button class="flex-1 px-3 py-2 rounded-lg text-sm font-semibold text-white signature-gradient hover:scale-95 duration-150">Google Play</button>
@@ -567,6 +585,7 @@
                 <ul class="space-y-2">
                     <li><a class="text-slate-500 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="index.html">Home</a></li>
                     <li><a class="text-slate-500 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="features.html">Features</a></li>
+                    <li><a class="text-slate-500 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="cbu-degree-calculator.html">Degree Calculator</a></li>
                     <li><a class="text-slate-500 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="about.html">About Us</a></li>
                     <li><a class="text-slate-500 hover:text-teal-500 hover:translate-x-1 transition-transform duration-200 block" href="contact.html">Contact</a></li>
                 </ul>

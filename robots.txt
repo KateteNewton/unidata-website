@@ -1,19 +1,10 @@
-# Allow all search engines to crawl the site
+# Allow all search engines to crawl the public site
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /*.bak$
 
 # Sitemap location
 Sitemap: https://unidata-website.vercel.app/sitemap.xml
-
-# Specific rules for search engines
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 0
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 0
-
-# Prevent crawling of specific directories if needed (adjust as needed)
-Disallow: /admin/
-Disallow: /private/

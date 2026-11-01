@@ -7,7 +7,25 @@
     <meta name="keywords" content="education, study app, university, UNZA, CBU, past papers, quizzes, Zambia">
     <meta name="author" content="UniData">
     <meta name="theme-color" content="#00236f">
-    <title>UniData | Study Smarter, Not Harder</title>
+    <title>UniData | Past Papers, Quizzes &amp; Notes for Zambian Students</title>
+    <!-- SEO -->
+    <link rel="canonical" href="https://unidata-website.vercel.app/">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="UniData">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:title" content="UniData | Study Smarter, Not Harder">
+    <meta property="og:description" content="UniData - Premium academic resources, interactive quizzes, and collaborative notes for Zambian students. Study smarter, not harder.">
+    <meta property="og:url" content="https://unidata-website.vercel.app/">
+    <meta property="og:image" content="https://unidata-website.vercel.app/images/screenshort.jpg">
+    <meta property="og:image:alt" content="UniData app for Zambian university students">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="UniData | Study Smarter, Not Harder">
+    <meta name="twitter:description" content="UniData - Premium academic resources, interactive quizzes, and collaborative notes for Zambian students. Study smarter, not harder.">
+    <meta name="twitter:image" content="https://unidata-website.vercel.app/images/screenshort.jpg">
+    <link rel="apple-touch-icon" href="images/unidata-logo.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="images/unidata-logo.png">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
@@ -177,6 +195,56 @@
             }
         }
     </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://unidata-website.vercel.app/#organization",
+      "name": "UniData",
+      "url": "https://unidata-website.vercel.app/",
+      "logo": "https://unidata-website.vercel.app/images/unidata-logo.png",
+      "email": "unidata04@gmail.com",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "Ryze Inc."
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Zambia"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://unidata-website.vercel.app/#website",
+      "url": "https://unidata-website.vercel.app/",
+      "name": "UniData",
+      "description": "Past papers, quizzes and study notes for Zambian university students.",
+      "publisher": {
+        "@id": "https://unidata-website.vercel.app/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "MobileApplication",
+      "name": "UniData",
+      "operatingSystem": "Android",
+      "applicationCategory": "EducationalApplication",
+      "installUrl": "https://play.google.com/store/apps/details?id=com.ryzeinc.UniData",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "ZMW"
+      },
+      "publisher": {
+        "@id": "https://unidata-website.vercel.app/#organization"
+      }
+    }
+  ]
+}
+    </script>
 </head>
 <body class="bg-background text-on-background font-body">
 
@@ -185,33 +253,35 @@
         <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
            <div class="logo-placeholder">
                 <div id="customLogoSlot" class="logo-slot text-sm md:text-base px-2 md:px-3 py-0.5 md:py-1">
-                    <span class="opacity-80 text-sm font-small"><a href="index.html"><img src="images/unidata-logo.png"></a></span>
+                    <span class="opacity-80 text-sm font-small"><a href="index.html"><img src="images/unidata-logo.png" alt="UniData logo"></a></span>
                 </div>
             </div>
-            <div class="hidden md:flex items-center space-x-8">
+            <div class="hidden lg:flex items-center lg:space-x-2 xl:space-x-6 whitespace-nowrap">
                 <a class="text-blue-700 dark:text-blue-400 font-bold border-b-2 border-orange-500 pb-1" href="index.html">Home</a>
                 <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 px-3 py-1 rounded-lg" href="features.html">Features</a>
                 <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 px-3 py-1 rounded-lg" href="about.html">About Us</a>
                 <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 px-3 py-1 rounded-lg" href="events.html">Upcoming Events</a>
+                <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 px-3 py-1 rounded-lg" href="cbu-degree-calculator.html">Degree Calculator</a>
                 <a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 px-3 py-1 rounded-lg" href="contact.html">Contact</a>
             </div>
             <div class="flex items-center space-x-4">
-                <button class="hidden lg:block text-primary font-semibold hover:bg-surface-container transition-colors px-4 py-2 rounded-lg"><a href="https://unidata-929a9.web.app/">Web Version</a></button>
+                <button class="hidden xl:block text-primary font-semibold hover:bg-surface-container transition-colors px-4 py-2 rounded-lg"><a href="https://unidata-929a9.web.app/">Web Version</a></button>
                 <button class="hidden md:block signature-gradient text-on-primary px-6 py-2.5 rounded-xl font-bold active:scale-95 duration-150 transition-transform"><a href="https://play.google.com/store/apps/details?id=com.ryzeinc.UniData&device=phone">Google Play</a></button>
                 <!-- Mobile Menu Toggle -->
-                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
                     <span class="material-symbols-outlined text-2xl">menu</span>
                 </button>
             </div>
         </div>
         
         <!-- Mobile Navigation Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+        <div id="mobileMenu" class="hidden lg:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
             <div class="px-4 py-4 space-y-2 max-w-7xl mx-auto">
                 <a class="block px-4 py-3 rounded-lg text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-slate-800 font-bold " href="index.html">Home</a>
                 <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-bold" href="features.html">Features</a>
                 <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-900 transition-all" href="about.html">About Us</a>
                 <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-900 transition-all" href="events.html">Upcoming Events</a>
+                <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-900 transition-all" href="cbu-degree-calculator.html">Degree Calculator</a>
                 <a class="block px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-900 transition-all" href="contact.html">Contact</a>
                 <div class="pt-4 flex gap-2 px-4">
                     <button class="flex-1 px-3 py-2 rounded-lg text-sm font-semibold text-white signature-gradient hover:scale-95 duration-150">Google Play</button>
@@ -305,7 +375,7 @@
 
         <!-- Upcoming Events (merged layout) -->
         <section class="py-16 md:py-24 px-6 max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4"><div><h2 class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-2">Mark Your Calendars</h2><p class="text-on-surface-variant">Don't miss exclusive materials & competitions.</p></div><a href="#" class="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all">View All Events <span class="material-symbols-outlined">arrow_forward</span></a></div>
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4"><div><h2 class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-2">Mark Your Calendars</h2><p class="text-on-surface-variant">Don't miss exclusive materials & competitions.</p></div><a href="events.html" class="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all">View All Events <span class="material-symbols-outlined">arrow_forward</span></a></div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="group cursor-pointer"><div class="relative h-56 md:h-64 rounded-2xl overflow-hidden mb-5"><img alt="business materials" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="images/sob.jpg"><div class="absolute top-4 left-4 bg-white px-3 py-1 rounded-lg text-primary font-bold text-sm shadow-md">JUNE 2026</div></div><h3 class="font-headline text-xl font-extrabold text-primary mb-2">School of Business Materials</h3><p class="text-on-surface-variant text-sm">Materials for Marketing, Operations and more coming soon.</p></div>
                 <div class="group cursor-pointer"><div class="relative h-56 md:h-64 rounded-2xl overflow-hidden mb-5"><img alt="app launch" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" src="images/Graphic Feature.jpg"><div class="absolute top-4 left-4 bg-white px-3 py-1 rounded-lg text-primary font-bold text-sm shadow-md">JUNE 2026</div></div><h3 class="font-headline text-xl font-extrabold text-primary mb-2">App v3.0 Launch</h3><p class="text-on-surface-variant text-sm mb-2">Join us for the launch with exciting new features!</p><div class="flex items-center gap-2 text-secondary-container font-bold text-xs uppercase"><span class="material-symbols-outlined text-sm">rocket_launch</span> Get Early Access</div></div>
@@ -319,62 +389,10 @@
                 <div class="mb-10"><h2 class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-2">Student Stories</h2><p class="text-on-surface-variant">Real impact, real students, real results.</p></div>
                 <div class="relative">
                     <div class="overflow-hidden testimonial-carousel">
-                        <div class="testimonial-track" id="testimonialTrack">
-                            <div class="testimonial-card">
-                                <div class="p-6 md:p-8 bg-surface-container-lowest rounded-2xl editorial-shadow relative h-full">
-                                    <span class="material-symbols-outlined text-6xl text-primary/5 absolute top-4 right-4" style="font-variation-settings: 'FILL' 1;">
-                                        format_quote
-                                    </span>
-                                    <p class="text-on-surface leading-relaxed mb-5 italic">
-                                        "UniData changed the way I prepare for exams. The quizzes are a lifesaver."
-                                    </p>
-                                    <div class="flex items-center gap-4">
-                                        <div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center font-bold text-primary">
-                                            TS
-                                        </div>
-                                        <div>
-                                            <h4 class="font-bold text-primary">
-                                                Temwani S.
-                                            </h4>
-                                            <p class="text-xs text-on-surface-variant">
-                                                Computer Science, CBU
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card"><div class="p-6 md:p-8 bg-surface-container-lowest rounded-2xl editorial-shadow relative h-full"><span class="material-symbols-outlined text-6xl text-primary/5 absolute top-4 right-4" style="font-variation-settings: 'FILL' 1;">format_quote</span><p class="text-on-surface leading-relaxed mb-5 italic">"Amazing app with exceptional UI. Easy to navigate, past papers and quizzes — education made easy."</p><div class="flex items-center gap-4"><div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center font-bold text-secondary">GK</div><div><h4 class="font-bold text-primary">Gift K.</h4><p class="text-xs text-on-surface-variant">Computer Science, CBU</p></div></div></div></div>
-                            <div class="testimonial-card"><div class="p-6 md:p-8 bg-surface-container-lowest rounded-2xl editorial-shadow relative h-full"><span class="material-symbols-outlined text-6xl text-primary/5 absolute top-4 right-4" style="font-variation-settings: 'FILL' 1;">format_quote</span><p class="text-on-surface leading-relaxed mb-5 italic">"UniData Premium is the best K20 I spend every month. An investment in my future."</p><div class="flex items-center gap-4"><div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center font-bold text-tertiary">AS</div><div><h4 class="font-bold text-primary">Albert S.</h4><p class="text-xs text-on-surface-variant">Business, UNZA</p></div></div></div></div>
-                            
-                            <div class="testimonial-card">
-                                <div class="p-6 md:p-8 bg-surface-container-lowest rounded-2xl editorial-shadow relative h-full">
-                                    <span class="material-symbols-outlined text-6xl text-primary/5 absolute top-4 right-4" style="font-variation-settings: 'FILL' 1;">
-                                        format_quote
-                                    </span>
-                                    <p class="text-on-surface leading-relaxed mb-5 italic">
-                                        "UniData Quizzes have significanlty improved the way i now reverse my notes"
-                                    </p>
-                                    <div class="flex items-center gap-4">
-                                        <div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center font-bold text-primary">
-                                            LS
-                                        </div>
-                                        <div>
-                                            <h4 class="font-bold text-primary">
-                                                Lukundo S.
-                                            </h4>
-                                            <p class="text-xs text-on-surface-variant">
-                                                Computer Engineering, CBU
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="testimonial-track" id="testimonialTrack"></div>
                     </div>
-                    <!-- Navigation Arrows -->
                     <button id="prevTestimonial" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-4 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-md testimonial-nav-btn z-10"><span class="material-symbols-outlined">chevron_left</span></button>
                     <button id="nextTestimonial" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-4 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-md testimonial-nav-btn z-10"><span class="material-symbols-outlined">chevron_right</span></button>
-                    <!-- Dots indicator -->
                     <div class="flex justify-center gap-2 mt-8" id="testimonialDots"></div>
                 </div>
             </div>
@@ -390,9 +408,9 @@
     <footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200">
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 px-6 py-12 max-w-7xl mx-auto">
             <div class="col-span-2 space-y-4"><div class="text-xl font-bold text-primary">UniData</div><p class="text-slate-500 max-w-xs">Building the future of digital education in Zambia. Designed for students, by students.</p><div class="flex gap-4"><a class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-primary shadow-sm hover:translate-y-[-2px] transition" href="#"><span class="material-symbols-outlined text-base">public</span></a><a class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-primary shadow-sm hover:translate-y-[-2px] transition" href="#"><span class="material-symbols-outlined text-base">mail</span></a></div></div>
-            <div><h4 class="font-bold text-primary mb-4">Quick Links</h4><ul class="space-y-2"><li><a class="text-slate-500 hover:text-primary block" href="#">Home</a></li><li><a class="text-slate-500 hover:text-primary block" href="#">Features</a></li><li><a class="text-slate-500 hover:text-primary block" href="#">Upcoming Events</a></li></ul></div>
+            <div><h4 class="font-bold text-primary mb-4">Quick Links</h4><ul class="space-y-2"><li><a class="text-slate-500 hover:text-primary block" href="index.html">Home</a></li><li><a class="text-slate-500 hover:text-primary block" href="features.html">Features</a></li><li><a class="text-slate-500 hover:text-primary block" href="cbu-degree-calculator.html">Degree Calculator</a></li><li><a class="text-slate-500 hover:text-primary block" href="events.html">Upcoming Events</a></li></ul></div>
             <div><h4 class="font-bold text-primary mb-4">Socials</h4><ul class="space-y-2"><li><a class="text-slate-500 hover:text-primary block" href="#">Facebook</a></li><li><a class="text-slate-500 hover:text-primary block" href="#">TikTok</a></li><li><a class="text-slate-500 hover:text-primary block" href="#">YouTube</a></li></ul></div>
-            <div><h4 class="font-bold text-primary mb-4">Contact</h4><ul class="space-y-2"><li><a class="text-slate-500 hover:text-primary block" href="#">Newsletter</a></li><li><a class="text-slate-500 hover:text-primary block" href="#">Help Center</a></li></ul></div>
+            <div><h4 class="font-bold text-primary mb-4">Contact</h4><ul class="space-y-2"><li><a class="text-slate-500 hover:text-primary block" href="#">Newsletter</a></li><li><a class="text-slate-500 hover:text-primary block" href="contact.html">Help Center</a></li></ul></div>
         </div>
         <div class="max-w-7xl mx-auto px-6 py-6 border-t border-slate-200 flex flex-col md:flex-row justify-between text-slate-500 text-xs gap-4">
             <div>© 2026 UniData | Powered by RyzeInc</div>
@@ -432,29 +450,74 @@
         if (overlay) overlay.addEventListener('click', toggleDrawer);
         document.querySelectorAll('#drawer-content a').forEach(link => link.addEventListener('click', () => { if (window.innerWidth < 768) toggleDrawer(); }));
 
-        // TESTIMONIAL CAROUSEL (moving)
         const track = document.getElementById('testimonialTrack');
-        const cards = document.querySelectorAll('.testimonial-card');
         const prevBtn = document.getElementById('prevTestimonial');
         const nextBtn = document.getElementById('nextTestimonial');
         const dotsContainer = document.getElementById('testimonialDots');
         let currentTestimonial = 0;
-        let totalTestimonials = cards.length;
+        let totalTestimonials = 0;
         let autoSlideInterval;
         let isMobile = window.innerWidth < 768;
         let slidesToShow = isMobile ? 1 : 3;
         let slideWidthPercent = 100 / slidesToShow;
+        let cards = [];
+
+        function buildStars(rating) {
+            const filled = Array.from({ length: 5 }, (_, index) => index < rating ? '★' : '☆');
+            return filled.join('');
+        }
+
+        function renderTestimonials(reviews) {
+            track.innerHTML = reviews.map((review, index) => {
+                const initials = (review.author || 'GS')
+                    .split(' ')
+                    .slice(0, 2)
+                    .map((part) => part[0])
+                    .join('')
+                    .slice(0, 2)
+                    .toUpperCase();
+
+                const cardColor = index % 3 === 0 ? 'bg-primary-fixed text-primary' : index % 3 === 1 ? 'bg-secondary-fixed text-secondary' : 'bg-tertiary-fixed text-tertiary';
+
+                return `
+                    <div class="testimonial-card">
+                        <div class="p-6 md:p-8 bg-surface-container-lowest rounded-2xl editorial-shadow relative h-full">
+                            <span class="material-symbols-outlined text-6xl text-primary/5 absolute top-4 right-4" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+                            <div class="mb-4 text-sm text-amber-500 tracking-wide">${buildStars(review.rating || 5)}</div>
+                            <p class="text-on-surface leading-relaxed mb-5 italic">"${review.text || 'Excellent app experience.'}"</p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-full ${cardColor} flex items-center justify-center font-bold">
+                                    ${initials}
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-primary">${review.author || 'Verified student'}</h4>
+                                    <p class="text-xs text-on-surface-variant">${review.role || 'Google Play review'}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            cards = Array.from(track.querySelectorAll('.testimonial-card'));
+            totalTestimonials = cards.length;
+            currentTestimonial = 0;
+            updateSlidesToShow();
+        }
 
         function updateSlidesToShow() {
             isMobile = window.innerWidth < 768;
             slidesToShow = isMobile ? 1 : 3;
             slideWidthPercent = 100 / slidesToShow;
-            track.style.transform = `translateX(-${currentTestimonial * slideWidthPercent}%)`;
+            if (cards.length) {
+                track.style.transform = `translateX(-${currentTestimonial * slideWidthPercent}%)`;
+            }
             updateDots();
         }
 
         function updateDots() {
-            const dotCount = Math.ceil(totalTestimonials / slidesToShow);
+            if (!dotsContainer || !cards.length) return;
+            const dotCount = Math.max(1, Math.ceil(totalTestimonials / slidesToShow));
             dotsContainer.innerHTML = '';
             for (let i = 0; i < dotCount; i++) {
                 const dot = document.createElement('div');
@@ -465,7 +528,7 @@
                 }
                 dot.addEventListener('click', () => {
                     currentTestimonial = i * slidesToShow;
-                    if (currentTestimonial >= totalTestimonials) currentTestimonial = totalTestimonials - slidesToShow;
+                    if (currentTestimonial >= totalTestimonials) currentTestimonial = Math.max(0, totalTestimonials - slidesToShow);
                     if (currentTestimonial < 0) currentTestimonial = 0;
                     track.style.transform = `translateX(-${currentTestimonial * slideWidthPercent}%)`;
                     updateDots();
@@ -476,9 +539,10 @@
         }
 
         function moveTestimonial(direction) {
+            if (!cards.length) return;
             let newIndex = currentTestimonial + direction * slidesToShow;
             if (newIndex < 0) newIndex = 0;
-            if (newIndex + slidesToShow > totalTestimonials) newIndex = totalTestimonials - slidesToShow;
+            if (newIndex + slidesToShow > totalTestimonials) newIndex = Math.max(0, totalTestimonials - slidesToShow);
             if (newIndex !== currentTestimonial) {
                 currentTestimonial = newIndex;
                 track.style.transform = `translateX(-${currentTestimonial * slideWidthPercent}%)`;
@@ -489,6 +553,7 @@
 
         function resetAutoPlay() {
             if (autoSlideInterval) clearInterval(autoSlideInterval);
+            if (!cards.length) return;
             autoSlideInterval = setInterval(() => {
                 let nextIndex = currentTestimonial + slidesToShow;
                 if (nextIndex + slidesToShow > totalTestimonials) nextIndex = 0;
@@ -500,14 +565,34 @@
             }, 6000);
         }
 
-        prevBtn.addEventListener('click', () => moveTestimonial(-1));
-        nextBtn.addEventListener('click', () => moveTestimonial(1));
-        window.addEventListener('resize', () => {
-            updateSlidesToShow();
-            track.style.transform = `translateX(-${currentTestimonial * slideWidthPercent}%)`;
-        });
-        updateSlidesToShow();
-        resetAutoPlay();
+        async function loadTestimonials() {
+            try {
+                const response = await fetch('/api/play-reviews');
+                const data = await response.json();
+                const reviews = Array.isArray(data.reviews) ? data.reviews : [];
+                if (!reviews.length) throw new Error('No reviews available');
+                renderTestimonials(reviews);
+            } catch (error) {
+                renderTestimonials([
+                    { author: 'Temwani S.', role: 'Computer Science, CBU', text: 'UniData changed the way I prepare for exams. The quizzes are a lifesaver.', rating: 5 },
+                    { author: 'Gift K.', role: 'Computer Science, CBU', text: 'Amazing app with exceptional UI. Easy to navigate, past papers and quizzes — education made easy.', rating: 5 },
+                    { author: 'Albert S.', role: 'Business, UNZA', text: 'UniData Premium is the best K20 I spend every month. An investment in my future.', rating: 5 },
+                    { author: 'Lukundo S.', role: 'Computer Engineering, CBU', text: 'UniData Quizzes have significantly improved the way I now revise my notes.', rating: 5 }
+                ]);
+            }
+
+            if (prevBtn) prevBtn.addEventListener('click', () => moveTestimonial(-1));
+            if (nextBtn) nextBtn.addEventListener('click', () => moveTestimonial(1));
+            window.addEventListener('resize', () => {
+                updateSlidesToShow();
+                if (cards.length) {
+                    track.style.transform = `translateX(-${currentTestimonial * slideWidthPercent}%)`;
+                }
+            });
+            resetAutoPlay();
+        }
+
+        loadTestimonials();
     </script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
