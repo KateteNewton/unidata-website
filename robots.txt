@@ -1,10 +1,5 @@
-# Allow all search engines to crawl the public site
+
+
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /private/
-Disallow: /api/
-Disallow: /*.bak$
-
-# Sitemap location
-Sitemap: https://unidata-website.vercel.app/sitemap.xml
+Sitemap: https://unidatazm.com/sitemap.xml
